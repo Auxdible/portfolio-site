@@ -3,6 +3,7 @@ import '../styles/globals.scss';
 import Head from 'next/head';
 import { ThemeProvider } from 'next-themes';
 import Providers from '@/components/Providers';
+import Navbar from '@/components/Navbar';
 
 export const metadata: Metadata = {
   title: 'Auxdible',
@@ -31,6 +32,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={"dark:bg-gray-900 bg-gray-50"}>
           <Providers>
+            <Navbar/>
             {children}
           </Providers>
         </body>

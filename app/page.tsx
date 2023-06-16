@@ -10,6 +10,7 @@ export default function Home() {
             alt="Auxdible's icon."
             width='150'
             height='150'
+            priority
           />
           <h1 className={"text-4xl p-4 text-orange font-montserrat text-primary"}>Under Construction</h1>
           <p>This is the portfolio site for the Full Stack Developer, Auxdible. It is currently under construction. Please be patient!</p>
