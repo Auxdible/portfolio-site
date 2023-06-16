@@ -1,0 +1,15 @@
+/* Tailwind */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* Import Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Roboto:wght@300&display=swap');
+
+@layer components {
+    .text {
+        @apply dark:text-gray-100 text-gray-600
+    }
+    .text-primary {
+        @apply dark:text-orange-400 text-orange-600
+    }
+}
