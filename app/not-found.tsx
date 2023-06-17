@@ -1,9 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
 
-export default function Error() {
-  
-
+export default function NotFound() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-center max-w-lg mx-auto">
       <div className={"block mx-auto text-center font-roboto text-2xl text"}>

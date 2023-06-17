@@ -5,6 +5,7 @@ module.exports = {
     './components/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
+  mode: 'jit',
   darkMode: 'class',
   theme: {
     extend: {
@@ -16,9 +17,12 @@ module.exports = {
       fontFamily: {
         roboto: ["Roboto", "sans-serif"],
         montserrat: ["Montserrat", "sans-serif"]
-      
+      },
+      animation: {
+        pulse: "pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+        navbarCollapse: "navbarCollapse 0.75s ease-out",
       }
     },
   },
-  plugins: [],
+
 }

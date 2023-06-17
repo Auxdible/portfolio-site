@@ -12,4 +12,15 @@
     .text-primary {
         @apply dark:text-orange-400 text-orange-600
     }
+    .collapse-element {
+        @apply w-full h-fit p-2 border-b-2 dark:border-gray-300 border-gray-800 dark:border-opacity-20 border-opacity-20 hover:text-orange-500 transition-all;
+    }
+}
+@keyframes navbarCollapse {
+    0% {
+        transform: translateY(-10rem);
+    }
+    100% {
+        transform: translateY(0);
+    }
 }
