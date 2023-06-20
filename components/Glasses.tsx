@@ -5,7 +5,7 @@ Command: npx gltfjsx@6.2.3 glasses.gltf --types
 
 import * as THREE from 'three'
 import React, { useRef } from 'react'
-import { GradientTexture, GradientType, useGLTF } from '@react-three/drei'
+import { useGLTF } from '@react-three/drei'
 import { GLTF } from 'three-stdlib'
 
 type GLTFResult = GLTF & {
@@ -52,7 +52,7 @@ export function Glasses(props: JSX.IntrinsicElements['group'] & AdditionalProps)
       
       gl_FragColor = vec4(mix(color1, color2, vUv.x), 1.0);
     }
-  `  });
+  `});
   return (
     <group {...props} dispose={null}>
       <mesh geometry={nodes.Plane.geometry} material={material}/>
