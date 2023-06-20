@@ -14,7 +14,7 @@ export default function ThemeButton() {
       { <BiLoaderCircle/> }
   </button>)
     }
-    return (<button onClick={() => setTheme(theme == "dark" ? "light" : "dark")} className={"max-md:text-xl text-2xl border-2 dark:border-gray-200 border-gray-700 p-2 focus:dark:text-orange-400 focus:text-orange-600 focus:p-[10px] hover:dark:text-orange-400 hover:text-orange-600 hover:p-[10px] transition-all rounded-xl"}>
+    return (<button onClick={() => setTheme(theme == "dark" ? "light" : "dark")} className={"max-md:text-xl text-2xl border-2 dark:border-gray-200 border-gray-700 p-2 hover:dark:text-orange-400 hover:text-orange-600 transition-all rounded-xl"}>
             { theme == "dark" ? <FaMoon/> : <FaSun/> }
         </button>)
 }

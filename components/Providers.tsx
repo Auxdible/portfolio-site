@@ -4,7 +4,7 @@ import { ReactNode } from "react";
 
 export default function Providers({ children }: { children: ReactNode }) {
   return (
-    <ThemeProvider attribute={"class"} enableSystem>
+    <ThemeProvider attribute={"class"} enableSystem disableTransitionOnChange>
       {children}
     </ThemeProvider>
   );
