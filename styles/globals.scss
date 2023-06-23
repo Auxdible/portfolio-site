@@ -13,7 +13,7 @@
         @apply dark:text-orange-400 text-orange-600
     }
     .collapse-element {
-        @apply w-full h-fit p-2 border-b-2 dark:border-gray-300 border-gray-800 dark:border-opacity-20 border-opacity-20 hover:text-orange-500 transition-all;
+        @apply w-full min-h-fit p-2 border-b-2 dark:border-gray-300 border-gray-800 dark:border-opacity-20 border-opacity-20;
     }
 }
 @keyframes navbarCollapse {

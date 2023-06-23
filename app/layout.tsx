@@ -5,6 +5,7 @@ import { ThemeProvider } from 'next-themes';
 import Providers from '@/components/Providers';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import { Session } from 'next-auth';
 
 export const metadata: Metadata = {
   title: 'Auxdible',
@@ -26,8 +27,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  session
 }: {
-  children: React.ReactNode
+  children: React.ReactNode,
+  session: Session
 }) {
   return (
     <html lang="en">
@@ -35,7 +38,7 @@ export default function RootLayout({
           <Providers>
             <Navbar/>
             {children}
-            <Footer/>
+            
           </Providers>
         </body>
     </html>

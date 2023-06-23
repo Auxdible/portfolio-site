@@ -5,9 +5,11 @@ import ThemeButton from "./ThemeButton";
 import { useState } from 'react';
 import { BiMenuAltLeft } from 'react-icons/bi';
 import { useScroll } from 'framer-motion';
+import { useSession } from "next-auth/react";
 export default function Navbar() {
     const [collapse, setCollapse] = useState(false);
     const { scrollY } = useScroll();
+    const { data: session } = useSession();
     return (<>
     <div className={`z-10 fixed left-1/2 -translate-x-1/2 max-w-4xl w-full`}>
     <nav className={"sticky dark:bg-black bg-gray-100 flex flex-row justify-center max-h-32 align-middle border border-t-0 dark:border-orange-400 border-orange-700 md:rounded-bl-3xl  md:rounded-br-3xl"}>
@@ -16,7 +18,7 @@ export default function Navbar() {
                 <BiMenuAltLeft/>
             </button>
             <span className={"max-md:hidden justify-center gap-20 items-center flex flex-1 flex-grow flex-shrink text-2xl font-montserrat"}>
-                <Link className={"h-fit hover:text-orange-500 hover:translate-y-1 transition-all"} href={"/login"}>Login</Link>
+                <Link className={"h-fit hover:text-orange-500 hover:translate-y-1 transition-all"} href={"/auth/signin"}>Sign in</Link>
                 <Link className={"h-fit hover:text-orange-500 hover:translate-y-1 transition-all"} href={"/blog"}>Blog</Link>
             </span>
         </div>
@@ -39,7 +41,7 @@ export default function Navbar() {
     </nav>
     {collapse ? 
     <div className={"sticky -z-10 flex flex-col text-2xl dark:bg-gray-900 bg-gray-200 transition-transform animate-navbarCollapse font-montserrat"}>
-        <Link className={"collapse-element"} href={"/login"}>Login</Link>
+        <Link className={"collapse-element"} href={"/auth/signin"}>Sign in</Link>
         <Link className={"collapse-element"} href={"/blog"}>Blog</Link>
         <Link className={"collapse-element"} href={"/contact-me"}>Contact Me</Link>
     </div> : ""}
