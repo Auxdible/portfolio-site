@@ -4,12 +4,15 @@ import Image from "next/image";
 import Link from "next/link";
 import { BsDiscord, BsPersonBadge, BsPersonLock, BsShieldCheck } from "react-icons/bs";
 import { useState } from "react";
-import { BiLock } from "react-icons/bi";
+import { BiLoaderCircle, BiLock } from "react-icons/bi";
 import { FaWaveSquare } from "react-icons/fa";
+import LoadingSpinner from "@/components/Loading";
+import Loading from "@/components/Loading";
 export default function SignOut() {
     
-    let { data: session } = useSession();
+    let { data: session, status } = useSession();
     const [formData, setFormData] = useState({ username: "", password: "" });
+    if (status == "loading") return <Loading/>;
     if (!session) {
         return (<main className="flex min-h-screen flex-col items-center justify-center max-w-lg mx-auto">
         <div className={"block mx-auto text-center font-roboto text-2xl text"}>
@@ -34,6 +37,6 @@ export default function SignOut() {
         <h1 className={"text-6xl max-sm:text-5xl font-montserrat text-primary my-5"}>Sign out</h1>
         <p>Sign out of Auxdible&apos;s Portfolio Site.</p>
     </div>
-    <button onClick={() => signOut() } className={"flex justify-center mx-auto items-center gap-2 text-center text-black dark:text-white p-2 border-2 dark:border-orange-400 border-orange-700 border-opacity-40 rounded-2xl font-roboto text-2xl"}>👋 Sign out</button>
+    <button onClick={() => signOut({ redirect: true, callbackUrl: '/' }) } className={"flex justify-center mx-auto items-center gap-2 text-center text-black dark:text-white p-2 border-2 dark:border-orange-400 border-orange-700 border-opacity-40 rounded-2xl font-roboto text-2xl"}>👋 Sign out</button>
     </main>)
 }

@@ -21,6 +21,7 @@ module.exports = {
       animation: {
         pulse: "pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite",
         navbarCollapse: "navbarCollapse 0.75s ease-out",
+        spin: "spin 2s linear infinite"
       },
       colors: {
         discord: "#7289da"

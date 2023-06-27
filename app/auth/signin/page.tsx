@@ -5,10 +5,12 @@ import Link from "next/link";
 import { BsDiscord, BsPersonBadge, BsPersonLock, BsShieldCheck } from "react-icons/bs";
 import { useState } from "react";
 import { BiLock } from "react-icons/bi";
+import Loading from "@/components/Loading";
 export default function SignIn() {
     
-    let { data: session } = useSession();
+    let { data: session, status } = useSession();
     const [formData, setFormData] = useState({ username: "", password: "" });
+    if (status == "loading") return <Loading/>;
     if (session) {
         return (<main className="flex min-h-screen flex-col items-center justify-center max-w-lg mx-auto">
         <div className={"block mx-auto text-center font-roboto text-2xl text"}>

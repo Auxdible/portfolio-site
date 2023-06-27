@@ -8,10 +8,13 @@ import { Suspense, useState } from 'react';
 import { Glasses } from '@/components/Glasses';
 import { useSession } from 'next-auth/react';
 import Footer from '@/components/Footer';
+import { projects } from '@prisma/client';
+import { useQuery } from 'react-query';
+import Project from '@/components/Project';
 
 export default function Home() {
   const [gradient, setGradient] = useState({ randomColor1: "#fd644f", randomColor2: "#ff9d00"});
-  let { data: session } = useSession();
+  const { data: projects, status: projects_status, error: projects_error } = useQuery(["projects"], async () => await fetch("/api/projects").then(async (data) => await data.json().catch(() => [])).catch((x) => []));
   function changeGradient() {
     setGradient({ randomColor1: '#' + Math.floor(Math.random()*16777215).toString(16), randomColor2: '#' + Math.floor(Math.random()*16777215).toString(16) })
   }
@@ -54,23 +57,8 @@ export default function Home() {
     <motion.h1 initial={{ opacity: 0, transform: "translateY(-8rem)" }}
   whileInView={{ opacity: 1, transform: "translateY(0)" }} transition={{ duration: 2 }} viewport={{ once: true }} className={"text-6xl text-center max-sn:text-4xl font-montserrat text-primary"}>My Projects</motion.h1>
     <section>
-      {/*TEMPLATE PROJECT!!
-      <motion.div initial={{ opacity: 0, transform: "translateY(8rem)" }}
-  whileInView={{ opacity: 1, transform: "translateY(0)" }} transition={{ duration: 1.5 }} viewport={{ once: true }} className={"flex flex-col mx-auto justify-center items-center text-center max-w-lg"}>
-        <Image
-          src={"/auxdibot-icon.png"}
-          alt={"Auxdibot icon"}
-          width={200}
-          height={200}
-        />
-        <span className={"flex flex-row justify-center gap-10 w-3/5 my-3"}>
-        <a href={"https://bot.auxdible.me"} className={"flex items-center justify-center flex-1 flex-grow flex-shrink mx-auto border dark:border-orange-400 border-orange-700 p-2 hover:px-3 hover:dark:text-orange-400 hover:text-orange-700 transition-all rounded-lg font-roboto"}><span>View Site</span></a>
-        <a href={"https://github.com/Auxdibot/auxdibot"} className={"flex items-center justify-center flex-1 flex-grow flex-shrink mx-auto border dark:border-orange-400 border-orange-700 p-2 hover:px-3 hover:dark:text-orange-400 hover:text-orange-700 transition-all rounded-lg font-roboto"}><span>View Source</span></a>
-        </span>
-        <h1 className={"text-4xl pt-4 font-montserrat text-primary"}>Auxdibot</h1>
-        <p className={"font-roboto text-xl dark:text-gray-400 text-gray-600"}>10/17/22 - Present</p>
-        <p className={"font-roboto text-xl my-4"}>Auxdibot is a multipurpose Discord utility bot created to take your server to the next level. Utilizing much-wanted features like Levels, Suggestions, and Starboard, Auxdibot is a perfect fit for every Discord server!</p>
-  </motion.div>*/}
+      {projects && !projects_error && projects_status == 'success' ? projects.map((project: projects) => (<Project key={project.project_id} project={project} />)) 
+      : <p className={"text-xl font-montserrat py-2 text-center text"}>Loading projects...</p>}
     </section>
     </div>
     <Footer/>

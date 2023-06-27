@@ -5,10 +5,16 @@ datasource db {
     provider = "mongodb"
     url = env("DATABASE_URL")
 }
-model users {
+model projects {
     id String @id @default(auto()) @map("_id") @db.ObjectId
     v Int? @map("__v")
-    username String
-    display_name String
-    password String    
+    project_id String
+    project_name String
+    project_date String
+    project_image_url String?
+    project_website_url String?
+    project_source_url String?
+    project_description String?
+
+    @@unique([project_id])
 }

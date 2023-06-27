@@ -1,4 +1,4 @@
-import { compareSync } from "bcrypt";
+import { compare, compareSync } from "bcrypt";
 import NextAuth from "next-auth"
 import CredentialsProvider, {CredentialsConfig} from "next-auth/providers/credentials";
 import DiscordProvider from "next-auth/providers/discord";
@@ -18,9 +18,8 @@ let providers: Provider[] = [
           password: { label: "Password", type: "password" }
       },
       async authorize(credentials, req) {
-          if (!credentials) return null;
-          const user = await prisma.users.findFirst({ where: { username: credentials.username }}).catch(() => null);
-          return user && (compareSync(credentials.password, user.password) || credentials.password === user.password) ? user : null;
+          if (!credentials || !process.env.BLOG_PASSWORD) return null;
+          return process.env.BLOG_USERNAME == credentials.username && (await compare(credentials.password, process.env.BLOG_PASSWORD) || credentials.password === process.env.BLOG_PASSWORD) ? { name: process.env.BLOG_DISPLAY_NAME, id: process.env.BLOG_USERNAME } : null;
       },
   }),
 ];
