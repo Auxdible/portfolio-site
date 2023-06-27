@@ -41,7 +41,7 @@ export async function GET(req: NextRequest) {
     .then((projects) => NextResponse.json(projects))
     .catch((x) => {
         console.log(x);
-        return NextResponse.json({ "error": "There was an error attempting to fetch those projects!"}, { status: 500 });
+        return NextResponse.json({ "error": "There was an error attempting to fetch projects!"}, { status: 500 });
     });
 }
 export async function DELETE(req: NextRequest) {
@@ -54,7 +54,7 @@ export async function DELETE(req: NextRequest) {
     NextResponse.json({ "error": "There are no projects with that project_id!"}, { status: 404 }))
     .catch((x) => {
         console.error(x);
-        return NextResponse.json({ "error": "There was an error attempting to delete those projects!"}, { status: 500 });
+        return NextResponse.json({ "error": "There was an error attempting to delete projects!"}, { status: 500 });
     })
 }
 export async function PATCH(req: NextRequest) {
@@ -78,7 +78,7 @@ export async function PATCH(req: NextRequest) {
     return prisma.projects.update({ where: { project_id: project_id_query }, data: { ...project }})
     .then((data) => NextResponse.json(data)).catch((x) => {
         console.error(x);
-        return NextResponse.json({ "error": "There was an error attempting to delete those projects!"}, { status: 500 });
+        return NextResponse.json({ "error": "There was an error attempting to update projects!"}, { status: 500 });
     })
 
 }

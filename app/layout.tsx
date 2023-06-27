@@ -1,11 +1,10 @@
 import { Metadata } from 'next'
 import '../styles/globals.scss';
-import Head from 'next/head';
-import { ThemeProvider } from 'next-themes';
+
 import Providers from '@/components/Providers';
 import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
 import { Session } from 'next-auth';
+import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
   title: 'Auxdible',
@@ -38,7 +37,7 @@ export default function RootLayout({
           <Providers>
             <Navbar/>
             {children}
-            
+            <Footer/>
           </Providers>
         </body>
     </html>

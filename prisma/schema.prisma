@@ -18,3 +18,14 @@ model projects {
 
     @@unique([project_id])
 }
+model posts {
+    id String @id @default(auto()) @map("_id") @db.ObjectId
+    v Int? @map("__v")
+    post_id String
+    post_name String
+    post_content String
+    post_description String
+    post_date_unix Int
+    posted_by String
+    @@unique([post_id])
+}

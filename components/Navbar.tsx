@@ -41,9 +41,9 @@ export default function Navbar() {
     </nav>
     {collapse ? 
     <div className={"sticky -z-10 flex flex-col text-2xl dark:bg-gray-900 bg-gray-200 transition-transform animate-navbarCollapse font-montserrat"}>
-        {status == "loading" ? <BiLoaderCircle className={"animate-spin animate-pulse"}/> : session && session.user ? <span className={"collapse-element"}><MiniProfile user={session.user}/> </span> : <Link className={"collapse-element"} href={"/auth/signin"}>Sign in</Link>}
-        <Link className={"collapse-element"} href={"/blog"}>Blog</Link>
-        <Link className={"collapse-element"} href={"/contact-me"}>Contact Me</Link>
+        {status == "loading" ? <BiLoaderCircle className={"animate-spin animate-pulse"}/> : session && session.user ? <span className={"collapse-element"}><MiniProfile user={session.user}/> </span> : <Link onClick={() => setCollapse(false)} className={"collapse-element"} href={"/auth/signin"}>Sign in</Link>}
+        <Link className={"collapse-element"} onClick={() => setCollapse(false)} href={"/blog"}>Blog</Link>
+        <Link className={"collapse-element"} onClick={() => setCollapse(false)} href={"/contact-me"}>Contact Me</Link>
     </div> : ""}
     
     </div>

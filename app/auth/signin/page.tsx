@@ -43,8 +43,8 @@ export default function SignIn() {
         <section className={"text-center my-3"}>
         <h1 className={"text-4xl max-sm:text-3xl font-montserrat text-primary my-5"}>Admin</h1>
         <div className={"flex flex-col gap-3 my-10"}>
-        <span className={"flex max-md:flex-col justify-between"}><label className={"flex flex-row justify-between max-md:justify-start items-center gap-2"}><BsPersonBadge/> Username</label><input type="text" className={"dark:bg-gray-600 bg-gray-300"} onChange={(e) => setFormData({ username: e.target.value, password: formData.password })} /></span>
-        <span className={"flex max-md:flex-col justify-between"}><label className={"flex flex-row justify-between max-md:justify-start items-center gap-2"}><BiLock/> Password</label><input className={"dark:bg-gray-600 bg-gray-300"} type="password" onChange={(e) => setFormData({ username: formData.username, password: e.target.value })} /></span>
+        <span className={"flex max-md:flex-col justify-between gap-2"}><label className={"flex flex-row justify-between max-md:justify-start items-center gap-2"}><BsPersonBadge/> Username</label><input type="text" className={"dark:bg-gray-600 bg-gray-300"} onChange={(e) => setFormData({ username: e.target.value, password: formData.password })} /></span>
+        <span className={"flex max-md:flex-col justify-between gap-2"}><label className={"flex flex-row justify-between max-md:justify-start items-center gap-2"}><BiLock/> Password</label><input className={"dark:bg-gray-600 bg-gray-300"} type="password" onChange={(e) => setFormData({ username: formData.username, password: e.target.value })} /></span>
         </div>
         <button onClick={() => signIn('credentials', { username: formData.username, password: formData.password, redirect:true, callbackUrl:"/" }, ) } className={"flex justify-center mx-auto items-center gap-2 text-center text-black dark:text-white p-2 border-2 dark:border-orange-400 border-orange-700 border-opacity-40 rounded-2xl"}><BsShieldCheck/> Sign in</button>
         </section>
