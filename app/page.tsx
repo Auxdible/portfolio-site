@@ -16,7 +16,7 @@ import BlogPreview from '@/components/BlogPreview';
 export default function Home() {
   const [gradient, setGradient] = useState({ randomColor1: "#fd644f", randomColor2: "#ff9d00"});
   const { data: projects, status: projects_status, error: projects_error } = useQuery(["projects"], async () => await fetch("/api/projects").then(async (data) => await data.json().catch(() => [])).catch(() => []));
-  const { data: posts, status: posts_status, error: posts_error } = useQuery(["posts"], async () => await fetch("/api/posts?limit=5").then(async (data) => await data.json().catch(() => [])).catch((x) => { console.log(x); return [];}));
+  const { data: posts, status: posts_status, error: posts_error } = useQuery(["posts"], async () => await fetch("/api/posts?limit=3").then(async (data) => await data.json().catch(() => [])).catch((x) => { console.log(x); return [];}));
   function changeGradient() {
     setGradient({ randomColor1: '#' + Math.floor(Math.random()*16777215).toString(16), randomColor2: '#' + Math.floor(Math.random()*16777215).toString(16) })
   }
@@ -24,8 +24,9 @@ export default function Home() {
   <header className="flex flex-row max-md:flex-col min-h-screen w-full items-center mx-auto max-md:my-16">
       <div className={"flex flex-col justify-center gap-5 flex-1 flex-grow font-roboto text-2xl text"}>
           <section className={"max-md:text-center mx-auto"}>
-          <h1 className={"text-8xl max-sm:text-6xl pt-4 font-montserrat text-primary"}>Auxdible</h1>
-          <p className={"text-4xl max-sm:text-2xl font-montserrat py-2"}>Full Stack Developer</p>
+          <h1 className={"text-9xl max-sm:text-7xl pt-4 font-raleway text-primary"}>Auxdible</h1>
+          <p className={"text-4xl max-sm:text-3xl font-montserrat py-2"}>Full Stack Developer</p>
+          <p className={"text-2xl max-sm:text-xl font-roboto dark:text-gray-400 text-gray-600 italic"}>(a.k.a. Steven Primeaux)</p>
           </section>
           
       </div>
@@ -42,14 +43,14 @@ export default function Home() {
         </div>
       </div>
     </header>
-    <button onClick={() => changeGradient() } className={"block font-roboto text-3xl text mx-auto w-fit border max-sm:text-xl dark:border-orange-400 border-orange-700 p-2 rounded-lg mb-40"}>Change glasses gradient 😎</button>
+    <button onClick={() => changeGradient() } className={"block font-roboto text-3xl text mx-auto w-fit border max-sm:text-xl dark:border-orange-400 border-orange-700 p-2 rounded-lg mb-72"}>Change glasses gradient 😎</button>
     <motion.div initial={{ opacity: 0, transform: "translateY(-8rem)" }}
   whileInView={{ opacity: 1, transform: "translateY(0)" }} transition={{ duration: 2 }} viewport={{ once: true }} className="flex flex-row max-md:flex-col max-w-5xl items-center mx-auto mb-40">
-    <h1 className={"text-8xl max-sm:text-5xl pt-4 font-montserrat text-primary flex-1 flex-grow flex-shrink max-md:text-center max-md:my-10"}>About<br/>Me</h1>
+    <h1 className={"text-8xl max-sm:text-5xl pt-4 font-raleway text-primary flex-1 flex-grow flex-shrink max-md:text-center max-md:my-10"}>About<br/>Me</h1>
     <div className={"flex flex-1 flex-grow flex-shrink max-md:w-screen"}>
         <div className={"w-full"}>
           <div className={"text-lg font-montserrat py-2 max-md:text-center text"}>
-            <p>Hello! My name is Auxdible. I am a seventeen-year-old Full Stack Developer and student, passionate about crafting innovative and entertaining experiences on the web! I have been studying Full Stack Development for two years and have learned numerous libraries, frameworks, and languages in my coding journey.</p>
+            <p>Hello! My name is Auxdible. I am a seventeen-year-old Full Stack Developer and student, passionate about crafting innovative, interactive and invigorating experiences on the web! I have been studying Full Stack Development for two years and have learned numerous libraries, frameworks, and languages in my coding journey.</p>
             <br/>
             <p>I am experienced with TypeScript, Java, and numerous JavaScript frameworks, such as Next.js and React. Feel free to reach out on Social Media or Discord with any inquiries!</p>
           </div>
@@ -59,16 +60,16 @@ export default function Home() {
 
     <div className={"flex flex-col gap-40 w-full my-20"}>
     <motion.h1 initial={{ opacity: 0, transform: "translateY(-8rem)" }}
-  whileInView={{ opacity: 1, transform: "translateY(0)" }} transition={{ duration: 2 }} viewport={{ once: true }} className={"text-6xl text-center max-sn:text-4xl font-montserrat text-primary"}>Latest Posts</motion.h1>
+  whileInView={{ opacity: 1, transform: "translateY(0)" }} transition={{ duration: 2 }} viewport={{ once: true }} className={"text-6xl text-center max-sn:text-4xl font-raleway text-primary"}>Latest Posts</motion.h1>
     <section className={"border dark:border-orange-400 border-orange-700 rounded-3xl max-w-lg mx-auto p-8 mb-40"}>
-      {posts && !posts_error && posts_status == 'success' ? posts.reverse().map((post: posts) => (<BlogPreview key={post.post_id} post={post} />)) 
+      {posts && !posts_error && posts_status == 'success' ? posts.map((post: posts) => (<BlogPreview key={post.post_id} post={post} />)) 
       : <p className={"text-xl font-montserrat py-2 text-center text"}>Loading posts...</p>}
     </section>
     </div>
 
     <div className={"flex flex-col gap-40 w-full my-20"}>
     <motion.h1 initial={{ opacity: 0, transform: "translateY(-8rem)" }}
-  whileInView={{ opacity: 1, transform: "translateY(0)" }} transition={{ duration: 2 }} viewport={{ once: true }} className={"text-6xl text-center max-sn:text-4xl font-montserrat text-primary"}>My Projects</motion.h1>
+  whileInView={{ opacity: 1, transform: "translateY(0)" }} transition={{ duration: 2 }} viewport={{ once: true }} className={"text-6xl text-center max-sn:text-4xl font-raleway text-primary"}>My Projects</motion.h1>
     <section>
       {projects && !projects_error && projects_status == 'success' ? projects.map((project: projects) => (<Project key={project.project_id} project={project} />)) 
       : <p className={"text-xl font-montserrat py-2 text-center text"}>Loading projects...</p>}

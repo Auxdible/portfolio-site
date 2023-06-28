@@ -2,7 +2,6 @@
 
 import BlogContent from "@/components/BlogContent";
 import Loading from "@/components/Loading";
-import ScrollBar from "@/components/ScrollBar";
 import { useQuery } from "react-query";
 type PostProps = { params: { post_id: string } };
 export default function BlogPost({ params: { post_id } }: PostProps) {
