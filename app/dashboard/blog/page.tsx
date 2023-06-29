@@ -21,7 +21,6 @@ export default function ProjectsDashboard() {
     async function handleCreatePost(update?: boolean) {
       var headers = new Headers();
       headers.append("Content-Type", "application/x-www-form-urlencoded");
-      console.log(update);
       await fetch(`/api/posts${update ? `?post_id=${addPostData.post_id}` : ""}`, { method: update ? "PATCH" : "POST", headers: headers, body: qs.encode({ ...addPostData, posted_by: session?.user ? session.user.name : "Auxdible" }), redirect: 'follow' }).then(() => {
         router.push("/");
       }).catch((x) => {

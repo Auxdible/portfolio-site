@@ -21,7 +21,6 @@ export default function ProjectsDashboard() {
     async function handleCreateProject(update?: boolean) {
       var headers = new Headers();
       headers.append("Content-Type", "application/x-www-form-urlencoded");
-      console.log(update);
       await fetch(`/api/projects${update ? `?project_id=${addProjectData.project_id}` : ""}`, { method: update ? "PATCH" : "POST", headers: headers, body: qs.encode(addProjectData), redirect: 'follow' }).then(() => {
         router.push("/");
       }).catch((x) => {

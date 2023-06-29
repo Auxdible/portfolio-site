@@ -8,8 +8,6 @@ type Props = { user: (DefaultUser & {
     discord_profile?: DiscordProfile | undefined;
 }) };
 export default function MiniProfile({ user }: Props) {
-    console.log(user);
-    
     return (
     <Link href={user.discord_profile ? "/auth/signout" : "/dashboard"} className={"flex flex-row justify-center items-center gap-2"}>
         {!user.discord_profile ? <BsShieldCheck/> : ""}
