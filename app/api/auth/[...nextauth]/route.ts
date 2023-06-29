@@ -17,7 +17,7 @@ let providers: Provider[] = [
           username: { label: "Username", placeholder: "jsmith", type: "text" },
           password: { label: "Password", type: "password" }
       },
-      async authorize(credentials, req) {
+      async authorize(credentials) {
           if (!credentials || !process.env.BLOG_PASSWORD) return null;
           return process.env.BLOG_USERNAME == credentials.username && (await compare(credentials.password, process.env.BLOG_PASSWORD) || credentials.password === process.env.BLOG_PASSWORD) ? { name: process.env.BLOG_DISPLAY_NAME, admin: true, id: process.env.BLOG_USERNAME } : null;
       },
@@ -28,7 +28,7 @@ if (process.env.OAUTH2_DISCORD_CLIENT_ID && process.env.OAUTH2_DISCORD_SECRET) {
     clientId: process.env.OAUTH2_DISCORD_CLIENT_ID,
     clientSecret: process.env.OAUTH2_DISCORD_SECRET, 
     authorization: {
-      params: { scope: 'identify email' }
+      params: { scope: 'identify' }
     }
   }));
 }
@@ -43,9 +43,8 @@ const handler = NextAuth({
         return session;
     },
     async signIn({ profile }) {
-      console.log(profile);
       if (profile && isDiscordProfile(profile)) {
-        if (!profile.email) return false;
+        if (!profile.verified) return false;
       }
       return true;
     },
