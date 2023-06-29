@@ -24,7 +24,7 @@ export default function Home() {
   <header className="flex flex-row max-md:flex-col min-h-screen w-full items-center mx-auto max-md:my-16">
       <div className={"flex flex-col justify-center gap-5 flex-1 flex-grow font-roboto text-2xl text"}>
           <section className={"max-md:text-center mx-auto"}>
-          <h1 className={"text-9xl max-sm:text-7xl pt-4 font-raleway text-primary"}>Auxdible</h1>
+          <h1 className={"text-9xl max-sm:text-6xl pt-4 font-raleway text-primary"}>Auxdible</h1>
           <p className={"text-4xl max-sm:text-3xl font-montserrat py-2"}>Full Stack Developer</p>
           <p className={"text-2xl max-sm:text-xl font-roboto dark:text-gray-400 text-gray-600 italic"}>(a.k.a. Steven Primeaux)</p>
           </section>
@@ -60,7 +60,7 @@ export default function Home() {
 
     <div className={"flex flex-col gap-40 w-full my-20"}>
     <motion.h1 initial={{ opacity: 0, transform: "translateY(-8rem)" }}
-  whileInView={{ opacity: 1, transform: "translateY(0)" }} transition={{ duration: 2 }} viewport={{ once: true }} className={"text-6xl text-center max-sn:text-4xl font-raleway text-primary"}>Latest Posts</motion.h1>
+  whileInView={{ opacity: 1, transform: "translateY(0)" }} transition={{ duration: 2 }} viewport={{ once: true }} className={"text-6xl text-center max-sn:text-4xl font-raleway text-primary w-full"}>Latest Posts</motion.h1>
     <section className={"border dark:border-orange-400 border-orange-700 rounded-3xl max-w-lg mx-auto p-8 mb-40"}>
       {posts && !posts_error && posts_status == 'success' ? posts.map((post: posts) => (<BlogPreview key={post.post_id} post={post} />)) 
       : <p className={"text-xl font-montserrat py-2 text-center text"}>Loading posts...</p>}
@@ -69,7 +69,7 @@ export default function Home() {
 
     <div className={"flex flex-col gap-40 w-full my-20"}>
     <motion.h1 initial={{ opacity: 0, transform: "translateY(-8rem)" }}
-  whileInView={{ opacity: 1, transform: "translateY(0)" }} transition={{ duration: 2 }} viewport={{ once: true }} className={"text-6xl text-center max-sn:text-4xl font-raleway text-primary"}>My Projects</motion.h1>
+  whileInView={{ opacity: 1, transform: "translateY(0)" }} transition={{ duration: 2 }} viewport={{ once: true }} className={"text-6xl text-center max-sn:text-4xl font-raleway text-primary w-full"}>My Projects</motion.h1>
     <section>
       {projects && !projects_error && projects_status == 'success' ? projects.map((project: projects) => (<Project key={project.project_id} project={project} />)) 
       : <p className={"text-xl font-montserrat py-2 text-center text"}>Loading projects...</p>}
