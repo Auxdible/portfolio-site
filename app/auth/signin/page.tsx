@@ -38,7 +38,7 @@ export default function SignIn() {
     <div className={"block mx-auto text-center font-roboto text-2xl border-2 dark:border-orange-400 border-orange-700 rounded-3xl text p-10 my-10 w-full"}>
         <section className={"text-center my-3"}>
         <h1 className={"text-4xl max-sm:text-3xl font-montserrat text-primary my-5"}>User</h1>
-        <button onClick={() => signIn('discord', { callbackUrl:"/" }) } className={"flex justify-center mx-auto items-center gap-2 text-center bg-discord text-black dark:text-white p-1 border-2 border-gray-400 border-opacity-40 rounded-2xl"}><BsDiscord/> Sign in with Discord</button>
+        <button onClick={() => signIn('discord', { callbackUrl:"/" }) } className={"flex justify-center mx-auto items-center gap-2 text-center bg-discord text-white p-1 border-2 border-gray-400 border-opacity-40 rounded-2xl"}><BsDiscord/> Sign in with Discord</button>
         </section>
         <section className={"text-center my-3"}>
         <h1 className={"text-4xl max-sm:text-3xl font-montserrat text-primary my-5"}>Admin</h1>
