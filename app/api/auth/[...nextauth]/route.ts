@@ -6,7 +6,7 @@ import type { DiscordProfile } from "next-auth/providers/discord";
 import prisma from '@/lib/prisma';
 import { Provider } from "next-auth/providers";
 const isDiscordProfile = (profile: any): profile is DiscordProfile => {
-  return profile.username && profile.id && profile.avatar
+  return profile.username && profile.id && profile.discriminator
 }
 let providers: Provider[] = [
   CredentialsProvider(<CredentialsConfig>{
@@ -28,7 +28,7 @@ if (process.env.OAUTH2_DISCORD_CLIENT_ID && process.env.OAUTH2_DISCORD_SECRET) {
     clientId: process.env.OAUTH2_DISCORD_CLIENT_ID,
     clientSecret: process.env.OAUTH2_DISCORD_SECRET, 
     authorization: {
-      params: { scope: 'identify' }
+      params: { scope: 'identify email' }
     }
   }));
 }
@@ -42,7 +42,15 @@ const handler = NextAuth({
         }
         return session;
     },
-    async jwt({ token, profile }) {
+    async signIn({ profile }) {
+      console.log(profile);
+      if (profile && isDiscordProfile(profile)) {
+        if (!profile.email) return false;
+      }
+      return true;
+    },
+    async jwt({ token, user, profile }) {
+      
       if (profile && isDiscordProfile(profile)) {
         token.discord_profile = profile;
       }

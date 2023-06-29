@@ -6,10 +6,13 @@ import { BsDiscord, BsPersonBadge, BsPersonLock, BsShieldCheck } from "react-ico
 import { useState } from "react";
 import { BiLock } from "react-icons/bi";
 import Loading from "@/components/Loading";
+import { useSearchParams } from "next/navigation";
 export default function SignIn() {
     
     let { data: session, status } = useSession();
     const [formData, setFormData] = useState({ username: "", password: "" });
+    const searchParams = useSearchParams();
+
     if (status == "loading") return <Loading/>;
     if (session) {
         return (<main className="flex min-h-screen flex-col items-center justify-center max-w-lg mx-auto">
@@ -35,6 +38,7 @@ export default function SignIn() {
         <h1 className={"text-6xl max-sm:text-5xl font-montserrat text-primary my-5"}>Sign in</h1>
         <p>Sign in with Discord to comment and react to blog posts! (Comments and Reactions are currently WIP.)</p>
     </div>
+    { searchParams.get("error") ? <div className={"bg-red-600 border-2 border-red-400 rounded-2xl p-5 text-xl font-roboto"}>Error: {searchParams.get("error") == "CredentialsSignin" ? "Invalid credentials!" : "There was an error attempting to sign you in."}</div> : ""}
     <div className={"block mx-auto text-center font-roboto text-2xl border-2 dark:border-orange-400 border-orange-700 rounded-3xl text p-10 my-10 w-full"}>
         <section className={"text-center my-3"}>
         <h1 className={"text-4xl max-sm:text-3xl font-montserrat text-primary my-5"}>User</h1>
