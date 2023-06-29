@@ -2,10 +2,6 @@ import prisma from '@/lib/prisma';
 import { NextRequest, NextResponse } from "next/server";
 import qs from 'querystring';
 import { posts } from "@prisma/client";
-export function middleware(request: NextRequest) {
-    console.log("BINGUS")
-    return NextResponse.json({"test": "ok"});
-  }
    
 export async function POST(req: NextRequest) {
     let { post_id, post_name, post_content, post_description, posted_by } = qs.parse(await req.text());
