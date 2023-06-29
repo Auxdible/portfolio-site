@@ -33,7 +33,7 @@ export default function SignIn() {
     return (<main className={"flex min-h-screen flex-col items-center justify-center max-w-lg mx-auto"}>
     <div className={"block mx-auto text-center font-roboto text-2xl text my-20"}>
         <h1 className={"text-6xl max-sm:text-5xl font-montserrat text-primary my-5"}>Sign in</h1>
-        <p>Sign in with Discord to comment and react to blog posts!</p>
+        <p>Sign in with Discord to comment and react to blog posts! (Comments and Reactions are currently WIP.)</p>
     </div>
     <div className={"block mx-auto text-center font-roboto text-2xl border-2 dark:border-orange-400 border-orange-700 rounded-3xl text p-10 my-10 w-full"}>
         <section className={"text-center my-3"}>

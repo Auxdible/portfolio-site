@@ -5,7 +5,7 @@ export async function GET(req: NextRequest) {
     const { searchParams } = new URL(req.url);
     const post_id = searchParams.get("post_id"), limit = searchParams.get("limit");
 
-    return prisma.posts.findMany({ where: { ...( post_id ? { post_id } : {}) }, ...(Number(limit) ? {take: Number(limit)} : {}), select: { id: false, v: false, 
+    return prisma.posts.findMany({ where: { ...( post_id ? { post_id } : {}) }, ...(Number(limit) ? {take: Number(limit)} : {}), orderBy: { post_date_unix: 'desc' }, select: { id: false, v: false, 
         post_id: true,
         post_name: true,
         post_content: true,

@@ -7,7 +7,7 @@ export default function ContactMe() {
         <h1 className={"text-6xl max-sm:text-5xl font-montserrat text-primary my-5"}>Contact Me</h1>
         <p>Here you can find my email for business inquiries, my GitHub profile containing all my public repositiories, and my socials!</p>
     </div>
-    <section className={"flex flex-col w-auto max-sm:w-fit h-fit"}>
+    <section className={"flex flex-col w-auto max-sm:w-fit overflow-hidden h-fit"}>
       <div className={"flex flex-1 flex-grow flex-shrink flex-col gap-3 justify-start mx-auto text-center font-roboto text-2xl border-2 dark:border-orange-400 border-orange-700 rounded-3xl text p-10 my-10"}>
         <div className={"grid items-center grid-cols-2 max-md:grid-cols-1 grid-flow-row-dense gap-3"}>
         <span className={"flex justify-center mx-auto items-center gap-2 text-center bg-discord text-black dark:text-white p-1.5 border-2 border-gray-400 border-opacity-40 opacity-0 animate-fadeLeft rounded-2xl"}><BsDiscord/> auxdible</span>
