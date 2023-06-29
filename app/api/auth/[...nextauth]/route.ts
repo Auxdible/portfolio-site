@@ -19,7 +19,7 @@ let providers: Provider[] = [
       },
       async authorize(credentials, req) {
           if (!credentials || !process.env.BLOG_PASSWORD) return null;
-          return process.env.BLOG_USERNAME == credentials.username && (await compare(credentials.password, process.env.BLOG_PASSWORD) || credentials.password === process.env.BLOG_PASSWORD) ? { name: process.env.BLOG_DISPLAY_NAME, id: process.env.BLOG_USERNAME } : null;
+          return process.env.BLOG_USERNAME == credentials.username && (await compare(credentials.password, process.env.BLOG_PASSWORD) || credentials.password === process.env.BLOG_PASSWORD) ? { name: process.env.BLOG_DISPLAY_NAME, admin: true, id: process.env.BLOG_USERNAME } : null;
       },
   }),
 ];

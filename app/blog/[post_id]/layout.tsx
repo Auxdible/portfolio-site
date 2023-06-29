@@ -6,7 +6,7 @@ import ScrollBar from '@/components/ScrollBar';
 type LayoutProps = { params: { post_id: string }}
 export async function generateMetadata({ params }: LayoutProps): Promise<Metadata> {
     const post_id = params.post_id;
-    const [post]: posts[] = await fetch(`${process.env.SITE_URL}/api/posts?post_id=${post_id}`).then(async (res) => await res.json().catch(() => [])).catch(() => [])
+    const [post]: posts[] = await fetch(`${process.env.SITE_URL}/api/public/posts?post_id=${post_id}`).then(async (res) => await res.json().catch(() => [])).catch(() => [])
     const metadata = {
         ...(post ? {
           title: post.post_name,

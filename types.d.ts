@@ -4,7 +4,8 @@ import type { DiscordProfile } from 'next-auth/providers/discord';
 declare module 'next-auth' {
   interface Session {
     user?: DefaultUser & {
-      discord_profile?: DiscordProfile
+      discord_profile?: DiscordProfile;
+      admin?: boolean;
     };
   }
 }

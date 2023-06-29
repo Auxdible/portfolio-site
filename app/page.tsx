@@ -15,8 +15,8 @@ import BlogPreview from '@/components/BlogPreview';
 
 export default function Home() {
   const [gradient, setGradient] = useState({ randomColor1: "#fd644f", randomColor2: "#ff9d00"});
-  const { data: projects, status: projects_status, error: projects_error } = useQuery(["projects"], async () => await fetch("/api/projects").then(async (data) => await data.json().catch(() => [])).catch(() => []));
-  const { data: posts, status: posts_status, error: posts_error } = useQuery(["posts"], async () => await fetch("/api/posts?limit=3").then(async (data) => await data.json().catch(() => [])).catch((x) => { console.log(x); return [];}));
+  const { data: projects, status: projects_status, error: projects_error } = useQuery(["projects"], async () => await fetch("/api/public/projects").then(async (data) => await data.json().catch(() => [])).catch(() => []));
+  const { data: posts, status: posts_status, error: posts_error } = useQuery(["posts"], async () => await fetch("/api/public/posts?limit=3").then(async (data) => await data.json().catch(() => [])).catch((x) => { console.log(x); return [];}));
   function changeGradient() {
     setGradient({ randomColor1: '#' + Math.floor(Math.random()*16777215).toString(16), randomColor2: '#' + Math.floor(Math.random()*16777215).toString(16) })
   }

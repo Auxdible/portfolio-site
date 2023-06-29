@@ -12,7 +12,6 @@ import { BsDatabaseAdd, BsDatabaseDown, BsDatabaseGear } from "react-icons/bs";
 import qs from 'querystring';
 import { useRouter } from "next/navigation";
 export default function ProjectsDashboard() {
-    const { data: projects, status: projects_status, error: projects_error } = useQuery(["projects"], async () => await fetch("/api/projects").then(async (data) => await data.json().catch(() => [])).catch((x) => []));
     const { data: session, status: session_status } = useSession();
     const router = useRouter();
     const [addProjectData, setAddProjectData] = useState({ project_id: "", project_name: "", project_date: "", project_description: "", project_image_url: "", project_website_url: "", project_source_url: ""} as projects)
