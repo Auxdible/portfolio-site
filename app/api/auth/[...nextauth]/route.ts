@@ -48,10 +48,11 @@ const handler = NextAuth({
       }
       return true;
     },
-    async jwt({ token, user, profile }) {
+    async jwt({ token, profile }) {
       
       if (profile && isDiscordProfile(profile)) {
         token.discord_profile = profile;
+        await prisma.discord_users.upsert({ where: { discord_id: profile.id }, create: { discord_id: profile.id, discord_image: profile.image_url, discord_name: profile.username }, update: {}}).catch(() => undefined);
       }
       return token;
     }

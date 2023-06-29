@@ -5,6 +5,7 @@ datasource db {
     provider = "mongodb"
     url = env("DATABASE_URL")
 }
+
 model projects {
     id String @id @default(auto()) @map("_id") @db.ObjectId
     v Int? @map("__v")
@@ -18,6 +19,21 @@ model projects {
 
     @@unique([project_id])
 }
+type Reaction {
+    emoji String
+    list  String[]
+}
+
+model discord_users {
+    id String @id @default(auto()) @map("_id") @db.ObjectId
+    v Int? @map("__v")
+    discord_id String
+    discord_name String
+    discord_image String
+
+    @@unique([discord_id])
+}
+
 model posts {
     id String @id @default(auto()) @map("_id") @db.ObjectId
     v Int? @map("__v")
@@ -27,5 +43,7 @@ model posts {
     post_description String
     post_date_unix Int
     posted_by String
+    reactions Reaction[]
+
     @@unique([post_id])
 }
