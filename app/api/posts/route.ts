@@ -5,18 +5,19 @@ import { posts } from "@prisma/client";
    
 export async function POST(req: NextRequest) {
     let { post_id, post_name, post_content, post_description, posted_by } = qs.parse(await req.text());
-    if (!post_id || !post_name) return NextResponse.json({ "error": "You need to specify a post_id and post_name!" }, { status: 400 });
+    if (!post_id || !post_name || !post_description || !post_content || !posted_by) return NextResponse.json({ "error": "You need to specify a post_id, post_name, post_description, post_content, and posted_by!" }, { status: 400 });
     
     const postIsNull = await prisma.posts.findFirst({ where: { post_id: post_id.toString() } }).then((i) => !i ? true : false).catch(() => true);
     if (!postIsNull) return NextResponse.json({ "error": "There is already a post by this post_id!" }, { status: 400 });
 
-    const post = <posts>{
-        post_id,
-        post_name,
-        post_content,
-        post_description,
-        posted_by,
-        post_date_unix: Date.now()
+    const post = {
+        post_id: post_id.toString(),
+        post_name: post_name.toString(),
+        post_content: post_content?.toString(),
+        post_description: post_description?.toString(),
+        posted_by: posted_by?.toString(),
+        post_date_unix: Date.now(),
+        reactions: undefined,
     };
 
     return prisma.posts.create({ data: post })

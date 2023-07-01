@@ -1,5 +1,5 @@
 import { compare, compareSync } from "bcrypt";
-import NextAuth from "next-auth"
+import NextAuth, { AuthOptions } from "next-auth"
 import CredentialsProvider, {CredentialsConfig} from "next-auth/providers/credentials";
 import DiscordProvider from "next-auth/providers/discord";
 import type { DiscordProfile } from "next-auth/providers/discord";
@@ -32,8 +32,7 @@ if (process.env.OAUTH2_DISCORD_CLIENT_ID && process.env.OAUTH2_DISCORD_SECRET) {
     }
   }));
 }
-
-const handler = NextAuth({
+export const authOptions = <AuthOptions>{
   providers,
   callbacks: {
     async session({ token, session }) {
@@ -48,7 +47,7 @@ const handler = NextAuth({
       }
       return true;
     },
-    async jwt({ token, profile }) {
+    async jwt({ token, user, profile }) {
       
       if (profile && isDiscordProfile(profile)) {
         token.discord_profile = profile;
@@ -62,6 +61,7 @@ const handler = NextAuth({
     signOut: "/auth/signout",
     error: "/auth/error"
   }
-})
+};
+const handler = NextAuth(authOptions);
 
 export { handler as GET, handler as POST }

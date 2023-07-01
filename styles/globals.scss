@@ -53,3 +53,11 @@
         opacity: 1;
     }
 }
+@keyframes expand { 
+    0% {
+        scale: 0%;
+    }
+    100% {
+        scale: 100%;
+    }
+}

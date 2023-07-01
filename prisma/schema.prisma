@@ -19,8 +19,17 @@ model projects {
 
     @@unique([project_id])
 }
+
+enum ReactionType {
+    LIKE
+    LAUGH
+    WOW
+    AMEN
+    COFFEE
+
+}
 type Reaction {
-    emoji String
+    type ReactionType
     list  String[]
 }
 

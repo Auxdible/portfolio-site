@@ -14,7 +14,7 @@ import BlogContent from "@/components/BlogContent";
 export default function ProjectsDashboard() {
     const { data: session, status: session_status } = useSession();
     const router = useRouter();
-    const [addPostData, setAddPostData] = useState({ post_id: "", post_content: "", post_description: "", post_name: "" } as posts)
+    const [addPostData, setAddPostData] = useState({ post_id: "", post_content: "", post_description: "", post_name: "" })
     const [deletePostData, setDeletePostData] = useState({ post_id: ""})
     if (session_status == "loading") return (<Loading/>)
 
@@ -55,7 +55,7 @@ export default function ProjectsDashboard() {
       </div>
     </section>
     <h1 className={"text-4xl max-sm:text-3xl font-montserrat text-primary my-3"}>Post Preview</h1>
-    <BlogContent post={{...addPostData, posted_by: session?.user?.name || "Auxdible" }}/>
+    <BlogContent post={{...addPostData, posted_by: session?.user?.name || "Auxdible" } as posts} preview/>
     <h1 className={"text-4xl max-sm:text-3xl font-montserrat text-primary my-3 mt-20"}>Delete Post</h1>
     <section className={"flex flex-col max-md:flex-col max-w-lg h-fit"}>
       <div className={"flex flex-1 flex-grow flex-shrink flex-col gap-3 justify-start mx-auto text-center font-roboto text-2xl border-2 dark:border-orange-400 border-orange-700 rounded-3xl text p-10 my-10"}>

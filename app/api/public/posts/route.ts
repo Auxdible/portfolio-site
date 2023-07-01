@@ -11,7 +11,8 @@ export async function GET(req: NextRequest) {
         post_content: true,
         post_date_unix: true,
         post_description: true,
-        posted_by: true
+        posted_by: true,
+        reactions: true
         } })
     .then((posts) => NextResponse.json(posts))
     .catch((x) => {
