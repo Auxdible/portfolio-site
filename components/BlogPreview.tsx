@@ -5,7 +5,7 @@ import Link from "next/link";
 import { BsShieldCheck } from "react-icons/bs";
 type PostProps = { post: posts }
 export default function BlogPreview({ post }: PostProps) {
-    return (<Link href={`/blog/${post.post_id}`}>
+    return (<Link href={`/blog/${post.postId}`}>
     <motion.div initial={{ opacity: 0 }}
     whileInView={{ opacity: 1 }} transition={{ duration: 1.0 }} viewport={{ once: true }} className={"flex flex-col mx-auto text-center font-roboto text-2xl text my-20 border dark:border-orange-400 border-orange-700 rounded-3xl w-fit max-w-md p-4 hover:scale-105 transition-all"}>
     <h1 className={"text-2xl max-sm:text-xl font-montserrat text-primary"}>{post.post_name}</h1>

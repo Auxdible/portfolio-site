@@ -17,7 +17,7 @@ export default function ProjectsDashboard() {
     const [addProjectData, setAddProjectData] = useState({ project_id: "", project_name: "", project_date: "", project_description: "", project_image_url: "", project_website_url: "", project_source_url: ""} as projects)
     const [deleteProjectData, setDeleteProjectData] = useState({ project_id: ""})
     if (session_status == "loading") return (<Loading/>)
-
+    if (!session?.user?.admin) return <></>;
     async function handleCreateProject(update?: boolean) {
       var headers = new Headers();
       headers.append("Content-Type", "application/x-www-form-urlencoded");

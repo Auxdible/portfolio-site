@@ -13,5 +13,6 @@ declare module 'next-auth' {
 declare module 'next-auth/jwt/types' {
   interface JWT {
     discord_profile?: DiscordProfile
+    admin?: boolean;
   }
 }

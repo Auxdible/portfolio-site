@@ -8,10 +8,10 @@ import { authOptions } from '../../auth/[...nextauth]/route';
 export async function POST(req: NextRequest) {
     const session = await getServerSession(authOptions);
 
-    const { reaction_name, post_id } = qs.parse(await req.text());
-    if (!post_id) return NextResponse.json({ "error": "no post_id specified" }, { status: 400 });
+    const { reaction_name, postId } = qs.parse(await req.text());
+    if (!postId) return NextResponse.json({ "error": "no postId specified" }, { status: 400 });
 
-    const post = await prisma.posts.findFirst({ where: { post_id: post_id.toString() }, select: { reactions: true }}).catch(() => undefined);
+    const post = await prisma.posts.findFirst({ where: { postId: postId.toString() }, select: { reactions: true }}).catch(() => undefined);
     if (!post) return NextResponse.json({ "error": "invalid post" }, { status: 400 });
 
     if (!reaction_name || Object.keys(ReactionType).indexOf(reaction_name.toString()) == -1) return NextResponse.json({ "error": "invalid reaction type" }, { status: 400 });
@@ -24,7 +24,7 @@ export async function POST(req: NextRequest) {
     else if (reactions) reactions.list.push(session.user.discord_profile.id);
     else post.reactions.push({ type: reaction, list: [session.user.discord_profile.id] })
 
-    return await prisma.posts.update({ where: { post_id: post_id.toString() }, data: { reactions: post.reactions.map((i) => ({ type: i.type, list: [...new Set(i.list)] }))}, select: { reactions: true }}).then((data) => {
+    return await prisma.posts.update({ where: { postId: postId.toString() }, data: { reactions: post.reactions.map((i) => ({ type: i.type, list: [...new Set(i.list)] }))}, select: { reactions: true }}).then((data) => {
         return NextResponse.json(data.reactions.find((i) => (i.type == reaction_name)) || {}, { status: 200 });
     }).catch(() => NextResponse.json({ "error": "an error occurred" }, { status: 500 }));
 }

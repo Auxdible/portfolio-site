@@ -3,10 +3,10 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(req: NextRequest) {
     const { searchParams } = new URL(req.url);
-    const post_id = searchParams.get("post_id"), limit = searchParams.get("limit");
+    const postId = searchParams.get("postId"), limit = searchParams.get("limit");
 
-    return prisma.posts.findMany({ where: { ...( post_id ? { post_id } : {}) }, ...(Number(limit) ? {take: Number(limit)} : {}), orderBy: { post_date_unix: 'desc' }, select: { id: false, v: false, 
-        post_id: true,
+    return prisma.posts.findMany({ where: { ...( postId ? { postId } : {}) }, ...(Number(limit) ? {take: Number(limit)} : {}), orderBy: { post_date_unix: 'desc' }, select: {
+        postId: true,
         post_name: true,
         post_content: true,
         post_date_unix: true,

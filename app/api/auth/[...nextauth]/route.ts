@@ -38,6 +38,7 @@ export const authOptions = <AuthOptions>{
     async session({ token, session }) {
         if (token && session.user) {
             session.user.discord_profile = token.discord_profile;
+            session.user.admin = token.admin;
         }
         return session;
     },
@@ -48,10 +49,14 @@ export const authOptions = <AuthOptions>{
       return true;
     },
     async jwt({ token, user, profile }) {
-      
       if (profile && isDiscordProfile(profile)) {
         token.discord_profile = profile;
-        await prisma.discord_users.upsert({ where: { discord_id: profile.id }, create: { discord_id: profile.id, discord_image: profile.image_url, discord_name: profile.username }, update: {}}).catch(() => undefined);
+        
+        const userData = await prisma.discord_users.upsert({ where: { discord_id: profile.id }, create: { discord_id: profile.id, discord_image: profile.image_url, discord_name: profile.username }, update: {}}).catch(() => undefined);
+        if (userData && userData.banned) return null;
+      }
+      if (user && 'admin' in user) {
+        token.admin = Boolean(user.admin);
       }
       return token;
     }

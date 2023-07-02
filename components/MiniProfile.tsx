@@ -6,11 +6,12 @@ import Link from "next/link";
 import { BsShieldCheck } from "react-icons/bs";
 type Props = { user: (DefaultUser & {
     discord_profile?: DiscordProfile | undefined;
+    admin?: boolean;
 }) };
 export default function MiniProfile({ user }: Props) {
     return (
     <Link href={user.discord_profile ? "/auth/signout" : "/dashboard"} className={"flex flex-row justify-center items-center gap-2"}>
-        {!user.discord_profile ? <BsShieldCheck/> : ""}
+        {user.admin ? <BsShieldCheck/> : ""}
         {user.image ? 
             <Image
                 className={"inline-block rounded-full"}

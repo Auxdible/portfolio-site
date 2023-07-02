@@ -39,20 +39,31 @@ model discord_users {
     discord_id String
     discord_name String
     discord_image String
-
+    banned Boolean @default(false)
     @@unique([discord_id])
 }
 
 model posts {
     id String @id @default(auto()) @map("_id") @db.ObjectId
     v Int? @map("__v")
-    post_id String
+    postId String
     post_name String
     post_content String
     post_description String
     post_date_unix Int
     posted_by String
     reactions Reaction[]
+    comments Int @default(0)
+    @@unique([postId])
+}
 
-    @@unique([post_id])
+model comments {
+    id String @id @default(auto()) @map("_id") @db.ObjectId
+    v Int? @map("__v")
+    commentId String @default("0")
+    postId String
+    discord_id String
+    comment_content String
+    post_date_unix Int
+    @@unique([postId, commentId], map: "postId_1_commentId_1")
 }
