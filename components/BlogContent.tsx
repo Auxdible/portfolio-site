@@ -1,10 +1,15 @@
 import converter from "@/lib/converter";
-import { posts } from "@prisma/client";
+import { Reaction, posts } from "@prisma/client";
 import { motion } from "framer-motion";
 import { BsShieldCheck } from "react-icons/bs";
+import Reactions from "./Reactions";
+import Comments from "./Comments";
+import CommentsForm from "./CommentsForm";
+import { useSession } from "next-auth/react";
 
-type PostProps = { post: posts }
-export default function BlogContent({ post }: PostProps) {
+type PostProps = { post: posts, preview?: boolean }
+export default function BlogContent({ post, preview }: PostProps) {
+    const { data: session } = useSession();
     return (<main className={"flex flex-col items-center min-h-screen justify-center max-w-7xl w-fit mx-auto"}>
     <div className={"block mx-auto text-center font-roboto text-2xl text my-20"}>
         <h1 className={"text-5xl max-sm:text-4xl font-montserrat text-primary mt-10 mb-3"}>{post.post_name}</h1>
@@ -13,5 +18,11 @@ export default function BlogContent({ post }: PostProps) {
     </div>
     <div className={"markdown block mx-auto border-2 dark:border-orange-400 border-orange-700 rounded-3xl md:p-4 max-md:py-4 p-1 w-fit my-5"} dangerouslySetInnerHTML={{ __html: converter.makeHtml(post.post_content) }}>   
     </div>
+    {!preview ? <span className={"flex flex-col max-w-lg w-full justify-between align-middle items-center gap-4"}>
+        <Reactions post={post as any}/>
+        {session ? <CommentsForm postId={post.postId} /> : ""}
+        
+        <Comments postId={post.postId} />
+    </span> : ""}
     </main>)
 }

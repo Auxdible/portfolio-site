@@ -11,7 +11,7 @@ export default function Blog() {
         <p>View all of Auxdible&apos;s blog posts here.</p>
     </div>
     <section className={"border dark:border-orange-400 border-orange-700 rounded-3xl max-w-lg mx-auto p-8 mb-40"}>
-      {posts && !posts_error && posts_status == 'success' ? posts.map((post: posts) => (<BlogPreview key={post.post_id} post={post} />)) 
+      {posts && !posts_error && posts_status == 'success' ? posts.map((post: posts) => (<BlogPreview key={post.postId} post={post} />)) 
       : <p className={"text-xl font-montserrat py-2 text-center text"}>Loading posts...</p>}
     </section>
     </main>)

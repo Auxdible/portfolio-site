@@ -62,7 +62,7 @@ export default function Home() {
     <motion.h1 initial={{ opacity: 0, transform: "translateY(-8rem)" }}
   whileInView={{ opacity: 1, transform: "translateY(0)" }} transition={{ duration: 2 }} viewport={{ once: true }} className={"text-6xl text-center max-sn:text-4xl font-raleway text-primary w-full"}>Latest Posts</motion.h1>
     <section className={"border dark:border-orange-400 border-orange-700 rounded-3xl max-w-lg mx-auto p-8 mb-40"}>
-      {posts && !posts_error && posts_status == 'success' ? posts.map((post: posts) => (<BlogPreview key={post.post_id} post={post} />)) 
+      {posts && !posts_error && posts_status == 'success' ? posts.map((post: posts) => (<BlogPreview key={post.postId} post={post} />)) 
       : <p className={"text-xl font-montserrat py-2 text-center text"}>Loading posts...</p>}
     </section>
     </div>
@@ -75,6 +75,7 @@ export default function Home() {
       : <p className={"text-xl font-montserrat py-2 text-center text"}>Loading projects...</p>}
     </section>
     </div>
+    <Footer/>
   </>);
     
 }

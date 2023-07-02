@@ -3,10 +3,10 @@ import '@/styles/globals.scss';
 import { posts } from '@prisma/client';
 import ScrollBar from '@/components/ScrollBar';
   
-type LayoutProps = { params: { post_id: string }}
+type LayoutProps = { params: { postId: string }}
 export async function generateMetadata({ params }: LayoutProps): Promise<Metadata> {
-    const post_id = params.post_id;
-    const [post]: posts[] = await fetch(`${process.env.SITE_URL}/api/public/posts?post_id=${post_id}`).then(async (res) => await res.json().catch(() => [])).catch(() => [])
+    const postId = params.postId;
+    const [post]: posts[] = await fetch(`${process.env.SITE_URL}/api/public/posts?postId=${postId}`).then(async (res) => await res.json().catch(() => [])).catch(() => [])
     const metadata = {
         ...(post ? {
           title: post.post_name,
@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: LayoutProps): Promise<Metadat
               siteName: "Auxdible's Portfolio",
               countryName: "United States",
               description: post.post_description,
-              url: process.env.SITE_URL + "/blog/" + post_id,
+              url: process.env.SITE_URL + "/blog/" + postId,
           }
         } : {})
       };

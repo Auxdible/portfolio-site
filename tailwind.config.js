@@ -23,6 +23,7 @@ module.exports = {
         pulse: "pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite",
         navbarCollapse: "navbarCollapse 0.75s ease-out",
         spin: "spin 2s linear infinite",
+        expand: "expand 150ms ease-out 1 forwards",
         fadeLeft: "fadeLeft 0.75s ease-out 1 forwards",
         fadeRight: "fadeRight 0.75s ease-out 1 forwards",
         fadeLeftDelay1: "fadeLeft 0.75s ease-out 0.25s 1 forwards",

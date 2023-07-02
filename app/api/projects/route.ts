@@ -2,7 +2,11 @@ import prisma from '@/lib/prisma';
 import { NextRequest, NextResponse } from "next/server";
 import qs from 'querystring';
 import { projects } from "@prisma/client";
+import authenticateRoute from '@/lib/authenticateRoute';
 export async function POST(req: NextRequest) {
+    const auth = await authenticateRoute().catch(() => ({ "error": "an error occurred during authentication"}));
+    if (auth) return NextResponse.json(auth, { status: 401 });
+
     let { project_id, project_image_url, project_source_url, project_website_url, project_name, project_date, project_description } = qs.parse(await req.text());
     if (!project_id || !project_name) return NextResponse.json({ "error": "You need to specify a project_id and project_name!" }, { status: 400 });
     
@@ -41,6 +45,9 @@ export async function DELETE(req: NextRequest) {
     })
 }
 export async function PATCH(req: NextRequest) {
+    const auth = await authenticateRoute().catch(() => ({ "error": "an error occurred during authentication"}));
+    if (auth) return NextResponse.json(auth, { status: 401 });
+    
     const { searchParams } = new URL(req.url);
     const project_id_query = searchParams.get("project_id");
     if (!project_id_query) return NextResponse.json({ "error": "You need to specify a project_id in the query parameters!" }, { status: 400 });
