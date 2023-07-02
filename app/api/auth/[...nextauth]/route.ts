@@ -42,12 +42,7 @@ export const authOptions = <AuthOptions>{
         }
         return session;
     },
-    async signIn({ profile }) {
-      if (profile && isDiscordProfile(profile)) {
-        if (!profile.verified) return false;
-      }
-      return true;
-    },
+
     async jwt({ token, user, profile }) {
       if (profile && isDiscordProfile(profile)) {
         token.discord_profile = profile;
