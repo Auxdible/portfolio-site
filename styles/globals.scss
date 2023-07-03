@@ -43,7 +43,9 @@
         @apply dark:bg-orange-500 bg-orange-700
       }
 }
-
+.canvas-wrapper {
+    touch-action: pan-y !important;
+}
 @keyframes navbarCollapse {
     0% {
         transform: translateY(-10rem);
