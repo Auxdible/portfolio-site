@@ -32,6 +32,7 @@ module.exports = {
         fadeRightDelay2: "fadeRight 0.75s ease-out 0.50s 1 forwards",
         fadeLeftDelay3: "fadeLeft 0.75s ease-out 0.75s 1 forwards",
         fadeRightDelay3: "fadeRight 0.75s ease-out 0.75s 1 forwards",
+        blink: "blink .75s step-end infinite"
       },
       colors: {
         discord: "#7289da",

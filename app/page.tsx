@@ -4,18 +4,29 @@ import Image from 'next/image'
 import { motion } from "framer-motion"
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
-import { Suspense, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { Glasses } from '@/components/Glasses';
 import Footer from '@/components/Footer';
 import { posts, projects } from '@prisma/client';
 import { useQuery } from 'react-query';
 import Project from '@/components/Project';
 import BlogPreview from '@/components/BlogPreview';
+import { types } from 'util';
 
 export default function Home() {
   const [gradient, setGradient] = useState({ randomColor1: "#fd644f", randomColor2: "#ff9d00"});
   const { data: projects, status: projects_status, error: projects_error } = useQuery(["projects"], async () => await fetch("/api/public/projects").then(async (data) => await data.json().catch(() => [])).catch(() => []));
   const { data: posts, status: posts_status, error: posts_error } = useQuery(["posts"], async () => await fetch("/api/public/posts?limit=3").then(async (data) => await data.json().catch(() => [])).catch((x) => { console.log(x); return [];}));
+  const [typeState, setTypeState] = useState(0);
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    if (!mounted) setMounted(true)
+    if (mounted && typeState < "Auxdible".length) {
+      setTimeout(() => {
+        setTypeState(typeState + 1);
+      }, 250)
+    }
+  }, [typeState, mounted]);
   function changeGradient() {
     setGradient({ randomColor1: '#' + Math.floor(Math.random()*16777215).toString(16), randomColor2: '#' + Math.floor(Math.random()*16777215).toString(16) })
   }
@@ -23,9 +34,9 @@ export default function Home() {
   <header className="flex flex-row max-md:flex-col min-h-screen w-full items-center mx-auto max-md:my-16">
       <div className={"flex flex-col justify-center gap-5 flex-1 flex-grow font-roboto text-2xl text"}>
           <section className={"max-md:text-center mx-auto"}>
-          <h1 className={"text-9xl max-sm:text-6xl pt-4 font-raleway text-primary"}>Auxdible</h1>
-          <p className={"text-4xl max-sm:text-3xl font-montserrat py-2"}>Full Stack Developer</p>
-          <p className={"text-2xl max-sm:text-xl font-roboto dark:text-gray-400 text-gray-600 italic"}>(a.k.a. Steven Primeaux)</p>
+          <h1 className={"text-9xl max-sm:text-6xl pt-4 font-raleway text-primary"}>{"Auxdible".split("").slice(0, typeState)}{mounted && typeState < "Auxdible".length ? <span className={"animate-blink"}>_</span> : ""}</h1>
+          <p className={`text-4xl max-sm:text-3xl font-montserrat py-2 transition-all duration-500 delay-500 ${typeState >= "Auxdible".length ? "opacity-100" : "opacity-0"}`}>Full Stack Developer</p>
+          <p className={`text-2xl max-sm:text-xl font-roboto dark:text-gray-400 text-gray-600 italic transition-all duration-500 delay-1000 ${typeState >= "Auxdible".length ? "opacity-100" : "opacity-0"}`}>(a.k.a. Steven Primeaux)</p>
           </section>
           
       </div>
