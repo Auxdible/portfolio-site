@@ -59,7 +59,7 @@ export default function Home() {
         </div>
       </div>
     </header>
-    <button onClick={() => changeGradient() } className={"block font-roboto text-3xl text mx-auto w-fit border max-sm:text-xl dark:border-orange-400 border-orange-700 p-2 rounded-lg mb-72"}>Change glasses gradient 😎</button>
+    <button onClick={() => changeGradient() } className={"block font-roboto text-3xl text mx-auto w-fit border max-sm:text-xl dark:border-orange-400 hover:scale-105 transition-transform border-orange-700 p-2 rounded-lg mb-72"}>Change glasses color 😎</button>
     <motion.div initial={{ opacity: 0, transform: "translateY(-8rem)" }}
   whileInView={{ opacity: 1, transform: "translateY(0)" }} transition={{ duration: 2 }} viewport={{ once: true }} className="flex flex-row max-md:flex-col max-w-5xl items-center mx-auto mb-40">
     <h1 className={"text-8xl max-sm:text-5xl pt-4 font-raleway text-primary flex-1 flex-grow flex-shrink max-md:text-center max-md:my-10"}>About<br/>Me</h1>
