@@ -6,7 +6,6 @@ import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 import { Suspense, useState } from 'react';
 import { Glasses } from '@/components/Glasses';
-import { useSession } from 'next-auth/react';
 import Footer from '@/components/Footer';
 import { posts, projects } from '@prisma/client';
 import { useQuery } from 'react-query';
@@ -32,7 +31,13 @@ export default function Home() {
       </div>
       <div className={"flex flex-1 flex-grow flex-shrink max-md:w-screen md:h-screen"}>
         <div className={"w-full"}>
-        <Canvas style={ { position: "relative" }}>
+        { /* I have no idea what this is, how it works, or why it works. I just know it works. 
+        That's all you and I need to know. Sure it makes a js pointerId undefined error that anyone can see in the logs. 
+        but it doesn't affect the site.
+        SO IGNORE IT! */}
+        <Canvas ref={(node) => {
+          if (node) node.style.setProperty("touch-action", "pan-y", "important")
+        }} className={"canvas-wrapper"} style={ { position: "relative"} }>
           <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={1} />
           <ambientLight intensity={1} />
           <perspectiveCamera/>
