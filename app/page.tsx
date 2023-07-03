@@ -49,7 +49,7 @@ export default function Home() {
         <Canvas ref={(node) => {
           if (node) node.style.setProperty("touch-action", "pan-y", "important")
         }} className={"canvas-wrapper"} style={ { position: "relative"} }>
-          <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={1} />
+          <OrbitControls enableZoom={false} enableDamping={false} enablePan={false} autoRotate autoRotateSpeed={1} />
           <ambientLight intensity={1} />
           <perspectiveCamera/>
           <Suspense fallback={null}>
