@@ -12,8 +12,10 @@ export default function Project({ project }: ProjectProps) {
           />
           : ""}
           <span className={"flex flex-row justify-center gap-10 w-3/5 my-3"}>
-          {project.project_source_url ? <a href={project.project_source_url} className={"flex items-center justify-center flex-1 flex-grow flex-shrink mx-auto border dark:border-orange-400 border-orange-700 p-2 hover:px-3 hover:dark:text-orange-400 hover:text-orange-700 transition-all rounded-lg font-roboto"}><span>View Source</span></a> : ""}
-          {project.project_website_url ? <a href={project.project_website_url} className={"flex items-center justify-center flex-1 flex-grow flex-shrink mx-auto border dark:border-orange-400 border-orange-700 p-2 hover:px-3 hover:dark:text-orange-400 hover:text-orange-700 transition-all rounded-lg font-roboto"}><span>View Website</span></a> : ""}
+          {project.project_source_url ? <motion.a initial={{ opacity: 0, transform: "translateX(-8rem)" }}
+    whileInView={{ opacity: 1, transform: "translateX(0)" }} transition={{ duration: 1.5 }} viewport={{ once: true }} href={project.project_source_url} className={"flex items-center justify-center flex-1 flex-grow flex-shrink mx-auto border dark:border-orange-400 border-orange-700 p-2 hover:px-3 overflow-hidden hover:dark:text-orange-400 hover:text-orange-700 transition-all rounded-lg font-roboto"}><span>View Source</span></motion.a> : ""}
+          {project.project_website_url ? <motion.a initial={{ opacity: 0, transform: "translateX(8rem)" }}
+    whileInView={{ opacity: 1, transform: "translateX(0)" }} transition={{ duration: 1.5 }} viewport={{ once: true }} href={project.project_website_url} className={"flex items-center justify-center flex-1 flex-grow flex-shrink mx-auto border dark:border-orange-400 border-orange-700 p-2 hover:px-3 overflow-hidden hover:dark:text-orange-400 hover:text-orange-700 transition-all rounded-lg font-roboto"}><span>View Website</span></motion.a> : ""}
           </span>
           <h1 className={"text-4xl pt-4 font-montserrat text-primary"}>{project.project_name}</h1>
           <p className={"font-roboto text-xl dark:text-gray-400 text-gray-600"}>{project.project_date}</p>
