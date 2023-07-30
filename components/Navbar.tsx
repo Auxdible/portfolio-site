@@ -10,7 +10,7 @@ export default function Navbar() {
     const [collapse, setCollapse] = useState(false);
     const { data: session, status } = useSession();
     return (<>
-    <div className={`z-10 fixed left-1/2 -translate-x-1/2 max-w-4xl w-full`}>
+    <div className={`z-10 fixed left-1/2 top-0 -translate-x-1/2 max-w-4xl w-full`}>
     <nav className={"sticky dark:bg-black bg-gray-100 flex flex-row justify-center max-h-32 align-middle border border-t-0 dark:border-orange-400 border-orange-700 md:rounded-bl-3xl  md:rounded-br-3xl"}>
         <div className={"justify-center gap-20 items-center flex flex-1 flex-grow flex-shrink text-xl"}>
             <button aria-label={"Navbar Collapse"} onClick={() => setCollapse(!collapse)} className={"md:hidden max-md:text-xl text-3xl border-2 dark:border-gray-200 border-gray-700 p-2 focus:p-[10px] transition-all rounded-xl"}>
