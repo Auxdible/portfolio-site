@@ -1,7 +1,10 @@
 {
   "name": "portfolio-site",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
+  "repository": {
+    "url": "https://github.com/Auxdible/portfolio-site"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
