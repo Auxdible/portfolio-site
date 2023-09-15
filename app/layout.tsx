@@ -2,7 +2,7 @@ import { Metadata } from 'next'
 import '../styles/globals.scss';
 
 import Providers from '@/components/Providers';
-import Navbar from '@/components/Navbar';
+import Navbar from '@/components/navbar/Navbar';
 import { Session } from 'next-auth';
 import Footer from '@/components/Footer';
 

@@ -21,7 +21,7 @@ module.exports = {
       },
       animation: {
         pulse: "pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite",
-        navbarCollapse: "navbarCollapse 0.75s ease-out",
+        navbarCollapse: "navbarCollapse 0.5s ease-out",
         spin: "spin 2s linear infinite",
         expand: "expand 150ms ease-out 1 forwards",
         fadeLeft: "fadeLeft 0.75s ease-out 1 forwards",
@@ -30,7 +30,11 @@ module.exports = {
         fadeRightDelay1: "fadeRight 0.75s ease-out 0.25s 1 forwards",
         fadeLeftDelay2: "fadeLeft 0.75s ease-out 0.50s 1 forwards",
         fadeRightDelay2: "fadeRight 0.75s ease-out 0.50s 1 forwards",
-        blink: "blink 225ms step-end infinite"
+        blink: "blink 225ms step-end infinite",
+        themeUp: "themeUp 0.5s ease-out 1 forwards",
+        themeDown: "themeDown 0.5s ease-out 1 forwards",
+        theme2Up: "theme2Up 0.5s ease-out 1 forwards",
+        theme2Down: "theme2Down 0.5s ease-out 1 forwards",
       },
       colors: {
         discord: "#7289da",

@@ -10,6 +10,7 @@ export default function Masthead() {
     const [gradient, setGradient] = useState({ randomColor1: "#fd644f", randomColor2: "#ff9d00"});
     const [typeState, setTypeState] = useState(0);
     const [mounted, setMounted] = useState(false);
+    
     useEffect(() => {
         if (!mounted) setMounted(true)
         if (mounted && typeState < "Auxdible".length) {
@@ -24,7 +25,7 @@ export default function Masthead() {
     return (<header className="flex flex-row max-lg:flex-col min-h-screen w-full items-center mx-auto max-lg:my-16 overflow-hidden">
     <div className={"flex flex-col justify-center gap-5 flex-1 flex-grow font-roboto text-2xl text w-full"}>
         <section className={"flex flex-col gap-2 max-lg:text-center mx-auto w-fit"}>
-        <span className={"flex flex-row justify-start gap-0 text-9xl max-md:text-7xl max-sm:text-6xl pt-4 font-raleway w-[7ch] select-none max-md:justify-center mx-auto"}>
+        <span className={"flex flex-row justify-start gap-0 text-9xl max-md:text-8xl max-sm:text-6xl pt-4 font-raleway w-[7ch] select-none max-lg:justify-center mx-auto"}>
           <h1 onClick={() => changeGradient()} className={"text-title cursor-pointer"}>
             {"Auxdible".split("").slice(0, typeState)}
           </h1>

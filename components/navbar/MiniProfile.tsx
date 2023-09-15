@@ -10,16 +10,18 @@ type Props = { user: (DefaultUser & {
 }) };
 export default function MiniProfile({ user }: Props) {
     return (
-    <Link href={user.discord_profile ? "/auth/signout" : "/dashboard"} className={"flex flex-row justify-center items-center gap-2"}>
+    <Link href={user.discord_profile ? "/auth/signout" : "/dashboard"} className={"flex flex-row justify-center items-center gap-2 break-words"}>
         {user.admin ? <BsShieldCheck/> : ""}
         {user.image ? 
             <Image
                 className={"inline-block rounded-full"}
-                src={user.image}
+                src={user.image + "?size=32"}
                 alt={"Profile image"}
-                width={30}
-                height={30}
+                width={32}
+                height={32}
+                quality="100"
+                priority
             /> : ""}
-        {user.name}
+        Sign out
     </Link>)
 }
