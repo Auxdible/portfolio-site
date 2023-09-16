@@ -38,7 +38,7 @@ export function Tool({ Icon, title, description, certifications, delay }: {
 }
 export default function Tools() {
     return (<div>
-        <h1 className={"text-8xl max-md:text-6xl text-title font-raleway font-medium my-10 w-fit mx-auto"}>My Skills</h1>
+        <h1 className={"text-8xl max-md:text-6xl text-title font-raleway font-medium my-20 w-fit mx-auto"}>My Skills</h1>
         <div className={"grid gap-y-20 gap-x-5 px-5 grid-cols-3 max-lg:grid-cols-2 max-sm:grid-cols-1"}>
             <Tool Icon={SiJavascript} 
             title='JavaScript'

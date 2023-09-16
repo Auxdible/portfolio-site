@@ -14,7 +14,7 @@ export default function Navbar() {
     
     <nav className={"sticky"}>
         <div className={"absolute -z-10 -inset-[1px] bg-gradient-to-t max-md:bg-gradient-to-r from-orange-400 to-red-500 md:rounded-bl-3xl md:rounded-br-3xl"}></div>
-        <div className={"dark:bg-black bg-gray-100 flex flex-row justify-center max-h-32 gap-20 px-10 align-middle md:rounded-bl-3xl md:rounded-br-3xl"}>
+        <div className={"dark:bg-black bg-gray-100 flex flex-row justify-center max-h-32 max-md:justify-between max-md:p-1 md:gap-20 px-10 align-middle md:rounded-bl-3xl md:rounded-br-3xl"}>
         <div className={"justify-center gap-20 items-center flex flex-1 flex-grow flex-shrink-0 text-xl "}>
             <button aria-label={"Navbar Collapse"} onClick={() => setCollapse(!collapse)} className={"md:hidden max-md:text-xl text-3xl border-2 dark:border-gray-200 border-gray-700 p-2 focus:p-[10px] transition-all rounded-xl"}>
                 <BiMenuAltLeft/>

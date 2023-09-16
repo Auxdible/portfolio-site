@@ -4,7 +4,7 @@
 @tailwind utilities;
 
 /* Import Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Roboto:wght@300&family=Raleway:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Montserrat:wght@300&family=Roboto:wght@300&family=Raleway:wght@100&family=Source+Code+Pro&display=swap');
 
 @layer components {
     .text {
@@ -30,24 +30,6 @@
     .break-word {
         word-break: break-all;
     }
-}
-@layer utilities {
-    ::-webkit-scrollbar {
-        @apply w-2;
-      }
-    
-    ::-webkit-scrollbar-track {
-        @apply bg-transparent;
-        border-radius: 100vh;
-      }
-    
-    ::-webkit-scrollbar-thumb {
-        @apply dark:bg-orange-400 bg-orange-600 border-2 dark:border-orange-300 border-orange-700 rounded-full;
-      }
-    
-      ::-webkit-scrollbar-thumb:hover {
-        @apply dark:bg-orange-500 bg-orange-700
-      }
 }
 .canvas-wrapper {
     touch-action: pan-y !important;
