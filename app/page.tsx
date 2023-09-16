@@ -1,18 +1,14 @@
 "use client";
 
-import Image from 'next/image'
 import { motion } from "framer-motion"
-import { Canvas } from '@react-three/fiber';
-import { OrbitControls } from '@react-three/drei';
-import { Suspense, useEffect, useState } from 'react';
-import { Glasses } from '@/components/masthead/Glasses';
 import Footer from '@/components/Footer';
 import { posts, projects } from '@prisma/client';
 import { useQuery } from 'react-query';
 import Project from '@/components/Project';
 import BlogPreview from '@/components/BlogPreview';
 import Secret from '@/components/Secret';
-import Masthead from '@/components/masthead/Masthead';
+import Masthead from '@/components/home/masthead/Masthead';
+import Tools from "@/components/home/Tools";
 
 export default function Home() {
   
@@ -30,7 +26,7 @@ export default function Home() {
             <p>I am experienced with TypeScript, Java, and numerous JavaScript frameworks, such as Next.js and React. Feel free to reach out on Social Media or Discord with any inquiries!</p>
       </motion.div>
     </div>
-
+    <Tools/>
     <div className={"flex flex-col gap-40 w-full my-20"}>
     <motion.h1 initial={{ opacity: 0, transform: "translateY(-8rem)" }}
   whileInView={{ opacity: 1, transform: "translateY(0)" }} transition={{ duration: 1 }} viewport={{ once: true }} className={"text-6xl text-center font-raleway text-primary w-full"}>Latest Posts</motion.h1>
