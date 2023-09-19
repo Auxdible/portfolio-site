@@ -37,8 +37,9 @@ export function Tool({ Icon, title, description, certifications, delay }: {
     </div>)
 }
 export default function Tools() {
-    return (<div>
-        <h1 className={"text-8xl max-md:text-6xl text-title font-raleway font-medium my-20 w-fit mx-auto"}>My Skills</h1>
+    return (<div className={"my-20"}>
+        <motion.h1 initial={{ opacity: 0, transform: "translateY(-8rem)" }}
+  whileInView={{ opacity: 1, transform: "translateY(0)" }} transition={{ duration: 1 }} viewport={{ once: true }} className={"text-8xl max-md:text-6xl text-title font-raleway font-medium w-fit mx-auto mb-10"}>My Skills</motion.h1>
         <div className={"grid gap-y-20 gap-x-5 px-5 grid-cols-3 max-lg:grid-cols-2 max-sm:grid-cols-1"}>
             <Tool Icon={SiJavascript} 
             title='JavaScript'
