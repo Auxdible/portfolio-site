@@ -5,7 +5,9 @@ import { useSpring, animated } from "react-spring";
 const calc = (x: number, y: number, s?: number) => [-(y - window.innerHeight / 2) / 8, (x - window.innerWidth / 2) / 8, s || 1]
 const trans = (x: number, y: number, s: number) => `perspective(600px) rotateX(${x}deg) rotateY(${y}deg) scale(${s})`
 
-type ProjectProps = { project: projects }
+interface ProjectProps { 
+  readonly project: projects 
+}
 export default function Project({ project }: ProjectProps) {
     const [props, set] = useSpring(() => ({ xys: [0, 0, 0.8] }));
     

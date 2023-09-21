@@ -1,45 +1,15 @@
 import { SiChai, SiCss3, SiExpress, SiGithub, SiHtml5, SiJavascript, SiMongodb, SiNextdotjs, SiNodedotjs, SiPostgresql, SiReact, SiRedux, SiSass, SiTailwindcss, SiTypescript } from 'react-icons/si';
 import { FaFreeCodeCamp } from 'react-icons/fa';
-import Link from 'next/link';
-import { IconType } from 'react-icons/lib';
 import { motion } from 'framer-motion';
-import {useMediaQuery} from 'react-responsive';
-export function Tool({ Icon, title, description, certifications, delay }: { 
-    Icon: IconType, 
-    title: string, 
-    description: string, 
-    certifications?: { Icon: IconType, title: string, link: string }[],
-    delay?: number
-}) {
-    const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
-    return (<div className={"flex flex-col gap-2 text text-lg items-center text-center font-extralight"}>
-    <section className={"flex flex-col gap-2 items-center flex-1 flex-grow flex-shrink"}>
-    <motion.span 
-    initial={{ transform: "translateY(-2rem)", opacity: 0 }} 
-    viewport={{ once: true }} 
-    whileInView={{ transform: "translateY(0px)", opacity: 1 }}  
-    transition={{ duration: 0.5, delay: !isMobile ? delay || 0 : 0 }}
-    ><Icon className={"text-5xl text-black dark:text-white"}/></motion.span>
-    <h1 className={"text-3xl max-md:text-2xl font-montserrat text-title"}>{title}</h1>
-    </section>
-    <section className={"flex flex-col gap-2 justify-between items-center flex-grow flex-shrink-0"}>
-    <p>{description}</p>
-    {certifications ? <ul>
-        {certifications.map((i, index) => 
-        <li key={index}>
-            <span className={"flex flex-row gap-2 items-center"}>
-                • <i.Icon/> 
-                {i.link ? <Link href={i.link}>{i.title}</Link> : i.title }
-                </span>
-        </li>)}
-    </ul> : ""}
-    </section>
-    </div>)
-}
+import Tool from './Tool';
+
 export default function Tools() {
     return (<div className={"my-20"}>
-        <motion.h1 initial={{ opacity: 0, transform: "translateY(-8rem)" }}
-  whileInView={{ opacity: 1, transform: "translateY(0)" }} transition={{ duration: 1 }} viewport={{ once: true }} className={"text-8xl max-md:text-6xl text-title font-raleway font-medium w-fit mx-auto mb-10"}>My Skills</motion.h1>
+        <motion.h1 
+        initial={{ opacity: 0, transform: "translateY(-8rem)" }}
+        whileInView={{ opacity: 1, transform: "translateY(0)" }} 
+        transition={{ duration: 1 }} viewport={{ once: true }} 
+        className={"text-8xl max-md:text-6xl text-title font-raleway font-medium w-fit mx-auto mb-20"}>My Skills</motion.h1>
         <div className={"grid gap-y-20 gap-x-5 px-5 grid-cols-3 max-lg:grid-cols-2 max-sm:grid-cols-1"}>
             <Tool Icon={SiJavascript} 
             title='JavaScript'
@@ -129,7 +99,7 @@ export default function Tools() {
             />
             <Tool Icon={SiExpress} 
             title='express.js'
-            description='Seasoned experience in building expansive RESTful APIs, utilizing the Mongoose ODM or Prisma ORM to interact with a database . Familiar with various express.js libraries, including passport, multer, cors, and express-session.'
+            description='Seasoned experience in building expansive RESTful APIs. Familiar with multiple express.js libraries, including passport, multer, cors, and express-session.'
             certifications={[
                 { 
                     Icon: FaFreeCodeCamp, 

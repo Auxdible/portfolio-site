@@ -1,5 +1,5 @@
 "use client";
-import BlogPreview from "@/components/BlogPreview";
+import BlogPreview from "@/components/home/blog/BlogPreview";
 import { posts } from "@prisma/client";
 import { useQuery } from "react-query";
 
