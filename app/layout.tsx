@@ -9,7 +9,9 @@ import Footer from '@/components/Footer';
 export const metadata: Metadata = {
   title: 'Auxdible',
   description: 'The official portfolio site for the Full Stack Developer Auxdible.',
-  themeColor: "#ee884b",
+  themeColor: {
+    color: "#ee884b"
+  },
   metadataBase: new URL(process.env.SITE_URL || `https://localhost:${process.env.PORT || 3000}`),
   icons: "/icon.png",
   openGraph: {

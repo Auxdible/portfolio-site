@@ -16,7 +16,7 @@ export default function LatestBlogPost({ post }: PostProps) {
         setTimeout(() => setLinkCopied(false), 3000);
     }
     return (<div className={"relative z-0 mx-auto h-96 max-md:h-48 w-full max-w-2xl mb-64 max-md:mb-96"} >
-    {post.image_url ? <Link href={`/blog/${post.postId}`} className={"absolute bg-cover transition-all h-96 max-md:h-48 w-[724px] max-md:w-full object-center -translate-x-1/2 left-1/2 rounded-xl hover:scale-105"} style={
+    {post.image_url ? <Link href={`/blog/${post.postId}`} className={"absolute bg-cover transition-all h-96 max-md:h-48 w-[724px] max-md:w-full object-center -translate-x-1/2 left-1/2 rounded-xl hover:scale-105 dark:bg-gray-900 bg-gray-200"} style={
         {
             backgroundImage: `url(${post.image_url || ""})`
         }
