@@ -17,11 +17,13 @@ module.exports = {
       fontFamily: {
         roboto: ["Roboto", "sans-serif"],
         montserrat: ["Montserrat", "sans-serif"],
-        raleway: ["Raleway", "sans-serif"]
+        raleway: ["Raleway", "sans-serif"],
+        cursive: ["Dancing Script", "sans-serif"],
+        code: ["Source Code Pro", "sans-serif"]
       },
       animation: {
         pulse: "pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite",
-        navbarCollapse: "navbarCollapse 0.75s ease-out",
+        navbarCollapse: "navbarCollapse 0.5s ease-out",
         spin: "spin 2s linear infinite",
         expand: "expand 150ms ease-out 1 forwards",
         fadeLeft: "fadeLeft 0.75s ease-out 1 forwards",
@@ -30,10 +32,15 @@ module.exports = {
         fadeRightDelay1: "fadeRight 0.75s ease-out 0.25s 1 forwards",
         fadeLeftDelay2: "fadeLeft 0.75s ease-out 0.50s 1 forwards",
         fadeRightDelay2: "fadeRight 0.75s ease-out 0.50s 1 forwards",
-        blink: "blink 225ms step-end infinite"
+        blink: "blink 225ms step-end infinite",
+        themeUp: "themeUp 0.5s ease-out 1 forwards",
+        themeDown: "themeDown 0.5s ease-out 1 forwards",
+        theme2Up: "theme2Up 0.5s ease-out 1 forwards",
+        theme2Down: "theme2Down 0.5s ease-out 1 forwards",
+        loaded: "themeDown 1s ease-in-out 1 forwards"
       },
       colors: {
-        discord: "#7289da",
+        discord: "#5865F2",
         youtube: "#FF0000",
         linkedin: "#0A66C2",
         instagram1: "#405DE6",

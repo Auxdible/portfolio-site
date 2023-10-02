@@ -1,51 +1,35 @@
 "use client";
-import { signIn, signOut, useSession } from "next-auth/react";
-import Image from "next/image";
-import Link from "next/link";
-import { BsDiscord, BsPersonBadge, BsPersonLock, BsShieldCheck } from "react-icons/bs";
+import { signIn, useSession } from "next-auth/react";
+import { BsDiscord, BsPersonBadge, BsShieldCheck } from "react-icons/bs";
 import { useState } from "react";
 import { BiLock } from "react-icons/bi";
 import Loading from "@/components/Loading";
 import { useSearchParams } from "next/navigation";
+import AlreadySignedIn from "@/components/signin/AlreadySignedIn";
+
 export default function SignIn() {
-    
     let { data: session, status } = useSession();
     const [formData, setFormData] = useState({ username: "", password: "" });
     const searchParams = useSearchParams();
 
     if (status == "loading") return <Loading/>;
     if (session) {
-        return (<main className="flex min-h-screen flex-col items-center justify-center max-w-lg mx-auto">
-        <div className={"block mx-auto text-center font-roboto text-2xl text"}>
-            <Image
-              className={"mx-auto rounded-full border-2 p-2 border-orange-400"}
-              src='/icon.png'
-              alt="Auxdible's icon."
-              width='150'
-              height='150'
-            />
-            <h1 className={"text-4xl p-4 text-orange font-montserrat text-primary"}>Oops!</h1>
-            <p>You&apos;re already signed in.</p>
-            <div className={"flex justify-center gap-10 my-4"}>
-            <Link className={"flex-1 transition-color duration-100 hover:text-orange-300 flex-grow flex-shrink"} href="/">Home</Link>
-            <a className={"cursor-pointer transition-color duration-100 hover:text-orange-300 flex-1 flex-grow flex-shrink"} onClick={() => signOut()}>Sign out</a>
-            </div>
-        </div>
-      </main>)
+        return (<AlreadySignedIn/>)
     }
     return (<main className={"flex min-h-screen flex-col items-center justify-center max-w-lg mx-auto"}>
     <div className={"block mx-auto text-center font-roboto text-2xl text my-20"}>
-        <h1 className={"text-6xl max-sm:text-5xl font-montserrat text-primary my-5"}>Sign in</h1>
+        <h1 className={"text-6xl max-sm:text-5xl font-montserrat text-title my-5 py-2"}>Sign in</h1>
         <p>Sign in with Discord to comment and react to blog posts! (Comments and Reactions are currently WIP.)</p>
     </div>
     { searchParams.get("error") ? <div className={"bg-red-600 border-2 border-red-400 rounded-2xl p-5 text-xl font-roboto"}>Error: {searchParams.get("error") == "CredentialsSignin" ? "Invalid credentials!" : "There was an error attempting to sign you in."}</div> : ""}
-    <div className={"block mx-auto text-center font-roboto text-2xl border-2 dark:border-orange-400 border-orange-700 rounded-3xl text p-10 my-10 w-full"}>
+    <div className={"block mx-auto text-center font-roboto text-2xl relative dark:bg-black bg-gray-50 rounded-3xl text p-10 my-10 w-full"}>
+    <div className={"absolute -z-10 -inset-[2px] bg-gradient-to-t from-orange-400 to-red-500 rounded-3xl transition-all"}></div>
         <section className={"text-center my-3"}>
-        <h1 className={"text-4xl max-sm:text-3xl font-montserrat text-primary my-5"}>User</h1>
+        <h1 className={"text-4xl max-sm:text-3xl font-montserrat text-title my-5"}>User</h1>
         <button onClick={() => signIn('discord', { callbackUrl:"/" }) } className={"flex justify-center mx-auto items-center gap-2 text-center bg-discord text-white p-1 border-2 border-gray-400 border-opacity-40 rounded-2xl"}><BsDiscord/> Sign in with Discord</button>
         </section>
         <section className={"text-center my-3"}>
-        <h1 className={"text-4xl max-sm:text-3xl font-montserrat text-primary my-5"}>Admin</h1>
+        <h1 className={"text-4xl max-sm:text-3xl font-montserrat text-title my-5"}>Admin</h1>
         <div className={"flex flex-col gap-3 my-10"}>
         <span className={"flex max-md:flex-col justify-between gap-2"}><label className={"flex flex-row justify-between max-md:justify-start items-center gap-2"}><BsPersonBadge/> Username</label><input type="text" className={"dark:bg-gray-600 bg-gray-300"} onChange={(e) => setFormData({ username: e.target.value, password: formData.password })} /></span>
         <span className={"flex max-md:flex-col justify-between gap-2"}><label className={"flex flex-row justify-between max-md:justify-start items-center gap-2"}><BiLock/> Password</label><input className={"dark:bg-gray-600 bg-gray-300"} type="password" onChange={(e) => setFormData({ username: formData.username, password: e.target.value })} /></span>

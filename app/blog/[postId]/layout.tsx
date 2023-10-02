@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
 import '@/styles/globals.scss';
 import { posts } from '@prisma/client';
-import ScrollBar from '@/components/ScrollBar';
+import ScrollBar from '@/components/blog/posts/ScrollBar';
   
 type LayoutProps = { params: { postId: string }}
 export async function generateMetadata({ params }: LayoutProps): Promise<Metadata> {

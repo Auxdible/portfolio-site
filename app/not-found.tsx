@@ -1,5 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
+import { BsQuestionCircle } from "react-icons/bs"
 
 export default function NotFound() {
   return (
@@ -12,10 +13,10 @@ export default function NotFound() {
             width='150'
             height='150'
           />
-          <h1 className={"text-4xl p-4 text-orange font-montserrat text-primary"}>Not Found</h1>
+          <h1 className={"text-5xl my-4 text-orange font-montserrat text-title"}>Not Found</h1>
           <p>Couldn&apos;t find that page.</p>
           <div className={"flex justify-center gap-2 my-4"}>
-          <Link className={"flex-1 transition-color duration-100 hover:text-orange-300 flex-grow flex-shrink"} href="/">Home</Link>
+          <Link className={"flex-1 transition-color duration-100 hover:text-title text-3xl flex-grow flex-shrink"} href="/">Home</Link>
           </div>
       </div>
     </main>

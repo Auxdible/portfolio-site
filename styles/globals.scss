@@ -4,11 +4,14 @@
 @tailwind utilities;
 
 /* Import Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Roboto:wght@300&family=Raleway:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Montserrat:wght@300&family=Roboto:wght@300&family=Raleway:wght@100&family=Source+Code+Pro&display=swap');
 
 @layer components {
     .text {
         @apply dark:text-gray-100 text-gray-600
+    }
+    .text-title {
+        @apply bg-gradient-to-b from-orange-400 to-red-500 bg-clip-text text-transparent;
     }
     .text-primary {
         @apply dark:text-orange-400 text-orange-600
@@ -19,29 +22,14 @@
     .markdown {
         @apply prose prose-code:bg-slate-400 prose-code:bg-opacity-25 font-roboto dark:text-gray-100 text-gray-600 
         prose-code:dark:text-gray-300 prose-blockquote:dark:text-gray-400 
-        prose-blockquote:text-gray-600 prose-blockquote:font-semibold prose-code:text-gray-950 prose-a:dark:text-orange-400 prose-a:text-orange-600
+        prose-blockquote:text-gray-600 prose-blockquote:font-semibold prose-code:text-gray-950 prose-a:text-title
         prose-a:no-underline prose-headings:font-montserrat prose-headings:font-normal 
         dark:prose-headings:text-gray-100 prose-headings:text-gray-900
         prose-strong:dark:text-gray-100 prose-strong:text-gray-900;
     }
-}
-@layer utilities {
-    ::-webkit-scrollbar {
-        @apply w-2;
-      }
-    
-    ::-webkit-scrollbar-track {
-        @apply bg-transparent;
-        border-radius: 100vh;
-      }
-    
-    ::-webkit-scrollbar-thumb {
-        @apply dark:bg-orange-400 bg-orange-600 border-2 dark:border-orange-300 border-orange-700 rounded-full;
-      }
-    
-      ::-webkit-scrollbar-thumb:hover {
-        @apply dark:bg-orange-500 bg-orange-700
-      }
+    .break-word {
+        word-break: break-all;
+    }
 }
 .canvas-wrapper {
     touch-action: pan-y !important;
@@ -84,9 +72,41 @@
 }
 @keyframes blink {
     from, to {
-        opacity: 0;
+        @apply bg-opacity-0 text-transparent;
     }
     50% {
-        opacity: 1;
+        @apply text-title;
+    }
+}
+@keyframes themeUp {
+    0% {
+        transform: translateY(100%);
+    }
+    100% {
+        transform: translateY(0)
+    }
+}
+@keyframes themeDown {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-100%);
+    }
+}
+@keyframes theme2Up {
+    0% {
+        transform: translateY(0%);
+    }
+    100% {
+        transform: translateY(-100%)
+    }
+}
+@keyframes theme2Down {
+    0% {
+        transform: translateY(-100%);
+    }
+    100% {
+        transform: translateY(-200%);
     }
 }

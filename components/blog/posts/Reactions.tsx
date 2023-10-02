@@ -38,7 +38,7 @@ export default function Reactions({ post }: ReactionsProps) {
                     const reacted = session?.user?.discord_profile && reaction && reaction.list.indexOf(session.user.discord_profile.id) != -1;
                     if (!data) return <></>
                     return (<li key={i} className={"flex-1 flex-grow flex-shrink flex flex-col justify-center items-center group"}>
-                        <a onClick={() => !loading ? addReaction(ReactionType[i as keyof typeof ReactionType]) : {}} className={`text-2xl ${reacted ? "bg-orange-400" : "dark:bg-gray-600 bg-gray-300"} rounded-full hover:scale-125 transition-all cursor-pointer p-1`}>{!loading ? data.emoji : <BiLoaderCircle className={"text-3xl animate-spin animate-pulse"}/>}</a>
+                        <a onClick={() => !loading ? addReaction(ReactionType[i as keyof typeof ReactionType]) : {}} className={`text-2xl ${reacted ? "bg-gradient-to-t from-orange-400 to-red-500" : "dark:bg-gray-600 bg-gray-300"} rounded-full hover:scale-125 transition-all cursor-pointer p-1`}>{!loading ? data.emoji : <BiLoaderCircle className={"text-3xl animate-spin"}/>}</a>
                         <span className={"font-roboto mt-1 hover:text-orange-600 transition-colors cursor-pointer"}>{data.name}</span>
                         </li>);
                 })}

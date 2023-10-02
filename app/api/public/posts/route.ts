@@ -12,6 +12,7 @@ export async function GET(req: NextRequest) {
         post_date_unix: true,
         post_description: true,
         posted_by: true,
+        image_url: true,
         reactions: true
         } })
     .then((posts) => NextResponse.json(posts))

@@ -6,7 +6,7 @@ import Link from "next/link";
 import { useQuery } from 'react-query';
 import { useState } from 'react';
 import { BiBookBookmark, BiCalendar, BiCode, BiIdCard, BiImageAdd, BiMessage, BiWifi } from "react-icons/bi";
-import Project from "@/components/Project";
+import Project from "@/components/home/projects/Project";
 import { projects } from "@prisma/client";
 import { BsDatabaseAdd, BsDatabaseDown, BsDatabaseGear } from "react-icons/bs";
 import qs from 'querystring';

@@ -47,6 +47,7 @@ model posts {
     id String @id @default(auto()) @map("_id") @db.ObjectId
     v Int? @map("__v")
     postId String
+    image_url String?
     post_name String
     post_content String
     post_description String
