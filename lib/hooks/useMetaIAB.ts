@@ -1,5 +1,11 @@
 "use client";
 
+import { useEffect, useState } from "react";
+
 export default function useMetaIAB() {
-    return [!!navigator.userAgent.match(/FBAN|FBAV|INSTAGRAM/i)];
+    const [iab, setIAB] = useState(false);
+    useEffect(() => {
+        setIAB(!!navigator.userAgent.match(/FBAN|FBAV|INSTAGRAM/i));
+    }, [iab]);
+    return [iab]
 } 
