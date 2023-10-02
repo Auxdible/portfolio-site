@@ -7,5 +7,5 @@ export default function ScrollBar() {
     useMotionValueEvent(scrollY, "change", () => {
         setHookedYPosition(scrollYProgress)
     })
-    return <motion.div style={{ scaleX: hookedYPostion }} className={"bg-gradient-to-r fixed bottom-0 left-0 w-screen from-orange-400 to-orange-600 h-4"}></motion.div>;
+    return <motion.div style={{ scaleX: hookedYPostion }} className={"bg-gradient-to-r z-10 fixed bottom-0 left-0 w-screen from-red-500 to-orange-400 h-4"}></motion.div>;
 }

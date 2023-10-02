@@ -24,6 +24,6 @@ export default function MiniProfile({ user }: MiniProfileProps) {
                 quality="100"
                 priority
             /> : ""}
-        Sign out
+        {user.admin ? "Dashboard" : "Sign out" }
     </Link>)
 }

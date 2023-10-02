@@ -16,17 +16,17 @@ export default function BlogCard({ post }: PostProps) {
         setLinkCopied(true);
         setTimeout(() => setLinkCopied(false), 3000);
     }
-    return (<div className={"relative bg-gray-50 dark:bg-black grid-rows-1 grid-cols-1 last-of-type:border-r-0 w-full rounded-xl"}>
+    return (<div className={"relative bg-gray-50 dark:bg-black grid-rows-1 grid-cols-1 last-of-type:border-r-0 w-full rounded-xl group"}>
     <div className={"absolute -z-10 -inset-[2px] bg-gradient-to-t from-orange-400 to-red-500 rounded-xl transition-all"}></div>
     <div
     className={"w-full overflow-hidden h-[45rem] mx-auto font-roboto text-2xl text " +
-    "transition-all relative group flex flex-col"}
+    "transition-all relative group flex flex-col gap-2"}
     >
     <div className={"h-[20rem]"}>
-        {post.image_url ? <img src={post.image_url.toString()} className={"flex-1 rounded-t-xl h-[20rem] object-cover mx-auto"} alt={post.post_name + " image"} /> : ""}
+        {post.image_url ? <img src={post.image_url.toString()} className={"flex-1 opacity-60 group-hover:opacity-100 rounded-t-xl h-[20rem] group-hover:bg-contain transition-all object-cover mx-auto"} alt={post.post_name + " image"} /> : ""}
     </div>
     <section className={"flex flex-col h-[15rem] max-md:items-center text-center flex-1"}>
-    <span className={"flex-1 flex-grow"}><h1 className={"text-4xl max-sm:text-2xl font-montserrat text-title transition-all"}>{post.post_name}</h1></span>
+    <span className={"flex-1 flex-grow"}><h1 className={"text-4xl max-sm:text-3xl font-montserrat text-title transition-all"}>{post.post_name}</h1></span>
     <span className={"flex-1 flex-grow"}><p className={"block font-roboto my-2 break-words text-xl transition-all"}>{post.post_description}</p></span>
     <span className={"flex-1 flex-grow mx-auto"}><p className={"flex flex-row font-roboto text-lg dark:text-gray-400 text-gray-600 my-1 gap-1 transition-all"}>{new Date(post.post_date_unix || Date.now()).toISOString().split('T')[0]} • <span className={"flex flex-row justify-center items-center gap-1"}><BsShieldCheck/> {post.posted_by}</span></p></span>
     </section>

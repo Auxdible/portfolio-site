@@ -1,7 +1,7 @@
 "use client";
 
 import NotFound from "@/app/not-found";
-import BlogContent from "@/components/BlogContent";
+import BlogContent from "@/components/blog/posts/BlogContent";
 import Loading from "@/components/Loading";
 import { useRouter } from "next/navigation";
 import { useQuery } from "react-query";

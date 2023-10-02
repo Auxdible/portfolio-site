@@ -5,7 +5,7 @@ import { useSession } from "next-auth/react";
 import { useState } from 'react';
 
 import { useQuery, useQueryClient } from "react-query";
-import Loading from "./Loading";
+import Loading from "../../Loading";
 import CommentProfile from "./CommentProfile";
 import { BsArrowDown, BsTrash } from "react-icons/bs";
 import { BiLoaderCircle } from "react-icons/bi";
@@ -28,7 +28,7 @@ export default function Comments({ postId }: CommentsProps) {
     let data = commentsData as comments[];
     let count = countStatus != "loading" && countData == undefined ? 0 : countStatus == "success" && countData ? countData['count'] : "Unknown"; 
     return (<div className={"flex flex-col w-full text-center justify-center my-16"}>
-        <span className={"text-3xl max-sm:text-2xl font-montserrat text-primary"}>Comments <span className={"text-xl max-sm:text-lg font-roboto dark:text-gray-400 text-gray-600"}>({count} comments)</span></span>
+        <span className={"text-3xl font-montserrat text-title"}>Comments <span className={"text-xl max-sm:text-lg font-roboto dark:text-gray-400 text-gray-600"}>({count} comments)</span></span>
         <ul className={"flex flex-col gap-8 my-10"}>
             {data.map((i) => {
                 console.log(i.discord_id);

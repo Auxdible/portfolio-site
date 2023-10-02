@@ -31,7 +31,7 @@ export default function BlogPreview({ post }: PostProps) {
     <span className={"flex-1 flex-grow"}><p className={"block font-roboto my-2 break-words text-xl transition-all"}>{post.post_description}</p></span>
     <span className={"flex-1 flex-grow"}><p className={"flex flex-row font-roboto text-lg dark:text-gray-400 text-gray-600 my-1 gap-1 transition-all"}>{new Date(post.post_date_unix || Date.now()).toISOString().split('T')[0]} • <span className={"flex flex-row justify-center items-center gap-1"}><BsShieldCheck/> {post.posted_by}</span></p></span>
     </section>
-    <span className={"flex flex-row gap-4 max-md:justify-center"}>
+    <span className={"flex flex-row gap-4 max-md:justify-center items-center flex-1"}>
     <Link href={`/blog/${post.postId}`} className={"flex w-fit h-fit group relative z-0 items-center justify-center group p-2 transition-all rounded-lg font-roboto text-lg my-2"}>
        <div className={"absolute inset-0 dark:bg-black bg-white rounded-lg"}></div>
        <div className={"absolute -z-10 -inset-[2px] bg-gradient-to-t from-orange-400 to-red-500 rounded-lg transition-all"}></div>
