@@ -37,9 +37,10 @@ module.exports = {
         themeDown: "themeDown 0.5s ease-out 1 forwards",
         theme2Up: "theme2Up 0.5s ease-out 1 forwards",
         theme2Down: "theme2Down 0.5s ease-out 1 forwards",
+        loaded: "themeDown 1s ease-in-out 1 forwards"
       },
       colors: {
-        discord: "#7289da",
+        discord: "#5865F2",
         youtube: "#FF0000",
         linkedin: "#0A66C2",
         instagram1: "#405DE6",

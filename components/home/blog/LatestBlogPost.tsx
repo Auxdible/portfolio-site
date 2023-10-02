@@ -15,7 +15,7 @@ export default function LatestBlogPost({ post }: PostProps) {
         setLinkCopied(true);
         setTimeout(() => setLinkCopied(false), 3000);
     }
-    return (<div className={"relative z-0 mx-auto h-96 max-md:h-48 w-full max-w-2xl mb-64 max-md:mb-96"} >
+    return (<div className={"relative z-0 mx-auto h-96 max-md:h-48 w-full max-w-2xl mb-64 max-md:mb-96 max-md:px-2"} >
     {post.image_url ? <Link href={`/blog/${post.postId}`} className={"absolute bg-contain bg-no-repeat bg-center transition-all h-96 max-md:h-48 w-[724px] max-md:w-full object-center -translate-x-1/2 left-1/2 rounded-xl hover:scale-105 dark:bg-gray-900 bg-gray-200"} style={
         {
             backgroundImage: `url(${post.image_url || ""})`,
@@ -25,7 +25,7 @@ export default function LatestBlogPost({ post }: PostProps) {
     <motion.div initial={{ opacity: 0 }}
     whileInView={{ opacity: 1 }} 
     transition={{ duration: 1.0 }} 
-    viewport={{ once: true }} className="relative translate-y-1/2 top-1/2 left-1/2 -translate-x-1/2 shadow-2xl rounded-xl">
+    viewport={{ once: true }} className="relative translate-y-1/2 max-md:translate-y-1/4 top-1/2 left-1/2 -translate-x-1/2 shadow-2xl rounded-xl">
 <div className={"absolute -z-10 -inset-[2px] bg-gradient-to-t max-md:bg-gradient-to-r from-orange-400 to-red-500 rounded-xl"}></div>
     <div
     className={"w-full flex flex-col dark:bg-black bg-white mx-auto font-roboto text-2xl text " +

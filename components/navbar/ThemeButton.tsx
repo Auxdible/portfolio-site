@@ -10,7 +10,7 @@ export default function ThemeButton() {
       if (!mounted) setMounted(true)
     }, [mounted])
     if (!mounted) {
-      return (<button className={"max-md:text-xl text-2xl border-2 dark:border-gray-200 border-gray-700 p-2 rounded-xl animate-pulse "}>
+      return (<button className={"max-md:text-xl text-2xl p-2 rounded-xl animate-spin "}>
       { <BiLoaderCircle/> }
   </button>)
     }
