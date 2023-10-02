@@ -15,7 +15,7 @@ export default function BlogPosts() {
         initial={{ opacity: 0, transform: "translateY(-8rem)" }}
         whileInView={{ opacity: 1, transform: "translateY(0)" }} 
         transition={{ duration: 1 }} viewport={{ once: true }} 
-        className={"text-8xl max-md:text-6xl text-title font-raleway font-medium w-fit mx-auto mb-20 py-2 text-center"}>Blog Posts</motion.h1>
+        className={"text-8xl max-md:text-6xl text-title font-raleway font-medium w-fit mx-auto mb-20 py-2 text-center overflow-y-visible"}>Blog Posts</motion.h1>
     {posts?.length != 0 && posts ? <LatestBlogPost post={posts[0]} /> : ""}
     <section className={`flex flex-row max-md:flex-col w-full mb-40 relative ${isIAB ? "h-[95rem]" : ""}`}>
       <div className={"absolute z-0 md:bg-gradient-to-b dark:from-black from-gray-50 from-10% dark:via-transparent via-transparent  dark:to-black to-white to-90% inset-0"}></div>
