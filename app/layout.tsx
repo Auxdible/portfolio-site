@@ -22,16 +22,21 @@ export const metadata: Metadata = {
     description: "The official portfolio site for the Full Stack Developer Auxdible.",
     url: "https://auxdible.me",
     images: "/icon.png"
+  },
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 1,
+    userScalable: false,
+
   }
 };
 
 
 export default function RootLayout({
-  children,
-  session
+  children
 }: {
-  children: React.ReactNode,
-  session: Session
+  children: React.ReactNode
 }) {
   return (
     <html lang="en">
