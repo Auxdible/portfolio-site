@@ -11,7 +11,7 @@ export default function Providers({ children }: ProvidersProps) {
   return (
     <QueryClientProvider client={client}>
     <SessionProvider>
-      <ThemeProvider attribute={"class"} enableSystem disableTransitionOnChange>
+      <ThemeProvider attribute={"class"} enableSystem disableTransitionOnChange defaultTheme={"dark"}>
         {children}
       </ThemeProvider>
     </SessionProvider>

@@ -26,8 +26,8 @@ export default function Project({ project }: ProjectProps) {
             src={project.project_image_url}
             alt={"Auxdibot icon"}
             className={"object-contain select-none"}
-            width={320}
-            height={320}
+            width={240}
+            height={240}
           
           />
           </animated.div>

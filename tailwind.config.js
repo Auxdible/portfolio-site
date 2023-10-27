@@ -19,7 +19,8 @@ module.exports = {
         montserrat: ["Montserrat", "sans-serif"],
         raleway: ["Raleway", "sans-serif"],
         cursive: ["Dancing Script", "sans-serif"],
-        code: ["Source Code Pro", "sans-serif"]
+        code: ["Source Code Pro", "sans-serif"],
+        inter: ["Inter", "sans-serif"],
       },
       animation: {
         pulse: "pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite",
