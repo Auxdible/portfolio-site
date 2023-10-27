@@ -2,15 +2,26 @@
 import Image from "next/image";
 import Link from "next/link";
 import ThemeButton from "./ThemeButton";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { BiLoaderCircle, BiMenuAltLeft } from 'react-icons/bi';
 import { useSession } from "next-auth/react";
 import MiniProfile from "./MiniProfile";
 export default function Navbar() {
     const [collapse, setCollapse] = useState(false);
     const { data: session, status } = useSession();
+    const [previousScrollPos, setScrollPos] = useState(0);
+    const [visible, setVisible] = useState(true);
+    useEffect(() => {
+        window.addEventListener("scroll", onScroll);
+        return () => window.removeEventListener("scroll", onScroll);
+      });
+    function onScroll() {
+        const visible = previousScrollPos > window.pageYOffset;
+        setScrollPos(window.pageYOffset);
+        setVisible(visible);
+    }
     return (<>
-    <div className={`z-10 fixed left-1/2 top-0 -translate-x-1/2 max-w-4xl w-full`}>
+    <div className={`z-10 fixed left-1/2 top-0 -translate-x-1/2 max-w-4xl ${!visible ? " -translate-y-[110%] " : ""} transition-all w-full`}>
     
     <nav className={"sticky"}>
         <div className={"absolute -z-10 -inset-[1px] bg-gradient-to-t max-md:bg-gradient-to-r from-orange-400 to-red-500 md:rounded-bl-3xl md:rounded-br-3xl"}></div>
@@ -20,9 +31,9 @@ export default function Navbar() {
                 <BiMenuAltLeft/>
             </button>
             <span className={"max-md:hidden justify-between items-center flex flex-1 flex-grow flex-shrink text-2xl font-montserrat"}>
-            {status == "loading" ? <BiLoaderCircle className={"animate-spin"}/> : session && session.user ? <MiniProfile user={session.user}/> : <Link className={"h-fit hover:text-orange-500 hover:translate-y-1 transition-all"} href={"/auth/signin"}>Sign in</Link>}
+            {status == "loading" ? <BiLoaderCircle className={"animate-spin"}/> : session && session.user ? <MiniProfile user={session.user}/> : <Link className={"h-fit hover:before:scale-100 before:underline-custom relative transition-all"} href={"/auth/signin"}>Sign in</Link>}
                 
-                <Link className={"h-fit hover:text-orange-500 hover:translate-y-1 transition-all"} href={"/blog"}>Blog</Link>
+                <Link className={"h-fit hover:before:scale-100 before:underline-custom relative  transition-all"} href={"/blog"}>Blog</Link>
             </span>
         </div>
         
@@ -37,7 +48,7 @@ export default function Navbar() {
             />
         </Link>
         <div className={"justify-between max-md:justify-center items-center flex flex-1 flex-grow flex-shrink text-2xl font-montserrat"}>
-            <Link className={"max-md:hidden hover:text-orange-500 hover:translate-y-1 transition-all"} href={"/contact-me"}>Contact Me</Link>
+            <Link className={"max-md:hidden hover:before:scale-100 before:underline-custom relative transition-all"} href={"/contact-me"}>Contact Me</Link>
             <ThemeButton/>
             
         </div>

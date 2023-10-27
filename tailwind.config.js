@@ -19,7 +19,8 @@ module.exports = {
         montserrat: ["Montserrat", "sans-serif"],
         raleway: ["Raleway", "sans-serif"],
         cursive: ["Dancing Script", "sans-serif"],
-        code: ["Source Code Pro", "sans-serif"]
+        code: ["Source Code Pro", "sans-serif"],
+        inter: ["Inter", "sans-serif"],
       },
       animation: {
         pulse: "pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite",
@@ -32,6 +33,8 @@ module.exports = {
         fadeRightDelay1: "fadeRight 0.75s ease-out 0.25s 1 forwards",
         fadeLeftDelay2: "fadeLeft 0.75s ease-out 0.50s 1 forwards",
         fadeRightDelay2: "fadeRight 0.75s ease-out 0.50s 1 forwards",
+        fadeLeftDelay3: "fadeLeft 0.75s ease-out 0.75s 1 forwards",
+        fadeRightDelay3: "fadeRight 0.75s ease-out 0.75s 1 forwards",
         blink: "blink 225ms step-end infinite",
         themeUp: "themeUp 0.5s ease-out 1 forwards",
         themeDown: "themeDown 0.5s ease-out 1 forwards",

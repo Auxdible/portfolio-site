@@ -10,7 +10,7 @@ export default function Tools() {
         whileInView={{ opacity: 1, transform: "translateY(0)" }} 
         transition={{ duration: 1 }} viewport={{ once: true }} 
         className={"text-8xl max-md:text-6xl text-title font-raleway font-medium w-fit mx-auto mb-20"}>My Skills</motion.h1>
-        <div className={"grid gap-y-20 gap-x-5 px-5 grid-cols-3 max-lg:grid-cols-2 max-sm:grid-cols-1"}>
+        <div className={"grid gap-y-20 gap-x-5 grid-cols-3 max-lg:grid-cols-2 max-sm:grid-cols-1 md:px-44 px-4"}>
             <Tool Icon={SiJavascript} 
             title='JavaScript'
             description='Seasoned in Algorithms and Data Structures, RegEx, Debugging, and Functional Programming.'

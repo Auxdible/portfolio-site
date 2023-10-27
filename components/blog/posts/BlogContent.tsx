@@ -24,8 +24,7 @@ export default function BlogContent({ post, preview }: PostProps) {
     
     {!preview ? <span className={"flex flex-col max-w-lg w-full justify-between align-middle items-center gap-4"}>
         <Reactions post={post as any}/>
-        {session ? <CommentsForm postId={post.postId} /> : ""}
-        
+        <CommentsForm postId={post.postId} />
         <Comments postId={post.postId} />
     </span> : ""}
     </main>)
