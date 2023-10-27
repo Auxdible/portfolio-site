@@ -19,6 +19,10 @@
     .collapse-element {
         @apply w-full min-h-fit p-2 border-b-2 dark:border-gray-300 border-gray-800 dark:border-opacity-20 border-opacity-20;
     }
+    .underline-custom {
+        @apply absolute block w-full h-[1px] bottom-0 left-0 dark:bg-white bg-black scale-0 transition-transform;
+        content: "";
+    }
     .markdown {
         @apply prose prose-code:bg-slate-400 prose-code:bg-opacity-25 font-roboto dark:text-gray-100 text-gray-600 
         prose-code:dark:text-gray-300 prose-blockquote:dark:text-gray-400 

@@ -31,9 +31,9 @@ export default function Navbar() {
                 <BiMenuAltLeft/>
             </button>
             <span className={"max-md:hidden justify-between items-center flex flex-1 flex-grow flex-shrink text-2xl font-montserrat"}>
-            {status == "loading" ? <BiLoaderCircle className={"animate-spin"}/> : session && session.user ? <MiniProfile user={session.user}/> : <Link className={"h-fit hover:text-orange-500 hover:translate-y-1 transition-all"} href={"/auth/signin"}>Sign in</Link>}
+            {status == "loading" ? <BiLoaderCircle className={"animate-spin"}/> : session && session.user ? <MiniProfile user={session.user}/> : <Link className={"h-fit hover:before:scale-100 before:underline-custom relative transition-all"} href={"/auth/signin"}>Sign in</Link>}
                 
-                <Link className={"h-fit hover:text-orange-500 hover:translate-y-1 transition-all"} href={"/blog"}>Blog</Link>
+                <Link className={"h-fit hover:before:scale-100 before:underline-custom relative  transition-all"} href={"/blog"}>Blog</Link>
             </span>
         </div>
         
@@ -48,7 +48,7 @@ export default function Navbar() {
             />
         </Link>
         <div className={"justify-between max-md:justify-center items-center flex flex-1 flex-grow flex-shrink text-2xl font-montserrat"}>
-            <Link className={"max-md:hidden hover:text-orange-500 hover:translate-y-1 transition-all"} href={"/contact-me"}>Contact Me</Link>
+            <Link className={"max-md:hidden hover:before:scale-100 before:underline-custom relative transition-all"} href={"/contact-me"}>Contact Me</Link>
             <ThemeButton/>
             
         </div>
