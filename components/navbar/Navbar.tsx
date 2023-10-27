@@ -2,15 +2,26 @@
 import Image from "next/image";
 import Link from "next/link";
 import ThemeButton from "./ThemeButton";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { BiLoaderCircle, BiMenuAltLeft } from 'react-icons/bi';
 import { useSession } from "next-auth/react";
 import MiniProfile from "./MiniProfile";
 export default function Navbar() {
     const [collapse, setCollapse] = useState(false);
     const { data: session, status } = useSession();
+    const [previousScrollPos, setScrollPos] = useState(0);
+    const [visible, setVisible] = useState(true);
+    useEffect(() => {
+        window.addEventListener("scroll", onScroll);
+        return () => window.removeEventListener("scroll", onScroll);
+      });
+    function onScroll() {
+        const visible = previousScrollPos > window.pageYOffset;
+        setScrollPos(window.pageYOffset);
+        setVisible(visible);
+    }
     return (<>
-    <div className={`z-10 fixed left-1/2 top-0 -translate-x-1/2 max-w-4xl w-full`}>
+    <div className={`z-10 fixed left-1/2 top-0 -translate-x-1/2 max-w-4xl ${!visible ? " -translate-y-[110%] " : ""} transition-all w-full`}>
     
     <nav className={"sticky"}>
         <div className={"absolute -z-10 -inset-[1px] bg-gradient-to-t max-md:bg-gradient-to-r from-orange-400 to-red-500 md:rounded-bl-3xl md:rounded-br-3xl"}></div>
