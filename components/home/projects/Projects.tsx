@@ -1,5 +1,4 @@
 import Project from '@/components/home/projects/Project';
-import useMetaIAB from '@/lib/hooks/useMetaIAB';
 import { projects } from '@prisma/client';
 import { motion } from 'framer-motion';
 import { useQuery } from 'react-query';
