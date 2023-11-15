@@ -19,7 +19,7 @@ export default function Secret() {
             <BiExit/>
         </motion.button>
     </motion.div> : ""}
-    <div className={"w-full p-2"}>
+    <div className={"p-2"}>
     <button onClick={() => setEnabled(!enabled) } className={"w-fit text border p-1 rounded-md ml-1 dark:text-gray-100 text-gray-800 dark:border-orange-400 border-orange-700"}>
         <BiBible/>
     </button>
