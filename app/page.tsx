@@ -30,7 +30,6 @@ export default function Home() {
     <Tools/>
     <BlogPosts/>
     <Projects/>
-    <Secret/>
     <Footer/>
   </main>);
     
