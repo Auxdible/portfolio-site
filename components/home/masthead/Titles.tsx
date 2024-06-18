@@ -1,19 +1,39 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function Titles({ titles, duration }: { titles: string[], duration: number }) {
-    const [state, setState] = useState(0);
+    const [text1, setText1] = useState(0);
+    const [text2, setText2] = useState(-1);
+    const text1Ref = useRef<HTMLSpanElement | null>(null);
+    const text2Ref = useRef<HTMLSpanElement | null>(null)
     useEffect(() => {
-        const changeInterval = setInterval(() => {
-            setState(state+1 == titles.length ? 0 : state+1);
-        }, duration);
-        return () => clearInterval(changeInterval);
-    }, [duration, state, titles]);
+        const interval = setInterval(() => {
+              if (text2 <= text1) {
+                if (text1 >= titles.length-1) setTimeout(() => setText1(0), 750);
+                setText2((text1+1) > titles.length-1 ? 0 : text1+1);
+                text2Ref.current?.animate({ opacity: ['0', '1'], transform: ['translateX(-1000px)', 'translateX(-500px)'] }, { duration: 400, easing: 'ease-in-out', fill: 'forwards' })
+                text1Ref.current?.animate({ opacity: ['1', '0'], transform: ['translateX(0)', 'translateX(500px)'] }, { duration: 400, easing: 'ease-in-out', fill: 'forwards' })
+              } else if (text1 <= text2) {
+                if (text2 >= titles.length-1) setTimeout(() => setText2(0), 750);
+                setText1((text2+1) > titles.length-1 ? 0 : text2+1);
+                text1Ref.current?.animate({ opacity: ['0', '1'], transform: ['translateX(-500px)', 'translateX(0px)'] }, { duration: 400, easing: 'ease-in-out', fill: 'forwards' })
+                text2Ref.current?.animate({ opacity: ['1', '0'], transform: ['translateX(-500px)', 'translateX(0px)'] }, { duration: 400, easing: 'ease-in-out', fill: 'forwards' });
+            }  
+          
 
-    return (<span className={"overflow-hidden relative w-full block"}>
-        <div className={"flex transition-transform overflow-hidden w-[30rem] max-lg:w-screen"}>
-        {titles.map((i, index) => <p key={index} className={`text-4xl ease-out duration-500 max-md:text-4xl max-sm:text-2xl max-[412px]:text-xl font-montserrat py-2 transition-all flex-grow-0 flex-shrink-0 w-[30rem] max-lg:w-screen ${state == index ? `opacity-100` : `opacity-0`}`} style={{ transform: `translateX(-${state*100}%)`}}>{i}</p>)}
-        </div>
-    </span>)
+
+          
+          
+          
+          
+        }, 2400);
+        return () => clearInterval(interval);
+    }, [text1, text2, titles]);
+
+    return <div className="flex overflow-hidden w-[500px] h-16 font-montserrat whitespace-nowrap">
+    <span id="test1" className={"header text-4xl min-w-[500px]"} ref={text1Ref}>{titles[text1]}</span>
+    <span className={"header text-4xl min-w-[500px]"} ref={text2Ref}>{titles[text2]}</span>
+  </div>;
+
 }
