@@ -1,8 +1,8 @@
 import { Metadata } from 'next'
 import '../styles/globals.scss';
-
 import Providers from '@/components/Providers';
 import Navbar from '@/components/navbar/Navbar';
+import { Cursor } from './cursor';
 
 
 export const metadata: Metadata = {
@@ -32,6 +32,7 @@ export default function RootLayout({
       <body className={"dark:bg-black bg-gray-50"}>
         <div className='noise dark:noise-dark fixed -z-10 -top-1/2 -right-1/2 -bottom-1/2 -left-1/2 -translate-x-1/2 overflow-hidden w-[200%] h-[200vh]'/>
           <Providers>
+            <Cursor/>
             <Navbar/>
             {children}
           </Providers>

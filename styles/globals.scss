@@ -6,6 +6,15 @@
 :root {
     --noise-color: #0000ff;
 }
+*{
+    
+    cursor: none !important;
+}
+@media (max-width: 768px) {
+    * {
+        cursor: auto !important;
+    }
+}
 /* Import Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Montserrat:wght@300&family=Roboto:wght@300&family=Inter:wght@300&family=Raleway:wght@100&family=Source+Code+Pro&display=swap');
 @layer base {
@@ -18,7 +27,22 @@
     .noise-dark {
         filter: unset;
     }
-    
+    #outline {
+        @apply rounded-full max-md:hidden z-[5000] border border-white dark:border-black w-5 h-5;
+        position: fixed;
+        opacity: 0.9;
+        filter: invert(100%);
+        transition: width 0.5s, height 0.5s;
+        pointer-events: none;
+    }
+    #cursor {
+        @apply rounded-full max-md:hidden z-[5000] dark:bg-white bg-black;
+
+        width: 7.5px;
+        height: 7.5px;
+        pointer-events: none;
+        position: fixed;
+    }
 }
 @layer components {
     .text {
