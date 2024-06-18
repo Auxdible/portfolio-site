@@ -3,15 +3,11 @@ import '../styles/globals.scss';
 
 import Providers from '@/components/Providers';
 import Navbar from '@/components/navbar/Navbar';
-import { Session } from 'next-auth';
-import Footer from '@/components/Footer';
+
 
 export const metadata: Metadata = {
   title: 'Auxdible',
   description: 'The official portfolio site for the Full Stack Developer Auxdible.',
-  themeColor: {
-    color: "#ee884b"
-  },
   metadataBase: new URL(process.env.SITE_URL || `https://localhost:${process.env.PORT || 3000}`),
   icons: "/icon.png",
   openGraph: {
@@ -23,13 +19,6 @@ export const metadata: Metadata = {
     url: "https://auxdible.me",
     images: "/icon.png"
   },
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 1,
-    userScalable: false,
-
-  }
 };
 
 
@@ -41,6 +30,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={"dark:bg-black bg-gray-50"}>
+        <div className='noise dark:noise-dark fixed -z-10 -top-1/2 -right-1/2 -bottom-1/2 -left-1/2 -translate-x-1/2 overflow-hidden w-[200%] h-[200vh]'/>
           <Providers>
             <Navbar/>
             {children}
