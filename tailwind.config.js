@@ -17,7 +17,8 @@ module.exports = {
       fontFamily: {
         roboto: ["Roboto", "sans-serif"],
         montserrat: ["Montserrat", "sans-serif"],
-        raleway: ["Raleway", "sans-serif"],
+        raleway: "var(--font-raleway)",
+        lato: "var(--font-lato)",
         cursive: ["Dancing Script", "sans-serif"],
         code: ["Source Code Pro", "sans-serif"],
         inter: ["Inter", "sans-serif"],

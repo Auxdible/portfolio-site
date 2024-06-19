@@ -15,6 +15,9 @@
         cursor: auto !important;
     }
 }
+::selection {
+  @apply bg-orange-600 text-white;
+}
 /* Import Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Montserrat:wght@300&family=Roboto:wght@300&family=Inter:wght@300&family=Raleway:wght@100&family=Source+Code+Pro&display=swap');
 @layer base {

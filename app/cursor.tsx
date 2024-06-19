@@ -3,8 +3,8 @@ import React, { useEffect, useRef, useState } from 'react';
 
 export function Cursor() {
 
-    const [outlinePos, setOutlinePos] = useState({ x: 0, y: 0 });
-    const position = useRef({ x: 0, y: 0 });
+    const [outlinePos, setOutlinePos] = useState({ x: -100, y: -100 });
+    const position = useRef({ x: -100, y: -100 });
     const [hovered, setHovered] = useState(false);
     useEffect(() => {
         const handleMouseMove = (event: MouseEvent) => {
@@ -45,7 +45,7 @@ export function Cursor() {
             ></div>
             <div
                 id="outline"
-                style={{ transform: `translate(${outlinePos.x - 6}px, ${outlinePos.y - 6}px)`, top: hovered ? "-5px" : 0, left: hovered ? "-5px" : 0, height: hovered ? "30px" : "20px", width: hovered ? "30px" : "20px", borderWidth: hovered ? "2px" : "1px" }}
+                style={{ transform: `translate(${outlinePos.x - 6}px, ${outlinePos.y - 6}px)`, top: hovered ? "-10px" : 0, left: hovered ? "-10px" : 0, height: hovered ? "40px" : "20px", width: hovered ? "40px" : "20px", borderWidth: hovered ? "2px" : "1px" }}
             ></div>
         </>
     );
