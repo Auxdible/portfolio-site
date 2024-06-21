@@ -24,7 +24,7 @@ export default function Home() {
   }, [loaded]);
 
   return (<main className={`flex flex-col gap-20 ${loaded != "done" ? "h-screen w-screen overflow-hidden" : ""}`}>
-    {loaded != "done" ? <LoadingScreen loaded={loaded == "animation"}/> : ""}
+    {loaded != "done" ? <LoadingScreen loaded={loaded != "none"}/> : ""}
     <Masthead/>
     <AboutMe/>
     <Tools/>
