@@ -1,14 +1,13 @@
 "use client";
 
 import Footer from '@/components/Footer';
-import Secret from '@/components/Secret';
 import Masthead from '@/components/home/masthead/Masthead';
-import Tools from "@/components/home/tools/Tools";
 import AboutMe from "@/components/home/AboutMe";
 import Projects from "@/components/home/projects/Projects";
 import BlogPosts from '@/components/home/blog/BlogPosts';
 import { useEffect, useState } from 'react';
 import LoadingScreen from '@/components/home/LoadingScreen';
+import Certificates from '@/components/home/certifications/Certifications';
 
 
 export default function Home() {
@@ -27,7 +26,7 @@ export default function Home() {
     {loaded != "done" ? <LoadingScreen loaded={loaded != "none"}/> : ""}
     <Masthead/>
     <AboutMe/>
-    <Tools/>
+    <Certificates/>
     <BlogPosts/>
     <Projects/>
     <Footer/>
