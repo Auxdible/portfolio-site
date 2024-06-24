@@ -12,7 +12,10 @@ export default function Masthead() {
     const [mounted, setMounted] = useState(false);
     
     useEffect(() => {
-        if (!mounted) setMounted(true)
+        setInterval(() => {
+          if (!mounted) setMounted(true)
+        }, 3750)
+        
         if (mounted && typeState < "Auxdible".length) {
           setTimeout(() => {
             setTypeState(typeState + 1);
@@ -22,10 +25,10 @@ export default function Masthead() {
     function changeGradient() {
         setGradient({ randomColor1: '#' + Math.floor(Math.random()*16777215).toString(16), randomColor2: '#' + Math.floor(Math.random()*16777215).toString(16) })
     }
-    return (<header className="flex flex-row max-lg:flex-col min-h-screen w-full items-center mx-auto max-lg:my-16 overflow-hidden">
-    <div className={"flex flex-col justify-center gap-5 flex-1 flex-grow font-roboto text-2xl text w-full"}>
-        <section className={"flex flex-col gap-2 max-lg:text-center mx-auto w-fit"}>
-        <span className={"flex flex-row justify-start gap-0 text-9xl max-md:text-8xl max-sm:text-6xl pt-4 font-raleway w-[7ch] select-none max-lg:justify-center mx-auto"}>
+    return (<header className="flex flex-row max-xl:flex-col max-xl:justify-center xl:justify-end min-h-screen w-full items-center mx-auto overflow-hidden">
+    <div className={"flex flex-col justify-center gap-5 xl:flex-1 xl:flex-grow font-roboto text-2xl text w-full"}>
+        <section className={"flex flex-col gap-2 max-xl:text-center mx-auto w-fit"}>
+        <span className={"flex flex-row justify-start gap-0 text-9xl max-md:text-8xl max-sm:text-6xl pt-4 font-raleway w-[7ch] select-none max-xl:justify-center mx-auto"}>
           <h1 onClick={() => changeGradient()} className={"text-title font-extralight cursor-pointer"}>
             {"Auxdible".split("").slice(0, typeState)}
           </h1>
@@ -34,7 +37,7 @@ export default function Masthead() {
         <span className={`transition-all duration-500 delay-500 ${typeState >= "Auxdible".length ? "opacity-100 translate-x-0" : "opacity-0 translate-x-32"}`}><Titles duration={2000} titles={["🧑‍💻 Full Stack Developer", "☁️ AWS Cloud Practicioner", "🎨 Web Designer", "☕ Coffee Addict", "🤖 Discord Bot Developer", "🎮 Hobbyist Gamer"]}/></span>
         </section>
     </div>
-    <div className={"flex flex-1 flex-grow flex-shrink max-xl:w-screen xl:h-screen overflow-hidden"}>
+    <div className={"flex flex-1 xl:flex-grow flex-shrink max-xl:max-h-[500px] max-xl:w-screen xl:h-screen overflow-hidden"}>
       <div className={"w-full"}>
       { /* I have no idea what this is, how it works, or why it works. I just know it works. 
       That's all you and I need to know. Sure it makes a js pointerId undefined error that anyone can see in the logs. 

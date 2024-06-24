@@ -1,5 +1,6 @@
 import {motion} from 'framer-motion';
 import { Jobs } from './Jobs';
+import { Button } from '../ui/Button';
 export default function AboutMe() {
     return (<section className='gap-10 flex flex-col items-center relative'>
 
@@ -9,5 +10,13 @@ export default function AboutMe() {
           <span className="font-cursive"> design</span> and 
           <span className="font-code text-gray-900 p-1 dark:text-gray-200  leading-none">&lt;develop/&gt;</span>
         </span><Jobs/></span></motion.div>
+        <span className='flex w-full justify-between max-w-xl max-lg:flex-col max-lg:gap-10 max-lg:items-center'>
+        <motion.div>
+          <Button href='/contact-me' className='text-2xl font-bold'>Contact Me</Button>
+        </motion.div>
+        <motion.div>
+          <Button className='text-2xl font-bold'>My Resume</Button>
+        </motion.div>
+        </span>
       </section>)
 }

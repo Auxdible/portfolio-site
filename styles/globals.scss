@@ -78,11 +78,25 @@
     }
     .image-load {
         @apply -translate-y-full;
-        animation: imageLoad 0.5s ease-in-out 250ms 1 forwards;
+        animation: imageLoad 1s ease-in-out 250ms 1 forwards;
     }
     .text-load {
-        @apply opacity-0;
-        animation: fadeLeft 0.5s ease-in-out 750ms 1 forwards;
+        @apply opacity-0 block;
+        animation: fadeLeft 0.5s ease-in-out 1750ms 1 forwards;
+    }
+    .border-load {
+        @apply h-16;
+        scale: 0%;
+        animation: expand 0.5s ease-in-out 1300ms 1 forwards;
+    
+    }
+    .triangle {
+        clip-path: polygon(100% 0, 100% 100%, 0 0);
+
+    }
+    .triangle-reverse {
+        clip-path: polygon(0 0, 100% 100%, 0 100%);
+
     }
 }
 .canvas-wrapper {
@@ -168,12 +182,21 @@
 }
 @keyframes imageLoad {
     0% {
+        border-top: 3px solid white;
+        padding-top: 50px;
+        border-width: 0;
+        transform: translateY(100%);
+    }
+    50% {
+        border-width: 100%;
+        padding-top: 50px;
         transform: translateY(100%);
     }
     100% {
         transform: translateY(0)
     }
 }
+
 @keyframes noise {
     0% { transform: translate(0,0) }
     10% { transform: translate(-5%,-5%) }

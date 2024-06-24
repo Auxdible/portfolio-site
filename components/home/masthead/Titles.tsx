@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { useMediaQuery } from "react-responsive";
 
 export default function Titles({ titles }: { titles: string[], duration: number }) {
-    const mobile = useMediaQuery({ query: '(max-width: 1024px)' });
+    const mobile = useMediaQuery({ query: '(max-width: 1280px)' });
     const [text1, setText1] = useState(0);
     const [text2, setText2] = useState(-1);
     const text1Ref = useRef<HTMLSpanElement | null>(null);
@@ -29,13 +29,13 @@ export default function Titles({ titles }: { titles: string[], duration: number 
           
           
           
-        }, 2400);
+        }, 3300);
         return () => clearInterval(interval);
     }, [text1, text2, titles, mobile]);
 
-    return <div className="flex overflow-hidden lg:w-[500px] max-lg:w-screen h-16 font-montserrat whitespace-nowrap max-lg:self-center">
-    <span id="test1" className={"header text-4xl max-sm:text-2xl max-lg:min-w-[100vw] lg:min-w-[500px]"} ref={text1Ref}>{titles[text1]}</span>
-    <span className={"header text-4xl max-sm:text-2xl max-lg:min-w-[100vw] lg:min-w-[500px]"} ref={text2Ref}>{titles[text2]}</span>
+    return <div className="flex overflow-hidden xl:w-[500px] max-xl:w-screen h-16 font-montserrat whitespace-nowrap max-xl:self-center">
+    <span id="test1" className={"header text-4xl max-sm:text-2xl max-xl:min-w-[100vw] xl:min-w-[500px]"} ref={text1Ref}>{titles[text1]}</span>
+    <span className={"header text-4xl max-sm:text-2xl max-xl:min-w-[100vw] xl:min-w-[500px]"} ref={text2Ref}>{titles[text2]}</span>
   </div>;
 
 }
