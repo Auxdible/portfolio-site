@@ -8,6 +8,7 @@ import BlogPosts from '@/components/home/blog/BlogPosts';
 import { useEffect, useState } from 'react';
 import LoadingScreen from '@/components/home/LoadingScreen';
 import Certificates from '@/components/home/certifications/Certifications';
+import Tools from '@/components/home/tools/Tools';
 
 
 export default function Home() {
@@ -22,12 +23,12 @@ export default function Home() {
     }
   }, [loaded]);
 
-  return (<main className={`flex flex-col gap-20 ${loaded != "done" ? "h-screen w-screen overflow-hidden" : ""}`}>
+  return (<main className={`flex flex-col gap-10 ${loaded != "done" ? "h-screen w-screen overflow-hidden absolute top-0" : ""}`}>
     {loaded != "done" ? <LoadingScreen loaded={loaded != "none"}/> : ""}
     <Masthead/>
     <AboutMe/>
+    <Tools/>
     <Certificates/>
-    <BlogPosts/>
     <Projects/>
     <Footer/>
   </main>);
