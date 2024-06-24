@@ -15,12 +15,14 @@ export default function Home() {
   
   const [loaded, setLoaded] = useState<"none" | "animation" | "done">("none");
   useEffect(() => {
+    setTimeout(() => {
     if (loaded == "none") {
       setLoaded("animation");
       setTimeout(() => {
         setLoaded("done");
       }, 1000);
     }
+  }, 3000);
   }, [loaded]);
 
   return (<main className={`flex flex-col gap-10 ${loaded != "done" ? "h-screen w-screen overflow-hidden absolute top-0" : ""}`}>
