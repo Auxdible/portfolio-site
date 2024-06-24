@@ -16,7 +16,7 @@ type GLTFResult = GLTF & {
 
 type AdditionalProps = { randomColor1?: string, randomColor2?: string }
 export function Glasses(props: JSX.IntrinsicElements['group'] & AdditionalProps) {
-  const { nodes } = useGLTF('/glasses.gltf') as GLTFResult
+  const { nodes } = (useGLTF('/glasses.gltf') as unknown) as GLTFResult;
   const material = new THREE.ShaderMaterial({ side: THREE.DoubleSide, uniforms: {
     color1: {
       value: new THREE.Color(props.randomColor1 || "#fd644f")

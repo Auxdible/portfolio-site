@@ -4,6 +4,7 @@ import Providers from '@/components/Providers';
 import Navbar from '@/components/navbar/Navbar';
 import { Cursor } from './cursor';
 import { lato, raleway } from './fonts';
+import NoiseBackground from '@/components/NoiseBackground';
 
 
 export const metadata: Metadata = {
@@ -31,8 +32,8 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${raleway.variable} ${lato.variable}`}>
       <body className={"dark:bg-black bg-gray-50"}>
-        <div className='noise dark:noise-dark fixed -z-10 -top-1/2 -right-1/2 -bottom-1/2 -left-1/2 -translate-x-1/2 overflow-hidden w-[200%] h-[200vh]'/>
           <Providers>
+            <NoiseBackground/>
             <Cursor/>
             <Navbar/>
             {children}
