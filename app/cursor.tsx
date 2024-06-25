@@ -10,32 +10,39 @@ export function Cursor() {
         const handleMouseMove = (event: MouseEvent) => {
             position.current = { x: event.clientX - 3.25, y: event.clientY - 3.25 };
         };
+        const intervalId = setInterval(() => {
+
+            setOutlinePos(prevPos => ({
+                x: prevPos.x + ((position.current.x - prevPos.x) / 6),
+                y: prevPos.y + ((position.current.y - prevPos.y) / 6),
+            }));
+        }, 10);
+        window.addEventListener('mousemove', handleMouseMove);
+        return () => {
+            window.removeEventListener('mousemove', handleMouseMove);
+            clearInterval(intervalId);
+        };
+    })
+    useEffect(() => {
         const handleLinkMouseOver = () => { setHovered(true) };
         const handleLinkMouseOut = () => { setHovered(false) };
-        const links = document.querySelectorAll('a, button, *[onclick], *[href], *[role="button"], *[type="button"], *[type="submit"], *.cursor-pointer');
+        const links = document.querySelectorAll('a, button, *[onclick], *[href], *[role="button"], *[type="button"], *[type="submit"], .cursor-pointer');
         Array.from(links).forEach(element => {
             element.addEventListener('mouseover', handleLinkMouseOver);
             element.addEventListener('mouseout', handleLinkMouseOut);
         });
-        window.addEventListener('mousemove', handleMouseMove);
+       
 
 
-        const intervalId = setInterval(() => {
-            setOutlinePos(prevPos => ({
-                x: prevPos.x + ((position.current.x - prevPos.x) / 6) - (hovered ? 5 : 0),
-                y: prevPos.y + ((position.current.y - prevPos.y) / 6) - (hovered ? 5 : 0)
-            }));
-        }, 10);
+        
 
         return () => {
-            window.removeEventListener('mousemove', handleMouseMove);
             Array.from(links).forEach(link => {
                 link.removeEventListener('mouseover', handleLinkMouseOver);
                 link.removeEventListener('mouseout', handleLinkMouseOut);
             });
-            clearInterval(intervalId);
         };
-    }, []);
+    }, [hovered]);
 
     return (
         <>
