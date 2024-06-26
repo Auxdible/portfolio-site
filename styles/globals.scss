@@ -24,6 +24,9 @@
     ::selection {
       @apply bg-primary text-white;
     }
+    canvas {
+        touch-action: none;
+    }
     .noise {
         animation: noise 0.2s infinite;
         opacity:  1;
