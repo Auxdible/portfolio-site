@@ -5,7 +5,7 @@ import { SiCsharp, SiCss3, SiD3Dotjs, SiExpress, SiGit, SiGnubash, SiHtml5, SiJa
 import Certification from "./Certification";
 
 export default function Certificates() {
-    return (<section className="gap-20 flex flex-col items-center">
+    return (<section className="gap-20 flex flex-col items-center mt-20">
         <motion.h1 className="text-7xl tracking-wide max-md:text-5xl text-title font-raleway font-bold py-1 text-center">My Certifications</motion.h1>
         <ol className="relative border-s max-xl:ml-2 border-gray-400 dark:border-gray-700">
         <Certification
