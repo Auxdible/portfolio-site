@@ -32,7 +32,7 @@ export default function Masthead() {
       document.documentElement.style.setProperty('--color-primary', '#' + color1.padStart(6, '0'));
       document.documentElement.style.setProperty('--color-secondary', '#' + color2.padStart(6, '0'));
     }
-    return (<header className="flex flex-row max-xl:flex-col max-xl:justify-center xl:justify-end min-h-screen w-full items-center mx-auto overflow-hidden">
+    return (<header id="header" className="flex flex-row max-xl:flex-col max-xl:justify-center xl:justify-end min-h-screen w-full items-center mx-auto overflow-hidden">
     <div className={"flex flex-col justify-center gap-5 xl:flex-1 xl:flex-grow font-roboto text-2xl text w-full"}>
         <section className={"flex flex-col gap-2 max-xl:text-center mx-auto w-fit"}>
         <span className={"flex flex-row justify-start gap-0 text-9xl max-md:text-8xl max-sm:text-6xl pt-4 font-raleway w-[7ch] select-none max-xl:justify-center mx-auto"}>

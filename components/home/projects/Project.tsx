@@ -30,7 +30,15 @@ export default function Project({ project }: ProjectProps) {
             <span className="text-gray-500 font-bold font-raleway w-full">{project.date}</span>
             <h1 className="text-title text-5xl font-raleway font-bold w-full">{project.name}</h1>
             <p className="font-lato text-xl">{project.description}</p>
-            <span className="flex items-center justify-between gap-2 max-sm:flex-col w-full">
+            {project.skills && <ul className="flex gap-2 flex-wrap max-w-4xl my-2 max-md:justify-center">
+              {project.skills.map((i, index) => 
+              <>
+              <li key={index}>
+                <span className="flex items-center gap-2">{i}</span>
+              </li>
+              {index != (project.skills?.length || 0) -1 && "•"}</>)}
+            </ul>}
+            <span className="flex items-center justify-between gap-2 max-[270px]:flex-col w-full">
               {project.website_url && <Button href={project.website_url}>View Project</Button>}
               {project.source_url && <Button href={project.source_url ?? ""}>View Source</Button>}
             </span>

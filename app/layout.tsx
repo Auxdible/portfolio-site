@@ -30,7 +30,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${raleway.variable} ${lato.variable}`}>
+    <html lang="en" className={`${raleway.variable} ${lato.variable} scroll-smooth`}>
       <body className={"dark:bg-black bg-gray-50"}>
           <Providers>
             <NoiseBackground/>

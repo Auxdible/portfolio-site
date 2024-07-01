@@ -37,7 +37,7 @@ export default function Navbar() {
             </span>
         </div>
         
-        <Link className={"group flex-shrink-0"} href={"/"}>
+        <Link className={"group flex-shrink-0"} href={window.location.pathname == "/" ? "#header" : ""}>
             <Image
                 className={"group-hover:scale-110 group-focus:scale-110 transition-all"}
                 src='/icon.png'
