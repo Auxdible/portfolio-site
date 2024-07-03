@@ -14,6 +14,23 @@ const streamToString = (stream: Readable): Promise<string> => {
     });
 };
 
+export const getPostContent = cache<(id: string) => Promise<(BlogPostPayload & { content: string }) | null>>(async (id: string) => {
+    const list = new ListObjectsCommand({ Bucket: process.env.S3_BUCKET, Prefix: `posts/${id}.md` });
+    const get = new GetObjectCommand({ Bucket: process.env.S3_BUCKET, Key: `posts/${id}.md` });
+    
+    const object = await s3Client.send(get);
+    const { Body, Metadata  } = object;
+    if (!Body) return null;
+    return {
+        title: Metadata?.title || "Untitled",
+        description: Metadata?.description,
+        date: object.LastModified || Date.now(),
+        id: id,
+        author: Metadata?.author || "Unknown",
+        image: Metadata?.image_url,
+        content: await streamToString(Body as Readable),
+    };
+})
 export const latestBlogPosts = cache<() => Promise<BlogPostPayload[]>>(async () => {
     
     try {
@@ -34,7 +51,7 @@ export const latestBlogPosts = cache<() => Promise<BlogPostPayload[]>>(async () 
                 description: object.Metadata?.description,
                 date: object.LastModified || Date.now(),
                 id: i.Key?.replace('.md', '').replace("posts/", "") || "unknown",
-                author: i.Owner?.DisplayName || "Unknown",
+                author: object.Metadata?.author || "Unknown",
                 image: object.Metadata?.image_url,
             })
         }
