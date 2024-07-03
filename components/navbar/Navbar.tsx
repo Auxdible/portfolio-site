@@ -11,10 +11,16 @@ export default function Navbar() {
     const { data: session, status } = useSession();
     const [previousScrollPos, setScrollPos] = useState(0);
     const [visible, setVisible] = useState(true);
+    const [mounted, setMounted ] = useState(false);
+    useEffect(() => {
+        if (!mounted) setMounted(true);
+    }, [mounted]);
+    
     useEffect(() => {
         window.addEventListener("scroll", onScroll);
         return () => window.removeEventListener("scroll", onScroll);
       });
+    if (!mounted) return <></>;
     function onScroll() {
         const visible = previousScrollPos > window.pageYOffset;
         setScrollPos(window.pageYOffset);

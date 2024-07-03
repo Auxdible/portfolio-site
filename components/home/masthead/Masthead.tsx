@@ -14,11 +14,9 @@ export default function Masthead() {
     const [mounted, setMounted] = useState(false);
     
     useEffect(() => {
-        setInterval(() => {
-          if (!mounted) setMounted(true)
-        }, 3750)
+        if (!mounted) setMounted(true);
         
-        if (mounted && typeState < "Auxdible".length) {
+        if (typeState < "Auxdible".length) {
           setTimeout(() => {
             setTypeState(typeState + 1);
           }, 225)
