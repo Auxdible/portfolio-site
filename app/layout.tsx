@@ -5,6 +5,8 @@ import Navbar from '@/components/navbar/Navbar';
 import { Cursor } from './cursor';
 import { lato, raleway } from './fonts';
 import NoiseBackground from '@/components/NoiseBackground';
+import Loading from './loading';
+import { Suspense } from 'react';
 
 
 export const metadata: Metadata = {
@@ -36,7 +38,7 @@ export default function RootLayout({
             <NoiseBackground/>
             <Cursor/>
             <Navbar/>
-            {children}
+            <Suspense fallback={<Loading />}>{children}</Suspense>
           </Providers>
         </body>
     </html>

@@ -1,12 +1,10 @@
+"use client";
 import Project from '@/components/home/projects/Project';
-import { projects } from '@prisma/client';
 import { motion } from 'framer-motion';
 import { SiExpress, SiMongodb, SiNextdotjs, SiNodedotjs, SiPassport, SiReact, SiTailwindcss, SiThreedotjs } from 'react-icons/si';
-import { useQuery } from 'react-query';
 
 export default function Projects(){
-    const { data: projects, status: projects_status, error: projects_error } = useQuery(["projects"], async () => await fetch("/api/public/projects").then(async (data) => await data.json().catch(() => [])).catch(() => []));
-    return (<div className={"flex flex-col mt-60 w-full"}>
+    return (<div className={"flex flex-col mt-60d w-full"}>
     <motion.h1 initial={{ opacity: 0, transform: "translateY(-8rem)" }}
   whileInView={{ opacity: 1, transform: "translateY(0)" }} transition={{ duration: 1 }} viewport={{ once: true }} className={"text-7xl max-md:text-5xl text-center font-raleway text-title w-full py-2 font-bold"}>My Projects</motion.h1>
     <section className={"overflow-hidden"}>

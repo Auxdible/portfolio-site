@@ -33,7 +33,7 @@
         filter: invert(100%);
       }
     .noise-dark {
-        filter: unset;
+        filter: invert(40%);
     }
     #outline {
         @apply rounded-full max-md:hidden z-[5000] border border-white dark:border-black;
@@ -100,6 +100,9 @@
     .triangle-reverse {
         clip-path: polygon(0 0, 100% 100%, 0 100%);
 
+    }
+    .load-class {
+        @apply h-screen w-screen overflow-hidden absolute top-0;
     }
 }
 .canvas-wrapper {

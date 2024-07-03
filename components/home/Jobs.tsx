@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useRef, useState } from 'react';
 
 const names = ["websites", "Discord bots", "plugins", "cloud applications", "dashboards", "mods", "community projects"];

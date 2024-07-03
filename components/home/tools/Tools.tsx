@@ -1,3 +1,5 @@
+"use client";
+
 import { SiAmazonaws, SiAxios, SiBootstrap, SiChai, SiCsharp, SiCss3, SiD3Dotjs, SiDocker, SiExpress, SiFigma, SiGit, SiGithub, SiGithubactions, SiGitpod, SiGnubash, SiHtml5, SiIntellijidea, SiJavascript, SiJquery, SiKubernetes, SiMocha, SiMongodb, SiMongoose, SiMysql, SiNextdotjs, SiNginx, SiNodedotjs, SiNpm, SiPostgresql, SiPrisma, SiReact, SiRedux, SiSass, SiTailwindcss, SiThreedotjs, SiTypescript, SiVisualstudio, SiVisualstudiocode, SiWebstorm } from 'react-icons/si';
 import { FaJava, FaPython } from 'react-icons/fa';
 import { motion } from 'framer-motion';

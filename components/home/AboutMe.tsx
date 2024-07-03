@@ -1,3 +1,4 @@
+"use client";
 import {motion} from 'framer-motion';
 import { Jobs } from './Jobs';
 import { Button } from '../ui/Button';
