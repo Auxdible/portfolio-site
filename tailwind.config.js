@@ -8,6 +8,7 @@ module.exports = {
     
   ],
   darkMode: ['class'],
+
   theme: {
     extend: {
       backgroundImage: {
@@ -53,7 +54,9 @@ module.exports = {
         instagram2: "#E1306C",
         instagram3: "#F77737",
         twitch: "#9146FF",
-        steam: "#171A21"
+        steam: "#171A21",
+        theme: "var(--color-theme)",
+        reverse: "var(--color-reverse)",
       }
     },
   },

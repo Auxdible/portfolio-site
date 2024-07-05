@@ -1,5 +1,6 @@
 "use client";
 
+import { Button } from "@/components/ui/Button";
 import useMetaIAB from "@/lib/hooks/useMetaIAB";
 import { BlogPostPayload } from "@/lib/types/BlogPostPayload";
 import { posts } from "@prisma/client";
@@ -18,7 +19,8 @@ export default function LatestBlogPost({ post }: PostProps) {
         setLinkCopied(true);
         setTimeout(() => setLinkCopied(false), 3000);
     }
-    return (<div className={`relative z-0 mx-auto h-96 max-md:h-48 w-full max-w-2xl mb-64 max-md:mb-96 max-md:px-2${isIAB ? " max-md:mb-[35rem]" : ""} `} >
+    return (<div className={`relative z-0 h-96 max-md:h-48 w-full max-w-2xl mb-64 max-md:mb-96 max-md:px-2${isIAB ? " max-md:mb-[35rem]" : ""} `} >
+    <motion.h1 className="text-6xl mb-5 tracking-wide max-md:text-5xl text-title font-raleway font-bold py-1 text-center pb-4 border-b border-gray-400 dark:border-gray-800">Featured Post</motion.h1>
     {post.image ? <Link href={`/blog/${post.id}`} className={"absolute bg-contain bg-no-repeat bg-center transition-all h-96 max-md:h-48 w-[724px] max-md:w-full object-center -translate-x-1/2 left-1/2 rounded-xl hover:scale-105 dark:bg-gray-900 bg-gray-200"} style={
         {
             backgroundImage: `url(${post.image || ""})`,
@@ -29,7 +31,7 @@ export default function LatestBlogPost({ post }: PostProps) {
     whileInView={{ opacity: 1 }} 
     transition={{ duration: 1.0 }} 
     viewport={{ once: true }} className={`relative translate-y-1/2 max-md:translate-y-1/4${isIAB ? " max-md:translate-y-[10%]" : ""} top-1/2 left-1/2 -translate-x-1/2 shadow-2xl rounded-xl`}>
-<div className={"absolute -z-10 -inset-[2px] bg-gradient-to-t max-md:bg-gradient-to-r from-orange-400 to-red-500 rounded-xl"}></div>
+    <div className={"absolute -z-10 -inset-[2px] bg-gradient-to-t max-md:bg-gradient-to-r from-primary to-secondary rounded-xl"}></div>
     <div
     className={"w-full flex flex-col dark:bg-black bg-white mx-auto font-roboto text-2xl text " +
     "transition-all rounded-xl text-center"}>
@@ -37,19 +39,13 @@ export default function LatestBlogPost({ post }: PostProps) {
     
     
     
-    <h1 className={"text-4xl max-sm:text-xl font-montserrat text-title"}>{post.title}</h1>
-    <p className={"block font-roboto my-2 break-words text-xl"}>{post.description ?? ""}</p>
+    <h1 className={"text-4xl py-1 max-sm:text-3xl font-raleway text-title font-bold"}>{post.title}</h1>
+    <p className={"block font-lato my-2 break-words text-2xl"}>{post.description ?? ""}</p>
     <p className={"flex flex-row font-roboto justify-center text-lg dark:text-gray-400 text-gray-600 my-1 gap-1"}>{new Date(post.date || Date.now()).toISOString().split('T')[0]} • <span className={"flex flex-row justify-center items-center gap-1"}><BsShieldCheck/> {post.author}</span></p>
-    <span className={"flex flex-row gap-4 w-fit mx-auto"}>
-    <Link href={`/blog/${post.id}`} className={"flex group relative z-0 items-center justify-center flex-1 flex-grow flex-shrink mx-auto group p-2 transition-all rounded-lg font-roboto text-lg my-2"}>
-       <div className={"absolute inset-0 dark:bg-black bg-white rounded-lg"}></div>
-       <div className={"absolute -z-10 -inset-[2px] bg-gradient-to-t from-orange-400 to-red-500 rounded-lg transition-all"}></div>
-       <span className={"flex flex-row gap-2 items-center z-10 hover:text-xl hover:text-title transition-all"}><BsBook className={"text"}/> Read More</span></Link>
-       {window.isSecureContext ? 
-       <button onClick={() => copyLink()} className={"flex w-fit h-fit group relative z-0 items-center justify-center group p-2 transition-all rounded-lg font-roboto text-lg my-2"}>
-       <div className={"absolute inset-0 dark:bg-black bg-white rounded-lg"}></div>
-       <div className={"absolute -z-10 -inset-[2px] bg-gradient-to-t from-orange-400 to-red-500 rounded-lg transition-all"}></div>
-       <span className={"flex flex-row gap-2 items-center z-10 hover:text-xl hover:text-title transition-all"}><BsShare className={`text ${linkCopied ? "fill-green-500" : ""}`}/> {linkCopied ? "Copied!" : "Copy Link"}</span></button> : ""}
+    <span className={"flex items-center gap-4 w-fit mx-auto my-2"}>
+       <Button href={`/blog/${post.id}`}><span className="flex gap-2 items-center text-lg font-bold"><BsBook className={"text group-hover:fill-theme fill-reverse duration-700 transition-all"}/> Read More</span></Button>
+       {typeof window !== 'undefined' && window.isSecureContext ? 
+       <Button onClick={() => copyLink()}><span className="flex gap-2 items-center text-lg font-bold"><BsShare className={`text group-hover:fill-theme fill-reverse duration-700 transition-all`}/> {linkCopied ? "Copied!" : "Copy Link"}</span></Button> : ""}
        
     </span>
     

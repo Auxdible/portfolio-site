@@ -11,7 +11,14 @@
         --noise-color: #0000ff;
         --color-primary: #f97316;
         --color-secondary: #ef4444;
+        --color-theme: #ffffff;
+        --color-reverse: #000000;
     }
+    :root[class~="dark"] {
+        --color-theme: #000000;
+        --color-reverse: #ffffff;
+    }
+
     *{
         cursor: none !important;
     }

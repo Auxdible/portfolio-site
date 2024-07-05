@@ -60,8 +60,7 @@ export const fetchBlogPosts = cache<(options: BlogPostFetchOptions) => Promise<B
                 image: object.Metadata?.image_url,
             })
         }
-        console.log(posts);
-        return posts;
+        return posts.splice(0, options.limit);
          
     } catch (x) {
         console.error(x);
