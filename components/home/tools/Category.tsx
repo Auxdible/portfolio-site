@@ -1,11 +1,13 @@
 "use client";
 
 import { IconType } from "react-icons/lib";
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { useMediaQuery } from "react-responsive";
 import { motion } from 'framer-motion';
 import Link from "next/link";
 import useMetaIAB from "@/lib/hooks/useMetaIAB";
+import { CursorContext } from "@/context/CursorContext";
+import { hoverable } from "@/components/CursorProvider";
 interface CategoryProps {
     readonly Icon: IconType, 
     readonly title: string, 
@@ -14,12 +16,11 @@ interface CategoryProps {
 }
 export default function Category({ Icon, title, items, delay }: CategoryProps) {
     const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
-    const xs = useMediaQuery({ query: '(max-width: 280px)' });
     const [toggle, setToggled] = useState(false)
-    const [isIAB] = useMetaIAB();
+    const { setHovered } = useContext(CursorContext);
     return (
         <article className="lg:h-80">
-        <div onClick={() => setToggled(!toggle)} className={`cursor-pointer relative mx-auto flex flex-col gap-2 text text-lg items-center text-center font-extralight group dark:bg-black bg-white w-full ${toggle ? "h-80 max-sm:h-80" : `h-32 hover:h-80`} transition-all py-2 rounded-xl`}>
+        <div {...hoverable(setHovered)} onClick={() => setToggled(!toggle)} className={`cursor-pointer relative mx-auto flex flex-col gap-2 text text-lg items-center text-center font-extralight group dark:bg-black bg-white w-full ${toggle ? "h-80 max-sm:h-80" : `h-32 hover:h-80`} transition-all py-2 rounded-xl`}>
         <div className={"absolute -z-10 -inset-[1px] bg-gradient-to-t from-primary to-secondary rounded-xl"}></div>
         <motion.span 
         className={"relative w-12 md:h-12"}

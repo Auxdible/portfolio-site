@@ -2,17 +2,19 @@
 
 import { OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
-import React, { Suspense, useEffect, useState } from "react";
+import React, { Suspense, useContext, useEffect, useState } from "react";
 import { Glasses } from "./Glasses";
 import Titles from "./Titles";
 import { randColor } from "@/lib/randColor";
 import { Button } from "@/components/ui/Button";
+import { CursorContext } from "@/context/CursorContext";
+import { hoverable } from "@/components/CursorProvider";
 const defaultGradient = { randomColor1: "#f97316", randomColor2: "#ef4444"};
 export default function Masthead() {
     const [gradient, setGradient] = useState(defaultGradient);
     const [typeState, setTypeState] = useState(0);
     const [mounted, setMounted] = useState(false);
-    
+    const { setHovered } = useContext(CursorContext);
     useEffect(() => {
         if (!mounted) setMounted(true);
         
@@ -34,7 +36,7 @@ export default function Masthead() {
     <div className={"flex flex-col justify-center gap-5 xl:flex-1 xl:flex-grow font-roboto text-2xl text w-full"}>
         <section className={"flex flex-col gap-2 max-xl:text-center mx-auto w-fit"}>
         <span className={"flex flex-row justify-start gap-0 text-9xl max-md:text-8xl max-sm:text-6xl pt-4 font-raleway w-[7ch] select-none max-xl:justify-center mx-auto"}>
-          <h1 onClick={() => changeGradient()} className={"font-extralight cursor-pointer text-title"}>
+          <h1 {...hoverable(setHovered)} onClick={() => changeGradient()} className={"font-extralight cursor-pointer text-title"}>
             {"Auxdible".split("").slice(0, typeState)}
           </h1>
           {mounted && typeState < "Auxdible".length ? <span className={"animate-blink"}>_</span> : ""}
@@ -42,7 +44,10 @@ export default function Masthead() {
         
         <span className={`transition-all duration-500 delay-500 ${typeState >= "Auxdible".length ? "opacity-100 translate-x-0" : "opacity-0 translate-x-32"}`}><Titles duration={2000} titles={["🧑‍💻 Full Stack Developer", "☁️ AWS Cloud Practicioner", "🎨 Web Designer", "☕ Coffee Addict", "🤖 Discord Bot Developer", "🎮 Hobbyist Gamer"]}/></span>
         {gradient.randomColor1 != defaultGradient.randomColor1 || gradient.randomColor2 != defaultGradient.randomColor2 ? 
-        <Button onClick={() => changeGradient(defaultGradient.randomColor1, defaultGradient.randomColor2)} className="w-fit text-lg px-1.5 py-0.5 max-xl:mx-auto cursor-pointer">Reset Colors 😔</Button> : ""}
+        <Button onClick={() => {
+          changeGradient(defaultGradient.randomColor1, defaultGradient.randomColor2);
+          if (setHovered) setHovered(false); 
+          }} className="w-fit text-lg px-1.5 py-0.5 max-xl:mx-auto cursor-pointer">Reset Colors 😔</Button> : ""}
         </section>
     </div>
     <div className={"flex flex-1 xl:flex-grow flex-shrink max-xl:max-h-[500px] max-xl:w-screen xl:h-screen overflow-hidden"}>

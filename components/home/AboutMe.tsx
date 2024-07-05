@@ -17,7 +17,7 @@ export default function AboutMe() {
           <Button href='/contact-me' className='text-2xl font-bold'>Contact Me</Button>
         </motion.div>
         <motion.div>
-          <Button className='text-2xl font-bold'>My Resume</Button>
+          <Button target='_blank' href={process.env.NEXT_PUBLIC_CV_URL} className='text-2xl font-bold'>My CV</Button>
         </motion.div>
         </span>
       </section>)
