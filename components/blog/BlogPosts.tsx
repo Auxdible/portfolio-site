@@ -1,7 +1,6 @@
 "use server";
 
 import { BlogPostFetchOptions, fetchBlogPosts } from "@/lib/clients/s3";
-import { BlogPostPayload } from "@/lib/types/BlogPostPayload";
 
 interface BlogPostProps {
     readonly options?: BlogPostFetchOptions;
