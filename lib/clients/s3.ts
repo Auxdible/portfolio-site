@@ -1,9 +1,19 @@
-import { GetObjectCommand, ListBucketsCommand, ListObjectsCommand, ListObjectsCommandOutput, S3Client } from "@aws-sdk/client-s3";
+import { GetObjectCommand, ListObjectsCommand, ListObjectsCommandOutput, S3Client } from "@aws-sdk/client-s3";
 import { Readable } from "stream";
 import { BlogPostPayload } from "../types/BlogPostPayload";
 import { cache } from "react";
+import { fromTemporaryCredentials } from "@aws-sdk/credential-providers";
 
-const s3Client = new S3Client({ region: process.env.S3_REGION });
+const s3Client = new S3Client({ region: process.env.S3_REGION, credentials: fromTemporaryCredentials(
+    {
+        masterCredentials: fromTemporaryCredentials({ params: { RoleArn: process.env.AWS_ROLE_ARN } }),
+        params: {
+            RoleArn: process.env.AWS_ROLE_ARN,
+            RoleSessionName: "auxdible-blog",
+        },
+        clientConfig: { region: process.env.S3_REGION },
+    },
+) });
 
 const streamToString = (stream: Readable): Promise<string> => {
     const chunks: Uint8Array[] = [];
