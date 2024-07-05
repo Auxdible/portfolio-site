@@ -1,4 +1,4 @@
-import { GetObjectCommand, ListBucketsCommand, ListObjectsCommand, S3Client } from "@aws-sdk/client-s3";
+import { GetObjectCommand, ListBucketsCommand, ListObjectsCommand, ListObjectsCommandOutput, S3Client } from "@aws-sdk/client-s3";
 import { Readable } from "stream";
 import { BlogPostPayload } from "../types/BlogPostPayload";
 import { cache } from "react";
@@ -31,16 +31,21 @@ export const getPostContent = cache<(id: string) => Promise<(BlogPostPayload & {
         content: await streamToString(Body as Readable),
     };
 })
-export const latestBlogPosts = cache<() => Promise<BlogPostPayload[]>>(async () => {
+
+const listBlogObjects = cache<() => Promise<ListObjectsCommandOutput>>(async () => {
+    const objects = new ListObjectsCommand({ Bucket: process.env.S3_BUCKET, Prefix: "posts/" });
+    const response = await s3Client.send(objects);
+        
+    return { ...response, Contents: response.Contents?.filter((i) => i.Key?.endsWith(".md")).sort((a,b) => (b.LastModified?.valueOf() ?? 0) - (a.LastModified?.valueOf() ?? 0)) };
+})
+export type BlogPostFetchOptions = { limit?: number };
+export const fetchBlogPosts = cache<(options: BlogPostFetchOptions) => Promise<BlogPostPayload[]>>(async (options: BlogPostFetchOptions) => {
     
     try {
-        const objects = new ListObjectsCommand({ Bucket: process.env.S3_BUCKET, MaxKeys: 5, Prefix: "posts/", });
-        const response = await s3Client.send(objects);
-        
-        const { Contents } = response;
+        const { Contents } = await listBlogObjects();
         const posts = [];
         if (!Contents) return [];
-        for (const i of Contents.filter((i) => i.Key?.endsWith(".md"))) {
+        for (const i of Contents) {
             const get = new GetObjectCommand({ Bucket: process.env.S3_BUCKET, Key: i.Key });
             const object = await s3Client.send(get);
             const id = i.Key?.replace('.md', '');

@@ -40,7 +40,7 @@ export default function BlogPreview({ post }: PostProps) {
        <div className={"absolute inset-0 dark:bg-black bg-white rounded-lg"}></div>
        <div className={"absolute -z-10 -inset-[2px] bg-gradient-to-t from-orange-400 to-red-500 rounded-lg transition-all"}></div>
        <span className={"flex flex-row gap-2 items-center z-10 hover:text-xl hover:text-title transition-all"}><BsBook className={"text"}/> Read More</span></Link>
-       {window && window?.isSecureContext ? 
+       {typeof window !== 'undefined' && window?.isSecureContext ? 
        <button onClick={() => copyLink()} className={"flex w-fit h-fit group relative z-0 items-center justify-center group p-2 transition-all rounded-lg font-roboto text-lg my-2"}>
        <div className={"absolute inset-0 dark:bg-black bg-white rounded-lg"}></div>
        <div className={"absolute -z-10 -inset-[2px] bg-gradient-to-t from-orange-400 to-red-500 rounded-lg transition-all"}></div>
