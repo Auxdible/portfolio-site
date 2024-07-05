@@ -38,7 +38,7 @@ export default function Project({ project }: ProjectProps) {
               </li>
               {index != (project.skills?.length || 0) -1 && "•"}</>)}
             </ul>}
-            <span className="flex items-center justify-between gap-2 max-[270px]:flex-col w-full">
+            <span className={`flex items-center ${!project.website_url || !project.source_url ? "justify-center" : "justify-between"} gap-2 max-[270px]:flex-col w-full`}>
               {project.website_url && <Button href={project.website_url}>View Project</Button>}
               {project.source_url && <Button href={project.source_url ?? ""}>View Source</Button>}
             </span>

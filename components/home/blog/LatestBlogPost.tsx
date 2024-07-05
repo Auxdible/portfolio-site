@@ -18,12 +18,12 @@ export default function LatestBlogPost({ post }: PostProps) {
     const [isIAB] = useMetaIAB();
     const { setHovered } = useContext(CursorContext);
     function copyLink() {
-        navigator.clipboard.writeText(`https://auxdible.me/blog/${post.id}`)
+        navigator.clipboard.writeText(`${process.env.NEXT_PUBLIC_SITE_URL}/blog/${post.id}`)
         setLinkCopied(true);
         setTimeout(() => setLinkCopied(false), 3000);
     }
     return (<div className={`relative z-0 h-96 max-md:h-48 w-full max-w-2xl mb-64 max-md:mb-96 max-md:px-2${isIAB ? " max-md:mb-[35rem]" : ""} `} >
-    <motion.h1 className="text-6xl mb-5 tracking-wide max-md:text-5xl text-title font-raleway font-bold py-1 text-center pb-4 border-b border-gray-400 dark:border-gray-800">Featured Post</motion.h1>
+    <motion.h1 className="text-6xl mb-5 tracking-wide max-md:text-5xl text-title font-raleway font-bold py-1 text-center">Featured Post</motion.h1>
     {post.image ? <Link href={`/blog/${post.id}`} {...hoverable(setHovered)} className={"absolute bg-contain bg-no-repeat bg-center transition-all h-96 max-md:h-48 w-[724px] max-md:w-full object-center -translate-x-1/2 left-1/2 rounded-xl hover:scale-105 dark:bg-gray-900 bg-gray-200"} style={
         {
             backgroundImage: `url(${post.image || ""})`,
