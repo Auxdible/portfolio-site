@@ -3,7 +3,7 @@ import { Readable } from "stream";
 import { BlogPostPayload } from "../types/BlogPostPayload";
 import { cache } from "react";
 
-const s3Client = new S3Client({ region: process.env.S3_REGION, credentials: { accessKeyId: process.env.AWS_ACCESS_KEY ?? "", secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY ?? "" }});
+const s3Client = new S3Client({ region: process.env.S3_REGION, credentials: { accessKeyId: process.env.AWS_ACCESS_KEY_NAME ?? "", secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY ?? "" }});
 
 const streamToString = (stream: Readable): Promise<string> => {
     const chunks: Uint8Array[] = [];
