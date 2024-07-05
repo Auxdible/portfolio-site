@@ -1,10 +1,10 @@
 "use server";
 
-import { latestBlogPosts } from "@/lib/clients/s3";
+import { fetchBlogPosts } from "@/lib/clients/s3";
 import BlogPreview from "./BlogPreview";
 import { BlogPostPayload } from "@/lib/types/BlogPostPayload";
 export async function BlogPostLoader() {
-    const posts = await latestBlogPosts();
+    const posts = await fetchBlogPosts({ limit: 10 });
     console.log("POSTS RECEIVED");
     console.log(posts);
     return <>{posts ? posts.map((post: BlogPostPayload, index: number) => <BlogPreview key={post.id} post={post} />) 

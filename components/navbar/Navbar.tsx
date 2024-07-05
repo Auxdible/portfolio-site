@@ -6,12 +6,15 @@ import { useState, useEffect } from 'react';
 import { BiLoaderCircle, BiMenuAltLeft } from 'react-icons/bi';
 import { useSession } from "next-auth/react";
 import MiniProfile from "./MiniProfile";
+import { usePathname } from "next/navigation";
 export default function Navbar() {
     const [collapse, setCollapse] = useState(false);
     const { data: session, status } = useSession();
     const [previousScrollPos, setScrollPos] = useState(0);
     const [visible, setVisible] = useState(true);
     const [mounted, setMounted ] = useState(false);
+    const pathname = usePathname();
+
     useEffect(() => {
         if (!mounted) setMounted(true);
     }, [mounted]);
@@ -43,7 +46,7 @@ export default function Navbar() {
             </span>
         </div>
         
-        <Link className={"group flex-shrink-0"} href={window.location.pathname == "/" ? "#header" : ""}>
+        <Link className={"group flex-shrink-0"} href={pathname == "/" ? "#header" : "/"}>
             <Image
                 className={"group-hover:scale-110 group-focus:scale-110 transition-all"}
                 src='/icon.png'

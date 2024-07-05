@@ -1,4 +1,3 @@
-import { motion } from "framer-motion"
 import { BlogPostLoader } from "./BlogPostLoader";
 
 export default function BlogPosts() {
