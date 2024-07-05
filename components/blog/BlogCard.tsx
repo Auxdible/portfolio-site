@@ -12,7 +12,7 @@ export default function BlogCard({ post }: PostProps) {
     const [linkCopied, setLinkCopied] = useState(false);
     const [isIAB] = useMetaIAB();
     function copyLink() {
-        navigator.clipboard.writeText(`https://auxdible.me/blog/${post.id}`)
+        navigator.clipboard.writeText(`${process.env.NEXT_PUBLIC_SITE_URL}/blog/${post.id}`)
         setLinkCopied(true);
         setTimeout(() => setLinkCopied(false), 3000);
     }

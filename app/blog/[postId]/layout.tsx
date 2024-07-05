@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: LayoutProps): Promise<Metadat
               siteName: "Auxdible's Portfolio",
               countryName: "United States",
               description: post.post_description,
-              url: process.env.SITE_URL + "/blog/" + postId,
+              url: process.env.NEXT_PUBLIC_SITE_URL + "/blog/" + postId,
           }
         } : {})
       };
