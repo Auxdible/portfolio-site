@@ -9,12 +9,12 @@ interface CertificationData {
     readonly date: string;
     readonly certification_url?: string;
     readonly skills: JSX.Element[];
-    readonly key: any;
+
 }
 
-export default function Certification({ name, author, date, certification_url, skills, key }: CertificationData) {
+export default function Certification({ name, author, date, certification_url, skills }: CertificationData) {
     const { setHovered } = useContext(CursorContext);
-    return <section  className="mb-10 ms-4 flex flex-col flex-grow">
+    return <section className="mb-10 ms-4 flex flex-col flex-grow">
     <div className="absolute w-3 h-3 bg-gray-300 rounded-full mt-1.5 -start-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
     <time className="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">{date}</time>
     <h3 className="text-xl font-semibold text-gray-900 dark:text-white">{name}</h3>
