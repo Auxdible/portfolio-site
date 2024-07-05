@@ -1,3 +1,6 @@
+import { hoverable } from "@/components/CursorProvider";
+import { CursorContext } from "@/context/CursorContext";
+import { useContext } from "react";
 import { BiLinkExternal } from "react-icons/bi";
 
 interface CertificationData {
@@ -10,7 +13,8 @@ interface CertificationData {
 }
 
 export default function Certification({ name, author, date, certification_url, skills, key }: CertificationData) {
-    return <li key={key} className="mb-10 ms-4 flex flex-col flex-grow">
+    const { setHovered } = useContext(CursorContext);
+    return <section  className="mb-10 ms-4 flex flex-col flex-grow">
     <div className="absolute w-3 h-3 bg-gray-300 rounded-full mt-1.5 -start-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
     <time className="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">{date}</time>
     <h3 className="text-xl font-semibold text-gray-900 dark:text-white">{name}</h3>
@@ -25,6 +29,6 @@ export default function Certification({ name, author, date, certification_url, s
         </li>
         </>)}
     </ul>
-    <a href={certification_url} className="text-gray-600 dark:text-gray-400 flex items-center gap-2 mt-2 underline-offset-4 decoration-dotted underline w-fit">View Credential <BiLinkExternal/></a>
-</li>
+    <a {...hoverable(setHovered)} href={certification_url} className="text-gray-600 dark:text-gray-400 flex items-center gap-2 mt-2 underline-offset-4 decoration-dotted underline w-fit">View Credential <BiLinkExternal/></a>
+</section>
 }

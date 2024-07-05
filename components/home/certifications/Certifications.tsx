@@ -8,7 +8,7 @@ export default function Certificates() {
     return (<section className="gap-20 flex flex-col items-center mt-20">
         <motion.h1 className="text-7xl tracking-wide max-md:text-5xl text-title font-raleway font-bold py-1 text-center">My Certifications</motion.h1>
         <ol className="relative border-s max-xl:ml-2 border-gray-400 dark:border-gray-700">
-        <Certification
+        <li><Certification
         name="Information Security"
         author={<><FaFreeCodeCamp/> freeCodeCamp</>}
         date="March 2024"
@@ -25,18 +25,18 @@ export default function Certificates() {
             <>Back-End Web Development</>,
             <><SiGit/> Git</>
         ]}
-        key={0}
-        certification_url="https://freecodecamp.org/certification/Auxdible/information-security-v7"/>           
-       <Certification
+        key={"0"}
+        certification_url="https://freecodecamp.org/certification/Auxdible/information-security-v7"/></li>      
+       <li><Certification
         name="Scientific Computing with Python"
         author={<><FaFreeCodeCamp/> freeCodeCamp</>}
         date="March 2024"
         skills={[
             <><SiPython/> Python</>
         ]}
-        key={1}
-        certification_url="https://freecodecamp.org/certification/Auxdible/scientific-computing-with-python-v7"/>  
-        <Certification
+        key={"1"}
+        certification_url="https://freecodecamp.org/certification/Auxdible/scientific-computing-with-python-v7"/></li>
+        <li><Certification
         name="AWS Certified Cloud Practicioner"
         author={<><FaAws/> Amazon Web Services (AWS)</>}
         date="Jan 2024"
@@ -49,18 +49,18 @@ export default function Certificates() {
             <>Serverless Computing</>,
             <>Cloud Applications</>
         ]}
-        key={2}
-        certification_url="https://www.credly.com/badges/e33259a7-13a2-405a-9f88-55955affc19d/"/>  
-        <Certification
+        key={"2"}
+        certification_url="https://www.credly.com/badges/e33259a7-13a2-405a-9f88-55955affc19d/"/></li>
+        <li><Certification
         name="Foundational C# with Microsoft"
         author={<><FaFreeCodeCamp/> freeCodeCamp | <FaMicrosoft/> Microsoft</>}
         date="October 2023"
         skills={[
             <><SiCsharp/> C#</>,
         ]}
-        key={3}
-        certification_url="https://www.freecodecamp.org/certification/Auxdible/foundational-c-sharp-with-microsoft"/>  
-        <Certification
+        key={"3"}
+        certification_url="https://www.freecodecamp.org/certification/Auxdible/foundational-c-sharp-with-microsoft"/></li>  
+        <li><Certification
         name="Quality Assurance"
         author={<><FaFreeCodeCamp/> freeCodeCamp</>}
         date="July 2023"
@@ -77,9 +77,9 @@ export default function Certificates() {
             <>REST APIs</>,
 
         ]}
-        key={4}
-        certification_url="https://freecodecamp.org/certification/Auxdible/quality-assurance-v7"/>
-        <Certification
+        key={"4"}
+        certification_url="https://freecodecamp.org/certification/Auxdible/quality-assurance-v7"/></li>
+        <li><Certification
         name="Back End Development and APIs"
         author={<><FaFreeCodeCamp/> freeCodeCamp</>}
         date="February 2023"
@@ -95,9 +95,9 @@ export default function Certificates() {
             <>REST APIs</>,
 
         ]}
-        key={5}
-        certification_url="https://www.freecodecamp.org/certification/Auxdible/back-end-development-and-apis"/>
-        <Certification
+        key={"5"}
+        certification_url="https://www.freecodecamp.org/certification/Auxdible/back-end-development-and-apis"/></li>
+        <li><Certification
         name="Relational Database"
         author={<><FaFreeCodeCamp/> freeCodeCamp</>}
         date="February 2023"
@@ -109,9 +109,9 @@ export default function Certificates() {
             <>SQL</>,
 
         ]}
-        key={6}
-        certification_url="https://freecodecamp.org/certification/Auxdible/relational-database-v8"/>
-        <Certification
+        key={"6"}
+        certification_url="https://freecodecamp.org/certification/Auxdible/relational-database-v8"/></li>
+        <li><Certification
         name="Data Visualization"
         author={<><FaFreeCodeCamp/> freeCodeCamp</>}
         date="January 2023"
@@ -121,9 +121,9 @@ export default function Certificates() {
             <><SiD3Dotjs/> D3.js</>,
             <>Front-End Development</>,
         ]}
-        key={7}
-        certification_url="https://freecodecamp.org/certification/Auxdible/data-visualization"/>
-        <Certification
+        key={"7"}
+        certification_url="https://freecodecamp.org/certification/Auxdible/data-visualization"/></li>
+        <li><Certification
         name="Front End Development Libraries"
         author={<><FaFreeCodeCamp/> freeCodeCamp</>}
         date="January 2023"
@@ -140,9 +140,9 @@ export default function Certificates() {
             <>Web Design</>,
             <>Front-End Development</>,
         ]}
-        key={8}
-        certification_url="https://freecodecamp.org/certification/Auxdible/front-end-development-libraries"/>
-        <Certification
+        key={"8"}
+        certification_url="https://freecodecamp.org/certification/Auxdible/front-end-development-libraries"/></li>
+        <li><Certification
         name="Responsive Web Design"
         author={<><FaFreeCodeCamp/> freeCodeCamp</>}
         date="November 2022"
@@ -153,9 +153,9 @@ export default function Certificates() {
             <>Web Design</>,
             <>Front-End Development</>,
         ]}
-        key={9}
-        certification_url="https://www.freecodecamp.org/certification/Auxdible/responsive-web-design"/> 
-        <Certification
+        key={"9"}
+        certification_url="https://www.freecodecamp.org/certification/Auxdible/responsive-web-design"/></li> 
+        <li><Certification
         name="JavaScript Algorithms and Data Structures"
         author={<><FaFreeCodeCamp/> freeCodeCamp</>}
         date="July 2022"
@@ -163,8 +163,8 @@ export default function Certificates() {
             <><SiJavascript/> JavaScript</>,
             <><SiJson/> JSON</>,
         ]}
-        key={10}
-        certification_url="https://freecodecamp.org/certification/Auxdible/front-end-development-libraries"/> 
+        key={"10"}
+        certification_url="https://freecodecamp.org/certification/Auxdible/front-end-development-libraries"/></li> 
     </ol>
         </section>)
 }

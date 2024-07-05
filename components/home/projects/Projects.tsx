@@ -1,7 +1,7 @@
 "use client";
 import Project from '@/components/home/projects/Project';
 import { motion } from 'framer-motion';
-import { SiExpress, SiMongodb, SiNextdotjs, SiNodedotjs, SiPassport, SiReact, SiTailwindcss, SiThreedotjs } from 'react-icons/si';
+import { SiAmazons3, SiExpress, SiMongodb, SiNextdotjs, SiNodedotjs, SiPassport, SiReact, SiTailwindcss, SiThreedotjs } from 'react-icons/si';
 
 export default function Projects(){
     return (<div className={"flex flex-col mt-60d w-full"}>
@@ -39,6 +39,7 @@ export default function Projects(){
           <><SiReact/> React</>,
           <><SiMongodb/> MongoDB</>,
           <><SiNodedotjs/> Node.js</>,
+          <><SiAmazons3/> Amazon S3</>,
           <>Auth.js</>,
         ],
         source_url: "https://github.com/Auxdible/portfolio-site",

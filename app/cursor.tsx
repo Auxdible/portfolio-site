@@ -1,11 +1,13 @@
 "use client";
-import React, { useEffect, useRef, useState } from 'react';
+import { CursorContext } from '@/context/CursorContext';
+import React, { useContext, useEffect, useRef, useState } from 'react';
+
 
 export function Cursor() {
 
     const [outlinePos, setOutlinePos] = useState({ x: -100, y: -100 });
     const position = useRef({ x: -100, y: -100 });
-    const [hovered, setHovered] = useState(false);
+    const {hovered} = useContext(CursorContext);
     useEffect(() => {
         const handleMouseMove = (event: MouseEvent) => {
             position.current = { x: event.clientX - 3.25, y: event.clientY - 3.25 };
@@ -23,26 +25,7 @@ export function Cursor() {
             clearInterval(intervalId);
         };
     })
-    useEffect(() => {
-        const handleLinkMouseOver = () => { setHovered(true) };
-        const handleLinkMouseOut = () => { setHovered(false) };
-        const links = document.querySelectorAll('a, button, *[onclick], *[href], *[role="button"], *[type="button"], *[type="submit"], .cursor-pointer');
-        Array.from(links).forEach(element => {
-            element.addEventListener('mouseover', handleLinkMouseOver);
-            element.addEventListener('mouseout', handleLinkMouseOut);
-        });
-       
-
-
-        
-
-        return () => {
-            Array.from(links).forEach(link => {
-                link.removeEventListener('mouseover', handleLinkMouseOver);
-                link.removeEventListener('mouseout', handleLinkMouseOut);
-            });
-        };
-    }, [hovered]);
+    
 
     return (
         <>
