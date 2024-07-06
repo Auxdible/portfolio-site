@@ -1,22 +1,22 @@
 import { Metadata } from 'next'
 import '@/styles/globals.scss';
-import { posts } from '@prisma/client';
 import ScrollBar from '@/components/blog/posts/ScrollBar';
+import { getPostContent } from '@/lib/clients/s3';
   
 type LayoutProps = { params: { postId: string }}
 export async function generateMetadata({ params }: LayoutProps): Promise<Metadata> {
     const postId = params.postId;
-    const [post]: posts[] = await fetch(`${process.env.SITE_URL}/api/public/posts?postId=${postId}`).then(async (res) => await res.json().catch(() => [])).catch(() => [])
+    const post = await getPostContent(postId);
     const metadata = {
         ...(post ? {
-          title: post.post_name,
-          description: post.post_description,
+          title: post.title,
+          description: post.description,
           openGraph: {
               type: "website",
-              title: post.post_name,
+              title: post.title,
               siteName: "Auxdible's Portfolio",
               countryName: "United States",
-              description: post.post_description,
+              description: post.description,
               url: process.env.NEXT_PUBLIC_SITE_URL + "/blog/" + postId,
           }
         } : {})
