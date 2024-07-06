@@ -3,15 +3,12 @@ import Image from "next/image";
 import Link from "next/link";
 import ThemeButton from "./ThemeButton";
 import { useState, useEffect, useContext } from 'react';
-import { BiLoaderCircle, BiMenuAltLeft } from 'react-icons/bi';
-import { useSession } from "next-auth/react";
-import MiniProfile from "./MiniProfile";
+import { BiMenuAltLeft } from 'react-icons/bi';
 import { usePathname } from "next/navigation";
 import { CursorContext } from "@/context/CursorContext";
 import { hoverable } from "../CursorProvider";
 export default function Navbar() {
     const [collapse, setCollapse] = useState(false);
-    const { data: session, status } = useSession();
     const [previousScrollPos, setScrollPos] = useState(0);
     const [visible, setVisible] = useState(true);
     const [mounted, setMounted ] = useState(false);
@@ -43,7 +40,6 @@ export default function Navbar() {
                 <BiMenuAltLeft/>
             </button>
             <span className={"max-md:hidden justify-between items-center flex flex-1 flex-grow flex-shrink text-2xl font-montserrat"}>
-            {status == "loading" ? <BiLoaderCircle className={"animate-spin"}/> : session && session.user ? <MiniProfile user={session.user}/> : <Link {...hoverable(setHovered)} className={"h-fit hover:before:scale-100 before:underline-custom relative transition-all"} href={"/auth/signin"}>Sign in</Link>}
                 
                 <Link className={"h-fit hover:before:scale-100 before:underline-custom relative  transition-all"} {...hoverable(setHovered)} href={"/blog"}>Blog</Link>
             </span>
@@ -69,7 +65,6 @@ export default function Navbar() {
     </nav>
     {collapse ? 
     <div className={"sticky -z-10 flex flex-col text-2xl dark:bg-gray-900 bg-gray-200 transition-transform animate-navbarCollapse font-montserrat md:hidden"}>
-        {status == "loading" ? <BiLoaderCircle className={"animate-spin"}/> : session && session.user ? <span className={"collapse-element"}><span className={"block w-fit"}><MiniProfile user={session.user}/> </span></span> : <Link onClick={() => setCollapse(false)} {...hoverable(setHovered)} className={"collapse-element"} href={"/auth/signin"}>Sign in</Link>}
         <Link className={"collapse-element"} {...hoverable(setHovered)} onClick={() => setCollapse(false)} href={"/blog"}>Blog</Link>
         <Link className={"collapse-element"} {...hoverable(setHovered)} onClick={() => setCollapse(false)} href={"/contact-me"}>Contact Me</Link>
     </div> : ""}
