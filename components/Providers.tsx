@@ -10,13 +10,11 @@ const client = new QueryClient();
 export default function Providers({ children }: ProvidersProps) { 
   return (
     <QueryClientProvider client={client}>
-    <SessionProvider>
       <ThemeProvider attribute={"class"} enableSystem disableTransitionOnChange defaultTheme={"dark"}>
         <CursorProvider>
          {children}
         </CursorProvider>
       </ThemeProvider>
-    </SessionProvider>
     </QueryClientProvider>
     
     
