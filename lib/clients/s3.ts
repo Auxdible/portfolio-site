@@ -2,25 +2,15 @@ import { GetObjectCommand, ListObjectsCommand, ListObjectsCommandOutput, S3Clien
 import { Readable } from "stream";
 import { BlogPostPayload } from "../types/BlogPostPayload";
 import { cache } from "react";
+import { streamToString } from "../streamToString";
 
 const s3Client = new S3Client({ region: process.env.S3_REGION, credentials: { accessKeyId: process.env.AWS_ACCESS_KEY_NAME ?? "", secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY ?? "" }});
 
-const streamToString = (stream: Readable): Promise<string> => {
-    const chunks: Uint8Array[] = [];
-    return new Promise((resolve, reject) => {
-        stream.on("data", (chunk) => chunks.push(chunk));
-        stream.on("error", reject);
-        stream.on("end", () => resolve(Buffer.concat(chunks).toString("utf-8")));
-    });
-};
-
 export const getPostContent = cache<(id: string) => Promise<(BlogPostPayload & { content: string }) | null>>(async (id: string) => {
-    const list = new ListObjectsCommand({ Bucket: process.env.S3_BUCKET, Prefix: `posts/${id}.md` });
     const get = new GetObjectCommand({ Bucket: process.env.S3_BUCKET, Key: `posts/${id}.md` });
     
     const object = await s3Client.send(get);
     const { Body, Metadata  } = object;
-    if (!Body) return null;
     return {
         title: Metadata?.title || "Untitled",
         description: Metadata?.description,
@@ -28,7 +18,7 @@ export const getPostContent = cache<(id: string) => Promise<(BlogPostPayload & {
         id: id,
         author: Metadata?.author || "Unknown",
         image: Metadata?.image_url,
-        content: await streamToString(Body as Readable),
+        content: Body ? await streamToString(Body as Readable) : "No content.",
     };
 })
 
