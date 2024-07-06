@@ -33,15 +33,15 @@ export default function Navbar() {
     <div className={`z-50 fixed left-1/2 top-0 -translate-x-1/2 max-w-4xl ${!visible ? " -translate-y-[110%] " : ""} transition-all w-full`}>
     
     <nav className={"sticky"}>
-        <div className={"absolute -z-10 -inset-[1px] bg-gradient-to-t max-md:bg-gradient-to-r from-orange-400 to-red-500 md:rounded-bl-3xl md:rounded-br-3xl"}></div>
+        <div className={"absolute -z-10 -inset-[1px] bg-gradient-to-t max-md:bg-gradient-to-r from-primary to-secondary md:rounded-bl-3xl md:rounded-br-3xl"}></div>
         <div className={"dark:bg-black bg-gray-100 flex flex-row justify-center max-h-32 max-md:justify-between max-md:p-1 md:gap-20 px-10 align-middle md:rounded-bl-3xl md:rounded-br-3xl"}>
         <div className={"justify-center gap-20 items-center flex flex-1 flex-grow flex-shrink-0 text-xl "}>
             <button aria-label={"Navbar Collapse"} onClick={() => setCollapse(!collapse)} className={"md:hidden max-md:text-xl text-3xl border-2 dark:border-gray-200 border-gray-700 p-2 focus:p-[10px] transition-all rounded-xl"}>
                 <BiMenuAltLeft/>
             </button>
             <span className={"max-md:hidden justify-between items-center flex flex-1 flex-grow flex-shrink text-2xl font-montserrat"}>
-                
                 <Link className={"h-fit hover:before:scale-100 before:underline-custom relative  transition-all"} {...hoverable(setHovered)} href={"/blog"}>Blog</Link>
+                <Link className={"max-md:hidden hover:before:scale-100 before:underline-custom relative transition-all"} {...hoverable(setHovered)} href={"/contact-me"}>Contact Me</Link>
             </span>
         </div>
         
@@ -55,8 +55,8 @@ export default function Navbar() {
                 priority
             />
         </Link>
-        <div className={"justify-between max-md:justify-center items-center flex flex-1 flex-grow flex-shrink text-2xl font-montserrat"}>
-            <Link className={"max-md:hidden hover:before:scale-100 before:underline-custom relative transition-all"} {...hoverable(setHovered)} href={"/contact-me"}>Contact Me</Link>
+        <div className={"justify-end max-md:justify-center items-center flex flex-1 flex-grow flex-shrink text-2xl font-montserrat"}>
+            
             <ThemeButton/>
             
         </div>

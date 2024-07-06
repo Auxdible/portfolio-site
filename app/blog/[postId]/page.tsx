@@ -1,9 +1,6 @@
-import NotFound from "@/app/not-found";
 import BlogContent from "@/components/blog/posts/BlogContent";
-import Loading from "@/components/Loading";
 import { getPostContent } from "@/lib/clients/s3";
-import { useRouter } from "next/navigation";
-import { useQuery } from "react-query";
+
 type PostProps = { params: { postId: string } };
 export default async function BlogPost({ params: { postId } }: PostProps) {
     const post = await getPostContent(postId)

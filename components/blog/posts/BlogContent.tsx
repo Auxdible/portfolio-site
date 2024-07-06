@@ -1,11 +1,9 @@
+"use client";
+
 import converter from "@/lib/converter";
-import { Reaction, posts } from "@prisma/client";
-import { motion } from "framer-motion";
+
 import { BsShieldCheck } from "react-icons/bs";
-import Reactions from "./Reactions";
-import Comments from "./Comments";
-import CommentsForm from "./CommentsForm";
-import { useSession } from "next-auth/react";
+
 import { BlogPostPayload } from "@/lib/types/BlogPostPayload";
 
 type PostProps = { post: BlogPostPayload & { content: string }, preview?: boolean }
