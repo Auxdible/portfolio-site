@@ -14,6 +14,18 @@ const nextConfig = {
             port: '',
             pathname: '/*/**',
           },
+          {
+            protocol: 'https',
+            hostname: 'auxdible.me',
+            port: '',
+            pathname: '/*',
+          },
+          {
+            protocol: 'https',
+            hostname: `${process.env.S3_BUCKET}.s3.amazonaws.com`,
+            port: '',
+            pathname: '/*/**',
+          },
         ],
       },
 }

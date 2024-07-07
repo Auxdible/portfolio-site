@@ -16,7 +16,11 @@ export default function Masthead() {
     const [mounted, setMounted] = useState(false);
     const { setHovered } = useContext(CursorContext);
     useEffect(() => {
-        if (!mounted) setMounted(true);
+        if (!mounted) {
+          if (!document.documentElement.style.getPropertyValue('--color-primary') || !document.documentElement.style.getPropertyValue('--color-secondary')) 
+            changeGradient(defaultGradient.randomColor1, defaultGradient.randomColor2);
+          setMounted(true);
+        }
         
         if (typeState < "Auxdible".length) {
           setTimeout(() => {
@@ -24,6 +28,7 @@ export default function Masthead() {
           }, 225)
         }
     }, [typeState, mounted]);
+
     function changeGradient(randomColor1?: string, randomColor2?: string) {
       const color1 = randomColor1?.replace('#', "") || randColor(),
       color2 = randomColor2?.replace('#', "") || randColor();
@@ -43,11 +48,11 @@ export default function Masthead() {
         </span>
         
         <span className={`transition-all duration-500 delay-500 ${typeState >= "Auxdible".length ? "opacity-100 translate-x-0" : "opacity-0 translate-x-32"}`}><Titles duration={2000} titles={["🧑‍💻 Full Stack Developer", "☁️ AWS Cloud Practicioner", "🎨 Web Designer", "☕ Coffee Addict", "🤖 Discord Bot Developer", "🎮 Hobbyist Gamer"]}/></span>
-        {gradient.randomColor1 != defaultGradient.randomColor1 || gradient.randomColor2 != defaultGradient.randomColor2 ? 
+        {typeof document !== 'undefined' && (document.documentElement.style.getPropertyValue("--color-primary") != defaultGradient.randomColor1 || document.documentElement.style.getPropertyValue("--color-secondary") != defaultGradient.randomColor2) ? 
         <Button onClick={() => {
           changeGradient(defaultGradient.randomColor1, defaultGradient.randomColor2);
           if (setHovered) setHovered(false); 
-          }} className="w-fit text-lg px-1.5 py-0.5 max-xl:mx-auto cursor-pointer">Reset Colors 😔</Button> : ""}
+          }} className="w-fit text-lg px-1.5 py-0.5 max-xl:mx-auto cursor-pointer select-none">Reset Colors 😔</Button> : ""}
         </section>
     </div>
     <div className={"flex flex-1 xl:flex-grow flex-shrink max-xl:max-h-[500px] max-xl:w-screen xl:h-screen overflow-hidden"}>
@@ -59,7 +64,7 @@ export default function Masthead() {
       <Canvas ref={(node) => {
         if (node) node.style.setProperty("touch-action", "pan-y", "important")
       }} className={"canvas-wrapper"}  style={ { position: "relative"} }>
-        <OrbitControls enableZoom={false} enableDamping={false} enablePan={false} autoRotate autoRotateSpeed={1} />
+        <OrbitControls enableZoom={false} enableDamping={true} enablePan={false} autoRotate dampingFactor={0.05} autoRotateSpeed={1} />
         <ambientLight intensity={1} />
         <perspectiveCamera/>
         <Suspense fallback={null}>
