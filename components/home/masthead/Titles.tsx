@@ -33,7 +33,7 @@ export default function Titles({ titles }: { titles: string[], duration: number 
         return () => clearInterval(interval);
     }, [text1, text2, titles, mobile]);
 
-    return <div className="flex overflow-hidden xl:w-[500px] max-xl:w-screen h-16 font-montserrat whitespace-nowrap max-xl:self-center">
+    return <div className="flex overflow-hidden xl:w-[500px] max-xl:w-screen h-16 font-montserrat whitespace-nowrap max-xl:self-center select-none">
     <span id="test1" className={"header text-4xl max-sm:text-2xl max-xl:min-w-[100vw] xl:min-w-[500px]"} ref={text1Ref}>{titles[text1]}</span>
     <span className={"header text-4xl max-sm:text-2xl max-xl:min-w-[100vw] xl:min-w-[500px]"} ref={text2Ref}>{titles[text2]}</span>
   </div>;
