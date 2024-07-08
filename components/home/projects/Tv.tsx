@@ -13,9 +13,9 @@ import { useLoader, useThree } from '@react-three/fiber'
 
 type GLTFResult = GLTF & {
   nodes: {
-    ['10120_LCD_Computer_Monitor_v01_max2011_it2_1']: THREE.Mesh
-    ['10120_LCD_Computer_Monitor_v01_max2011_it2_2']: THREE.Mesh
-    ['10120_LCD_Computer_Monitor_v01_max2011_it2_3']: THREE.Mesh
+    ['10120_LCD_Computer_Monitor_v01_max2011_it2001']: THREE.Mesh
+    ['10120_LCD_Computer_Monitor_v01_max2011_it2001_1']: THREE.Mesh
+    ['10120_LCD_Computer_Monitor_v01_max2011_it2001_2']: THREE.Mesh
   }
   materials: {
     TV: THREE.MeshStandardMaterial
@@ -27,7 +27,7 @@ type GLTFResult = GLTF & {
 type ContextType = Record<string, React.ForwardRefExoticComponent<JSX.IntrinsicElements['mesh']>>
 
 export function TVModel(props: JSX.IntrinsicElements['group'] & { imageURL: string, noRotate?: boolean }) {
-  const { nodes, materials } = useGLTF('/tv.glb') as GLTFResult
+  const { nodes, materials } = useGLTF('/tv.gltf') as GLTFResult
   const { camera, gl } = useThree();
   const texture = useLoader(THREE.TextureLoader, props.imageURL);
   
@@ -70,9 +70,9 @@ export function TVModel(props: JSX.IntrinsicElements['group'] & { imageURL: stri
   return (
     <group ref={groupRef} {...props} dispose={null}>
       <group position={[0, -19.799, 0]}>
-        <mesh geometry={nodes['10120_LCD_Computer_Monitor_v01_max2011_it2_1'].geometry} material={materials.TV} />
-        <mesh geometry={nodes['10120_LCD_Computer_Monitor_v01_max2011_it2_2'].geometry} material={materials.Backdrop} />
-        <mesh geometry={nodes['10120_LCD_Computer_Monitor_v01_max2011_it2_3'].geometry} material={screenMaterial} />
+        <mesh geometry={nodes['10120_LCD_Computer_Monitor_v01_max2011_it2001'].geometry} material={materials.TV} />
+        <mesh geometry={nodes['10120_LCD_Computer_Monitor_v01_max2011_it2001_1'].geometry} material={materials.Backdrop} />
+        <mesh geometry={nodes['10120_LCD_Computer_Monitor_v01_max2011_it2001_2'].geometry} material={screenMaterial} />
       </group>
     </group>
   )

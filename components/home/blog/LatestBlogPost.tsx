@@ -8,7 +8,7 @@ import { BlogPostPayload } from "@/lib/types/BlogPostPayload";
 import { posts } from "@prisma/client";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { BsBook, BsShare, BsShieldCheck } from "react-icons/bs";
 interface PostProps { 
     readonly post: BlogPostPayload;
@@ -17,6 +17,10 @@ export default function LatestBlogPost({ post }: PostProps) {
     const [linkCopied, setLinkCopied] = useState(false);
     const [isIAB] = useMetaIAB();
     const { setHovered } = useContext(CursorContext);
+    const [mounted, setMounted] = useState(false);
+    useEffect(() => {
+        if (!mounted) setMounted(true)
+        }, [mounted]);
     function copyLink() {
         navigator.clipboard.writeText(`${process.env.NEXT_PUBLIC_SITE_URL}/blog/${post.id}`)
         setLinkCopied(true);
@@ -47,7 +51,7 @@ export default function LatestBlogPost({ post }: PostProps) {
     <p className={"flex flex-row font-roboto justify-center text-lg dark:text-gray-400 text-gray-600 my-1 gap-1"}>{new Date(post.date || Date.now()).toISOString().split('T')[0]} • <span className={"flex flex-row justify-center items-center gap-1"}><BsShieldCheck/> {post.author}</span></p>
     <span className={"flex items-center gap-4 w-fit mx-auto my-2"}>
        <Button href={`/blog/${post.id}`}><span className="flex gap-2 items-center text-lg font-bold"><BsBook className={"text group-hover:fill-theme fill-reverse duration-700 transition-all"}/> Read More</span></Button>
-       {typeof window !== 'undefined' && window.isSecureContext ? 
+       {mounted && window.isSecureContext ? 
        <Button onClick={() => copyLink()}><span className="flex gap-2 items-center text-lg font-bold"><BsShare className={`text group-hover:fill-theme fill-reverse duration-700 transition-all`}/> {linkCopied ? "Copied!" : "Copy Link"}</span></Button> : ""}
        
     </span>
