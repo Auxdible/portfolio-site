@@ -44,11 +44,11 @@ export default function Masthead() {
           <h1 {...hoverable(setHovered)} onClick={() => changeGradient()} className={"font-extralight cursor-pointer text-title"}>
             {"Auxdible".split("").slice(0, typeState)}
           </h1>
-          {mounted && typeState < "Auxdible".length ? <span className={"animate-blink"}>_</span> : ""}
+          {mounted && typeState < "Auxdible".length ? <span className={"animate-blink"}>_</span> : mounted ? "" : <span className={"animate-blink"}>_</span>}
         </span>
         
         <span className={`transition-all duration-500 delay-500 ${typeState >= "Auxdible".length ? "opacity-100 translate-x-0" : "opacity-0 translate-x-32"}`}><Titles duration={2000} titles={["🧑‍💻 Full Stack Developer", "☁️ AWS Cloud Practicioner", "🎨 Web Designer", "☕ Coffee Addict", "🤖 Discord Bot Developer", "🎮 Hobbyist Gamer"]}/></span>
-        {typeof document !== 'undefined' && (document.documentElement.style.getPropertyValue("--color-primary") != defaultGradient.randomColor1 || document.documentElement.style.getPropertyValue("--color-secondary") != defaultGradient.randomColor2) ? 
+        {mounted && (document.documentElement.style.getPropertyValue("--color-primary") != defaultGradient.randomColor1 || document.documentElement.style.getPropertyValue("--color-secondary") != defaultGradient.randomColor2) ? 
         <Button onClick={() => {
           changeGradient(defaultGradient.randomColor1, defaultGradient.randomColor2);
           if (setHovered) setHovered(false); 
