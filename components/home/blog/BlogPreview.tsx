@@ -7,6 +7,7 @@ import { BlogPostPayload } from "@/lib/types/BlogPostPayload";
 import { Button } from "@/components/ui/Button";
 import { CursorContext } from "@/context/CursorContext";
 import { hoverable } from "@/components/CursorProvider";
+import Image from 'next/image';
 interface PostProps { 
     readonly post: BlogPostPayload 
 }
@@ -24,9 +25,9 @@ export default function BlogPreview({ post }: PostProps) {
     }
     return (<article className={"flex w-full max-lg:flex-col"}>
         <div className="flex-1 flex justify-center items-center">
-            <Link {...hoverable(setHovered)} href={`/blog/${post.id}`} className="relative rounded-xl group hover:cursor-pointer">
+            <Link {...hoverable(setHovered)} href={`/blog/${post.id}`} className="relative rounded-xl group hover:cursor-pointer w-96 h-32">
             <div className={"absolute -inset-[2px] bg-gradient-to-t max-md:bg-gradient-to-r from-primary to-secondary group-hover:scale-110 transition-all rounded-xl"}></div>
-            <img src={post.image?.toString() ?? `${process.env.NEXT_PUBLIC_SITE_URL}/icon.png`} alt={post.title + " image"} className={"w-96 h-32 object-cover relative group-hover:scale-110 transition-all z-10 bg-white dark:bg-black rounded-xl"} />
+            <Image src={post.image?.toString() ?? `${process.env.NEXT_PUBLIC_SITE_URL}/icon.png`} alt={post.title + " image"}  fill style={{ objectFit: "cover" }} className={"object-cover relative group-hover:scale-110 transition-all z-10 bg-white dark:bg-black rounded-xl"} />
             </Link>
             
         </div>

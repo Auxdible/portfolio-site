@@ -1,13 +1,12 @@
 import { Metadata } from 'next'
-import '../styles/globals.scss';
 import Providers from '@/components/Providers';
 import Navbar from '@/components/navbar/Navbar';
 import { Cursor } from './cursor';
-import { lato, raleway } from './fonts';
+import { dancingScript, inter, lato, montserrat, raleway, roboto, sourceCodePro } from './fonts';
 import NoiseBackground from '@/components/NoiseBackground';
 import Loading from './loading';
 import { Suspense } from 'react';
-
+import '../styles/globals.scss';
 
 export const metadata: Metadata = {
   title: 'Auxdible',
@@ -32,7 +31,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${raleway.variable} ${lato.variable} scroll-smooth`}>
+    <html lang="en" className={`${raleway.variable} ${lato.variable} ${roboto.variable} ${montserrat.variable} ${inter.variable} ${sourceCodePro.variable} ${dancingScript.variable} scroll-smooth`}>
       <body className={"dark:bg-black bg-gray-50"}>
           <Providers>
             <NoiseBackground/>
