@@ -1,5 +1,6 @@
 "use client";
 
+import { Button } from '@/components/ui/Button';
 import Image from 'next/image'
 import Link from 'next/link';
 import { useEffect } from 'react';
@@ -19,11 +20,11 @@ export default function Error({ error, reset }: ErrorProps) {
             width='150'
             height='150'
           />
-          <h1 className={"text-4xl p-4 text-orange font-montserrat text-primary"}>Error!</h1>
+          <h1 className={"text-5xl p-4 text-orange font-raleway font-bold text-title"}>Error!</h1>
           <p>An error occurred trying to do this.</p>
           <div className={"flex justify-center gap-10 my-4"}>
-          <Link className={"flex-1 transition-color duration-100 hover:dark:text-orange-400 hover:text-orange-600 flex-grow flex-shrink"} href="/">Home</Link>
-          <a className={"cursor-pointer transition-color duration-100 hover:dark:text-orange-400 hover:text-orange-600 flex-1 flex-grow flex-shrink"} onClick={() => reset()}>Try Again</a>
+          <Button href='/'>Home</Button>
+          <Button onClick={() => reset()}>Try Again</Button>
           </div>
       </div>
     </main>

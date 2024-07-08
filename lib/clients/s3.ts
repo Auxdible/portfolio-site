@@ -7,19 +7,24 @@ import { streamToString } from "../streamToString";
 const s3Client = new S3Client({ region: process.env.S3_REGION, credentials: { accessKeyId: process.env.AWS_ACCESS_KEY_NAME ?? "", secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY ?? "" }});
 
 export const getPostContent = cache<(id: string) => Promise<(BlogPostPayload & { content: string }) | null>>(async (id: string) => {
-    const get = new GetObjectCommand({ Bucket: process.env.S3_BUCKET, Key: `posts/${id}.md` });
+    try {
+        const get = new GetObjectCommand({ Bucket: process.env.S3_BUCKET, Key: `posts/${id}.md` });
     
-    const object = await s3Client.send(get);
-    const { Body, Metadata  } = object;
-    return {
-        title: Metadata?.title || "Untitled",
-        description: Metadata?.description,
-        date: object.LastModified || Date.now(),
-        id: id,
-        author: Metadata?.author || "Unknown",
-        image: Metadata?.image_url,
-        content: Body ? await streamToString(Body as Readable) : "No content.",
-    };
+        const object = await s3Client.send(get);
+        const { Body, Metadata  } = object;
+        return {
+            title: Metadata?.title || "Untitled",
+            description: Metadata?.description,
+            date: object.LastModified || Date.now(),
+            id: id,
+            author: Metadata?.author || "Unknown",
+            image: Metadata?.image_url,
+            content: Body ? await streamToString(Body as Readable) : "No content.",
+        };
+    } catch (x) {
+        throw new Error("Invalid blog post!")
+    }
+    
 })
 
 const listBlogObjects = cache<() => Promise<ListObjectsCommandOutput>>(async () => {

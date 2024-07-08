@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     images: {
+      
         remotePatterns: [
           {
             protocol: 'https',
@@ -10,13 +11,19 @@ const nextConfig = {
           },
           {
             protocol: 'https',
-            hostname: 'bot.auxdible.me',
+            hostname: 'auxdible.me',
             port: '',
-            pathname: '/*/**',
+            pathname: '/*',
           },
           {
             protocol: 'https',
-            hostname: 'auxdible.me',
+            hostname: 'bot.auxdible.me',
+            port: '',
+            pathname: '/*',
+          },
+          {
+            protocol: 'https',
+            hostname: process.env.NEXT_PUBLIC_SITE_URL,
             port: '',
             pathname: '/*',
           },

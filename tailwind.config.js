@@ -16,13 +16,13 @@ module.exports = {
         'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
       fontFamily: {
-        roboto: ["Roboto", "sans-serif"],
-        montserrat: ["Montserrat", "sans-serif"],
+        roboto: "var(--font-roboto)",
+        montserrat: "var(--font-montserrat)",
         raleway: "var(--font-raleway)",
         lato: "var(--font-lato)",
-        cursive: ["Dancing Script", "sans-serif"],
-        code: ["Source Code Pro", "sans-serif"],
-        inter: ["Inter", "sans-serif"],
+        cursive: "var(--font-dancing-script)",
+        code: "var(--font-source-code-pro)",
+        inter: "var(--font-inter)",
       },
       animation: {
         pulse: "pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite",

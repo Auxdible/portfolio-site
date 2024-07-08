@@ -1,5 +1,6 @@
 import { BlogPostHeader } from "./BlogPostHeader";
 import { BlogPostLoader } from "./BlogPostLoader";
+import BlogPostSkeleton from "../../blog/posts/BlogPostSkeleton";
 
 export default function BlogPosts() {
 

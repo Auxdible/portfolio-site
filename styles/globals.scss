@@ -3,9 +3,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
-/* Import Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Montserrat:wght@300&family=Roboto:wght@300&family=Inter:wght@300&family=Raleway:wght@100&family=Source+Code+Pro&display=swap');
 @layer base {
     :root {
         --noise-color: #0000ff;
@@ -21,11 +18,6 @@
 
     *{
         cursor: none !important;
-    }
-    @media (max-width: 768px) {
-        * {
-            cursor: auto !important;
-        }
     }
     ::selection {
       @apply bg-primary text-white;
@@ -43,7 +35,7 @@
         filter: invert(40%);
     }
     #outline {
-        @apply rounded-full max-md:hidden z-[5000] border border-white dark:border-black;
+        @apply rounded-full z-[5000] border border-white dark:border-black;
         position: fixed;
         opacity: 0.9;
 
@@ -52,7 +44,7 @@
         pointer-events: none;
     }
     #cursor {
-        @apply rounded-full max-md:hidden z-[5000] dark:bg-white bg-black;
+        @apply rounded-full z-[5000] dark:bg-white bg-black;
 
         width: 7.5px;
         height: 7.5px;

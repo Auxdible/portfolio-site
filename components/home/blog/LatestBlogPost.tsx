@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/Button";
 import { CursorContext } from "@/context/CursorContext";
 import useMetaIAB from "@/lib/hooks/useMetaIAB";
 import { BlogPostPayload } from "@/lib/types/BlogPostPayload";
-import { posts } from "@prisma/client";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { useContext, useEffect, useState } from "react";
