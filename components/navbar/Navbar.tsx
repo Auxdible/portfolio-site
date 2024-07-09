@@ -103,7 +103,11 @@ export default function Navbar() {
         
     </nav>
 
-    <div ref={ref} className={"sticky -z-10 flex flex-col text-2xl transition-transform font-montserrat md:hidden -translate-x-full"}>
+    
+    
+    </div>
+    <div className={"max-md:h-[76px]"}></div>
+    <div ref={ref} className={"fixed z-30x flex flex-col text-2xl transition-transform font-montserrat md:hidden -translate-x-full"}>
         <nav className="h-[calc(100dvh-76px)] w-screen bg-white dark:bg-black flex flex-col items-center justify-center">
             <div className="flex flex-col gap-2 w-full pl-5 mt-auto">
                 <Link {...hoverable(setHovered)} className="font-raleway font-bold text-3xl" onClick={changeCollapse} href={"/blog"}>Blog</Link>
@@ -128,8 +132,5 @@ export default function Navbar() {
         </nav>
         
     </div>
-    
-    </div>
-    <div className={"max-md:h-[76px]"}></div>
     </>)
 }
