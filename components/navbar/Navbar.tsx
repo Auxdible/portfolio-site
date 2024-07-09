@@ -107,7 +107,7 @@ export default function Navbar() {
     
     </div>
     <div className={"max-md:h-[76px]"}></div>
-    <div ref={ref} className={"fixed z-30x flex flex-col text-2xl transition-transform font-montserrat md:hidden -translate-x-full"}>
+    <div ref={ref} className={"fixed z-30 flex flex-col text-2xl transition-transform font-montserrat md:hidden -translate-x-full"}>
         <nav className="h-[calc(100dvh-76px)] w-screen bg-white dark:bg-black flex flex-col items-center justify-center">
             <div className="flex flex-col gap-2 w-full pl-5 mt-auto">
                 <Link {...hoverable(setHovered)} className="font-raleway font-bold text-3xl" onClick={changeCollapse} href={"/blog"}>Blog</Link>
