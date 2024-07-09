@@ -1,6 +1,6 @@
 "use client";
 import { CursorContext } from '@/context/CursorContext';
-import React, { useContext, useEffect, useMemo, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 
 
 export function Cursor() {
@@ -10,7 +10,8 @@ export function Cursor() {
     const {hovered} = useContext(CursorContext);
     const [outside, setOutside] = useState(false);
     const [mounted, setMounted] = useState(false);
-    const mobile = useMemo(() => mounted && (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent) || navigator.maxTouchPoints > 0), [mounted]);
+
+    
     useEffect(() => {
         if (!mounted) setMounted(true);
         const handleMouseEnter = (event: MouseEvent) => {
@@ -29,11 +30,8 @@ export function Cursor() {
         
         const handleMouseMove = (event: MouseEvent) => {
             position.current = { x: event.clientX - 3.25, y: event.clientY - 3.25 };
-
-            console.log(position.current.x, position.current.y);
         };
         const intervalId = setInterval(() => {
-            if (position.current.x === 0 && position.current.y === 0) alert("BUNGUS");
             setOutlinePos(prevPos => ({
                 x: prevPos.x + ((position.current.x - prevPos.x) / 6),
                 y: prevPos.y + ((position.current.y - prevPos.y) / 6),
@@ -51,8 +49,7 @@ export function Cursor() {
         };
     }, [mounted])
     
-    if (!mounted || mobile) return null;
- 
+    if (!mounted) return null;
     return (
         <>
             <div

@@ -19,6 +19,12 @@
     *{
         cursor: none !important;
     }
+    @media (max-width: 1024px) {
+        * {
+            cursor: auto !important;
+        }
+        
+    }
     ::selection {
       @apply bg-primary text-white;
     }
@@ -35,7 +41,7 @@
         filter: invert(40%);
     }
     #outline {
-        @apply rounded-full z-[5000] border border-white dark:border-black;
+        @apply rounded-full z-[5000] border border-white dark:border-black max-lg:hidden;
         position: fixed;
         opacity: 0.9;
 
@@ -44,7 +50,7 @@
         pointer-events: none;
     }
     #cursor {
-        @apply rounded-full z-[5000] dark:bg-white bg-black;
+        @apply rounded-full z-[5000] dark:bg-white bg-black max-lg:hidden;
 
         width: 7.5px;
         height: 7.5px;
