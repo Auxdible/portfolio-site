@@ -1,16 +1,21 @@
 "use client";
 import { CursorContext } from '@/context/CursorContext';
 import React, { useContext, useEffect, useRef, useState } from 'react';
+import { useMediaQuery } from 'react-responsive';
 
+export function CursorContainer() {
+    const mobile = useMediaQuery({ query: "(max-width: 1024px)" });
+    if (mobile) return <></>;
+    return <Cursor/>
+}
 
-export function Cursor() {
-
+function Cursor() {
     const [outlinePos, setOutlinePos] = useState({ x: -100, y: -100 });
     const position = useRef({ x: -100, y: -100 });
     const {hovered} = useContext(CursorContext);
     const [outside, setOutside] = useState(false);
     const [mounted, setMounted] = useState(false);
-
+    
     
     useEffect(() => {
         if (!mounted) setMounted(true);
@@ -33,8 +38,8 @@ export function Cursor() {
         };
         const intervalId = setInterval(() => {
             setOutlinePos(prevPos => ({
-                x: prevPos.x + ((position.current.x - prevPos.x) / 6),
-                y: prevPos.y + ((position.current.y - prevPos.y) / 6),
+                x: prevPos.x + ((position.current.x - prevPos.x) / 4),
+                y: prevPos.y + ((position.current.y - prevPos.y) / 4),
             }));
         }, 10);
  

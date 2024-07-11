@@ -9,6 +9,7 @@ import { randColor } from "@/lib/randColor";
 import { Button } from "@/components/ui/Button";
 import { CursorContext } from "@/context/CursorContext";
 import { hoverable } from "@/components/CursorProvider";
+import { Precompile } from "../Precompile";
 const defaultGradient = { randomColor1: "#f97316", randomColor2: "#ef4444"};
 export default function Masthead() {
     const [gradient, setGradient] = useState(defaultGradient);
@@ -69,6 +70,7 @@ export default function Masthead() {
         <perspectiveCamera/>
         <Suspense fallback={null}>
           <Glasses frustumCulled={false} rotation={[89,0,0]} {...gradient} />
+          <Precompile />
         </Suspense>
       </Canvas>
       </div>

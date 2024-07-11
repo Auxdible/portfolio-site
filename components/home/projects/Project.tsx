@@ -7,6 +7,7 @@ import { TVModel } from "./Tv";
 import { Button } from "@/components/ui/Button";
 import { useMediaQuery } from "react-responsive";
 import { PresentationControls } from "@react-three/drei";
+import { Precompile } from "../Precompile";
 
 
 interface ProjectProps { 
@@ -32,11 +33,10 @@ export default function Project({ project }: ProjectProps) {
             <p className="font-lato text-xl">{project.description}</p>
             {project.skills && <ul className="flex gap-2 flex-wrap max-w-4xl my-2 max-md:justify-center">
               {project.skills.map((i, index) => 
-              <>
-              <li key={index}>
+              <li key={`${index}`} className="flex gap-2">
                 <span className="flex items-center gap-2">{i}</span>
-              </li>
-              {index != (project.skills?.length || 0) -1 && "•"}</>)}
+                {index != (project.skills?.length || 0) -1 && "•"}
+              </li>)}
             </ul>}
             <span className={`flex items-center ${!project.website_url || !project.source_url ? "justify-center" : "justify-between"} gap-2 max-[270px]:flex-col w-full`}>
               {project.website_url && <Button href={project.website_url}>View Project</Button>}
@@ -63,6 +63,7 @@ export default function Project({ project }: ProjectProps) {
          </PresentationControls> :
          <TVModel imageURL={project.image_url} frustumCulled={false} position={[0, 0, -26.5]} scale={[1, 1, 1]}/>}
         </Suspense>
+        <Precompile/>
       </Canvas>}
       </div>    
     </div>)
