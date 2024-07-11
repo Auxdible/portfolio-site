@@ -9,7 +9,8 @@ import * as THREE from 'three'
 import React, { useEffect, useRef } from 'react'
 import { Image, useGLTF, useTexture } from '@react-three/drei'
 import { GLTF } from 'three-stdlib'
-import { useLoader, useThree } from '@react-three/fiber'
+import { useFrame, useLoader, useThree } from '@react-three/fiber'
+import { useMediaQuery } from 'react-responsive';
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -28,13 +29,14 @@ type ContextType = Record<string, React.ForwardRefExoticComponent<JSX.IntrinsicE
 
 export function TVModel(props: JSX.IntrinsicElements['group'] & { imageURL: string, noRotate?: boolean }) {
   const { nodes, materials } = useGLTF('/tv.gltf') as GLTFResult
-  const { camera, gl } = useThree();
+  const { camera, gl, scene } = useThree();
   const texture = useLoader(THREE.TextureLoader, props.imageURL);
-  
+ 
 
   texture.wrapS = texture.wrapT = THREE.ClampToEdgeWrapping;
   texture.flipY = false;
   texture.anisotropy = gl.capabilities.getMaxAnisotropy();
+  const mobile = useMediaQuery({ query: "(max-width: 1024px)" })
 
   const screenMaterial = new THREE.MeshStandardMaterial({ map: texture, emissive: 0x000000, emissiveIntensity: 1 });
   screenMaterial.needsUpdate = true;
@@ -43,7 +45,7 @@ export function TVModel(props: JSX.IntrinsicElements['group'] & { imageURL: stri
   
 
   useEffect(() => {
-    if (props.noRotate) return;
+    if (props.noRotate || mobile) return;
     const handleMouseMove = (event: MouseEvent) => {
       if (!groupRef.current) return;
 
@@ -66,7 +68,7 @@ export function TVModel(props: JSX.IntrinsicElements['group'] & { imageURL: stri
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
     };
-  }, [camera, props.noRotate]);
+  });
   return (
     <group ref={groupRef} {...props} dispose={null}>
       <group position={[0, -19.799, 0]}>

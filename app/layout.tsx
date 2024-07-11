@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
 import Providers from '@/components/Providers';
 import Navbar from '@/components/navbar/Navbar';
-import { Cursor } from './cursor';
+import {  CursorContainer } from './cursor';
 import { dancingScript, inter, lato, montserrat, raleway, roboto, sourceCodePro } from './fonts';
 import NoiseBackground from '@/components/NoiseBackground';
 import Loading from './loading';
@@ -35,7 +35,7 @@ export default function RootLayout({
       <body className={"dark:bg-black bg-gray-50"}>
           <Providers>
             <NoiseBackground/>
-            <Cursor/>
+            <CursorContainer/>
             <Navbar/>
             <Suspense fallback={<Loading />}>{children}</Suspense>
           </Providers>
