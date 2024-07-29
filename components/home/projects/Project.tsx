@@ -1,8 +1,5 @@
-import { projects } from "@prisma/client";
 import { Canvas } from "@react-three/fiber";
-import { motion } from "framer-motion";
-import { Suspense } from "react";
-import { useSpring } from "react-spring";
+import { Suspense, useEffect, useRef } from "react";
 import { TVModel } from "./Tv";
 import { Button } from "@/components/ui/Button";
 import { useMediaQuery } from "react-responsive";

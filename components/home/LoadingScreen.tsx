@@ -1,4 +1,4 @@
-import useMetaIAB from "@/lib/hooks/useMetaIAB";
+
 import Image from "next/image";
 
 interface LoadingScreen {

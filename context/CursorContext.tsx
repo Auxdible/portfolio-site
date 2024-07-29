@@ -1,3 +1,3 @@
-import { createContext } from "react";
+import { createContext, Dispatch, SetStateAction } from "react";
 
-export const CursorContext = createContext<{ hovered: boolean, setHovered: React.Dispatch<React.SetStateAction<boolean>> | null }>({ hovered: false, setHovered: null });
+export const CursorContext = createContext<{ hovered: boolean, setHovered: Dispatch<SetStateAction<boolean>> | null }>({ hovered: false, setHovered: null });

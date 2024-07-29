@@ -17,19 +17,19 @@ const nextConfig = {
           },
           {
             protocol: 'https',
-            hostname: 'bot.auxdible.me',
+            hostname: 'auxdibot.xyz',
             port: '',
             pathname: '/*',
           },
           {
             protocol: 'https',
-            hostname: process.env.NEXT_PUBLIC_SITE_URL,
+            hostname: process.env.NEXT_PUBLIC_SITE_URL || "auxdible.me",
             port: '',
             pathname: '/*',
           },
           {
             protocol: 'https',
-            hostname: `${process.env.S3_BUCKET}.s3.amazonaws.com`,
+            hostname: `${process.env.S3_BUCKET || "auxdible-blog-post"}.s3.amazonaws.com`,
             port: '',
             pathname: '/*/**',
           },

@@ -6,7 +6,7 @@ import { CursorContext } from "@/context/CursorContext";
 import useMetaIAB from "@/lib/hooks/useMetaIAB";
 import { BlogPostPayload } from "@/lib/types/BlogPostPayload";
 import { motion } from "framer-motion";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useContext, useEffect, useState } from "react";
 import { BsBook, BsShare, BsShieldCheck } from "react-icons/bs";
 interface PostProps { 
@@ -17,6 +17,7 @@ export default function LatestBlogPost({ post }: PostProps) {
     const [isIAB] = useMetaIAB();
     const { setHovered } = useContext(CursorContext);
     const [mounted, setMounted] = useState(false);
+    const router = useRouter();
     useEffect(() => {
         if (!mounted) setMounted(true)
         }, [mounted]);
@@ -27,7 +28,10 @@ export default function LatestBlogPost({ post }: PostProps) {
     }
     return (<div className={`relative z-0 h-96 max-md:h-48 w-full max-w-2xl mb-64 max-md:mb-96 max-md:px-2${isIAB ? " max-md:mb-[35rem]" : ""} `} >
     <motion.h1 className="text-6xl mb-5 tracking-wide max-md:text-5xl text-title font-raleway font-bold py-1 text-center">Featured Post</motion.h1>
-    {post.image ? <Link href={`/blog/${post.id}`} {...hoverable(setHovered)} className={"absolute bg-contain bg-no-repeat bg-center transition-all h-96 max-md:h-48 w-[724px] max-md:w-full object-center -translate-x-1/2 left-1/2 rounded-xl hover:scale-105 dark:bg-gray-900 bg-gray-200"} style={
+    {post.image ? <div onClick={() => {
+                if (setHovered) setHovered(false) 
+                router.push(`/blog/${post.id}`)
+            }} {...hoverable(setHovered)} className={"absolute bg-contain bg-no-repeat bg-center transition-all h-96 max-md:h-48 w-[724px] max-md:w-full object-center -translate-x-1/2 left-1/2 rounded-xl hover:scale-105 dark:bg-gray-900 bg-gray-200"} style={
         {
             backgroundImage: `url(${post.image || ""})`,
             backgroundSize: `110%`,
