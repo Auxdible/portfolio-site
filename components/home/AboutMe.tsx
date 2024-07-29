@@ -3,8 +3,9 @@ import {motion} from 'framer-motion';
 import { Jobs } from './Jobs';
 import { Button } from '../ui/Button';
 import { SiNextdotjs, SiReact } from 'react-icons/si';
+import { dancingScript, sourceCodePro } from '@/app/fonts';
 export default function AboutMe() {
-    return (<section className='gap-10 flex flex-col items-center relative'>
+    return (<section className={`gap-10 flex flex-col items-center relative ${sourceCodePro.variable} ${dancingScript.variable}`}>
 
       <motion.div className='text-4xl max-sm:text-3xl max-w-6xl line-clamp-5 mx-auto font-lato leading-[3.5rem] flex flex-col items-center gap-10'>
         <span className='text-center'>Hello! My name is <span className='text-title font-raleway'>Steven Primeaux</span>, a Full Stack Developer with three years of experience developing web-based applications using <span className="inline-flex items-center gap-2 align-bottom"><SiNextdotjs/> Next.js</span> and the <span className="inline-flex items-center gap-2 align-bottom"><SiReact/> MERN</span> tech stack.</span>

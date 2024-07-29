@@ -25,11 +25,10 @@ type GLTFResult = GLTF & {
   }
 }
 
-type ContextType = Record<string, React.ForwardRefExoticComponent<JSX.IntrinsicElements['mesh']>>
 
 export function TVModel(props: JSX.IntrinsicElements['group'] & { imageURL: string, noRotate?: boolean }) {
   const { nodes, materials } = useGLTF('/tv.gltf') as GLTFResult
-  const { camera, gl, scene } = useThree();
+  const { camera, gl } = useThree();
   const texture = useLoader(THREE.TextureLoader, props.imageURL);
  
 
@@ -68,7 +67,7 @@ export function TVModel(props: JSX.IntrinsicElements['group'] & { imageURL: stri
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
     };
-  });
+  })
   return (
     <group ref={groupRef} {...props} dispose={null}>
       <group position={[0, -19.799, 0]}>
@@ -80,4 +79,4 @@ export function TVModel(props: JSX.IntrinsicElements['group'] & { imageURL: stri
   )
 }
 
-useGLTF.preload('/tv.glb')
+useGLTF.preload('/tv.gltf')

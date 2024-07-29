@@ -1,8 +1,8 @@
-import { Metadata } from 'next'
+import { Metadata, Viewport } from 'next'
 import Providers from '@/components/Providers';
 import Navbar from '@/components/navbar/Navbar';
 import {  CursorContainer } from './cursor';
-import { dancingScript, inter, lato, montserrat, raleway, roboto, sourceCodePro } from './fonts';
+import { inter, lato, montserrat, raleway, roboto } from './fonts';
 import NoiseBackground from '@/components/NoiseBackground';
 import Loading from './loading';
 import { Suspense } from 'react';
@@ -20,10 +20,16 @@ export const metadata: Metadata = {
     countryName: "United States",
     description: "The official portfolio site for the Full Stack Developer Auxdible.",
     url: "https://auxdible.me",
-    images: "/icon.png"
+    images: "/icon.png",
   },
 };
-
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+  themeColor: "#ffa800",
+}
 
 export default function RootLayout({
   children
@@ -31,7 +37,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${raleway.variable} ${lato.variable} ${roboto.variable} ${montserrat.variable} ${inter.variable} ${sourceCodePro.variable} ${dancingScript.variable} scroll-smooth`}>
+    <html lang="en" className={`${raleway.variable} ${lato.variable} ${roboto.variable} ${montserrat.variable} ${inter.variable} scroll-smooth`}>
       <body className={"dark:bg-black bg-gray-50"}>
           <Providers>
             <NoiseBackground/>

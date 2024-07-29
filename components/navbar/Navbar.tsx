@@ -64,6 +64,7 @@ export default function Navbar() {
       });
     if (!mounted) return <></>;
     function onScroll() {
+        if (collapse) return;
         const visible = previousScrollPos > window.pageYOffset;
         setScrollPos(window.pageYOffset);
 
