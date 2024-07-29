@@ -3,6 +3,7 @@
 import { hoverable } from "@/components/CursorProvider";
 import { Button } from "@/components/ui/Button";
 import { CursorContext } from "@/context/CursorContext";
+import { CategoryColors } from "@/lib/constants/CategoryColors";
 import useMetaIAB from "@/lib/hooks/useMetaIAB";
 import { BlogPostPayload } from "@/lib/types/BlogPostPayload";
 import { motion } from "framer-motion";
@@ -51,7 +52,14 @@ export default function LatestBlogPost({ post }: PostProps) {
     
     <h1 className={"text-4xl py-1 max-sm:text-3xl font-raleway text-title font-bold"}>{post.title}</h1>
     <p className={"block font-lato my-2 break-words text-2xl"}>{post.description ?? ""}</p>
+    <ul className='flex flex-wrap gap-4 justify-center'>
+            {post.categories.map((i, index) => <li key={index} className='flex gap-2'>
+                <span className={`flex items-center gap-2 border-2 rounded-2xl px-1 py-0.5 font-montserrat ${CategoryColors[i as keyof typeof CategoryColors] ?? 'border-black dark:border-white'}`}>{i}</span>
+                
+            </li>)}
+        </ul>
     <p className={"flex flex-row font-roboto justify-center text-lg dark:text-gray-400 text-gray-600 my-1 gap-1"}>{new Date(post.date || Date.now()).toISOString().split('T')[0]} • <span className={"flex flex-row justify-center items-center gap-1"}><BsShieldCheck/> {post.author}</span></p>
+    
     <span className={"flex items-center gap-4 w-fit mx-auto my-2"}>
        <Button href={`/blog/${post.id}`}><span className="flex gap-2 items-center text-lg font-bold"><BsBook className={"text group-hover:fill-theme fill-reverse duration-700 transition-all"}/> Read More</span></Button>
        {mounted && window.isSecureContext ? 

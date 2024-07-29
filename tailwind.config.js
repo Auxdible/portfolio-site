@@ -65,6 +65,16 @@ module.exports = {
   ],
   safelist: [
     'from-primary',
-    'to-secondary'
+    'to-secondary',
+    "from-primary",
+    "to-secondary",
+    "border-orange-500",
+    "border-sky-500",
+    "border-green-500",
+    "border-yellow-500",
+    "border-red-500",
+    "border-gray-500",
+    "border-purple-500",
+    "border-pink-500"
   ]
 }

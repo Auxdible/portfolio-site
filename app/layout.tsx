@@ -7,6 +7,7 @@ import NoiseBackground from '@/components/NoiseBackground';
 import Loading from './loading';
 import { Suspense } from 'react';
 import '../styles/globals.scss';
+import { CategoryColors } from '@/lib/constants/CategoryColors';
 
 export const metadata: Metadata = {
   title: 'Auxdible',

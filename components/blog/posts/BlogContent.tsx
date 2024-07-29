@@ -6,6 +6,7 @@ import { BsShieldCheck } from "react-icons/bs";
 
 import { BlogPostPayload } from "@/lib/types/BlogPostPayload";
 import Image from "next/image";
+import { CategoryColors } from "@/lib/constants/CategoryColors";
 
 type PostProps = { post: BlogPostPayload & { content: string }, preview?: boolean }
 export default function BlogContent({ post, preview }: PostProps) {
@@ -26,7 +27,14 @@ export default function BlogContent({ post, preview }: PostProps) {
         </div>}
         
         <h1 className={"text-5xl max-sm:text-4xl font-raleway font-bold tracking-wide text-title py-1"}>{post.title}</h1>  
+        <ul className='flex flex-wrap gap-4 justify-center'>
+            {post.categories.map((i, index) => <li key={index} className='flex gap-2'>
+                <span className={`flex items-center gap-2 border-2 rounded-2xl px-1 py-0.5 font-montserrat ${CategoryColors[i as keyof typeof CategoryColors] ?? 'border-black dark:border-white'}`}>{i}</span>
+                
+            </li>)}
+        </ul>
         <p className={"block w-full font-lato text-2xl my-4 break-words"}>{post.description}</p>
+       
         <p className={"flex flex-row font-roboto justify-center text-xl dark:text-gray-400 text-gray-600 gap-1"}>{new Date(post.date || Date.now()).toISOString().split('T')[0]} • <span className={"flex flex-row justify-center items-center gap-1"}><BsShieldCheck/> {post.author}</span></p>
     </div>
     <div className={"relative dark:bg-black bg-gray-50 rounded-3xl w-full max-md:max-w-full p-1 md:p-4 max-md:py-4 my-5 max-w-5xl"}>
