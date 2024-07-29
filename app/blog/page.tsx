@@ -5,7 +5,7 @@ import BlogPreview from "@/components/home/blog/BlogPreview";
 import { Suspense } from "react";
 
 
-export default function Blog() {
+export default function Blog({ searchParams }: { searchParams: { categories?: string } }) {
 
     return (<main className={"flex min-h-screen flex-col items-center justify-center mx-auto"}>
     <div className={"flex flex-col gap-1 mx-auto text-center font-lato text-2xl text mt-40 mb-10  "}>
@@ -20,7 +20,7 @@ export default function Blog() {
         <BlogPostSkeleton/>
         <BlogPostSkeleton/>
         </>}>
-        <BlogPosts Component={BlogPreview} options={{ limit: 10 }}/>
+        <BlogPosts Component={BlogPreview} categories={searchParams.categories?.split(',')} options={{ limit: 10 }}/>
       </Suspense>
     </section>
     </main>)

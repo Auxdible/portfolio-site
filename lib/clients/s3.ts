@@ -18,6 +18,7 @@ export const getPostContent = cache<(id: string) => Promise<(BlogPostPayload & {
             date: object.LastModified || Date.now(),
             id: id,
             author: Metadata?.author || "Unknown",
+            categories: Metadata?.categories?.split(",") || [],
             image: Metadata?.image_url,
             content: Body ? await streamToString(Body as Readable) : "No content.",
         };
@@ -51,6 +52,7 @@ export const fetchBlogPosts = cache<(options: BlogPostFetchOptions) => Promise<B
                 description: object.Metadata?.description,
                 date: object.LastModified || Date.now(),
                 id: i.Key?.replace('.md', '').replace("posts/", "") || "unknown",
+                categories: object.Metadata?.categories?.split(",") || [],
                 author: object.Metadata?.author || "Unknown",
                 image: object.Metadata?.image_url,
             })
