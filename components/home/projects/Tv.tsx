@@ -6,10 +6,10 @@ Command: npx gltfjsx@6.2.18 tv.glb --types
 */
 
 import * as THREE from 'three'
-import React, { useEffect, useRef } from 'react'
-import { Image, useGLTF, useTexture } from '@react-three/drei'
+import React, { useEffect, useMemo, useRef } from 'react'
+import { useGLTF } from '@react-three/drei'
 import { GLTF } from 'three-stdlib'
-import { useFrame, useLoader, useThree } from '@react-three/fiber'
+import { useLoader, useThree } from '@react-three/fiber'
 import { useMediaQuery } from 'react-responsive';
 
 type GLTFResult = GLTF & {
@@ -25,20 +25,21 @@ type GLTFResult = GLTF & {
   }
 }
 
-
 export function TVModel(props: JSX.IntrinsicElements['group'] & { imageURL: string, noRotate?: boolean }) {
   const { nodes, materials } = useGLTF('/tv.gltf') as GLTFResult
-  const { camera, gl } = useThree();
+  const { camera, gl, scene } = useThree();
   const texture = useLoader(THREE.TextureLoader, props.imageURL);
- 
 
   texture.wrapS = texture.wrapT = THREE.ClampToEdgeWrapping;
   texture.flipY = false;
-  texture.anisotropy = gl.capabilities.getMaxAnisotropy();
+
   const mobile = useMediaQuery({ query: "(max-width: 1024px)" })
 
-  const screenMaterial = new THREE.MeshStandardMaterial({ map: texture, emissive: 0x000000, emissiveIntensity: 1 });
-  screenMaterial.needsUpdate = true;
+  const screenMaterial = useMemo(() => {
+    const material = new THREE.MeshStandardMaterial({ map: texture, emissive: 0x000000, emissiveIntensity: 1 });
+    return material;
+  }, [texture]);
+
 
   const groupRef = useRef<THREE.Group | null>(null);
   
@@ -67,7 +68,13 @@ export function TVModel(props: JSX.IntrinsicElements['group'] & { imageURL: stri
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
     };
-  })
+  });
+  useEffect(() => {
+    return () => {
+      texture.dispose();
+      screenMaterial.dispose();
+    };
+  }, [texture, screenMaterial]);
   return (
     <group ref={groupRef} {...props} dispose={null}>
       <group position={[0, -19.799, 0]}>
