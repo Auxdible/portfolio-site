@@ -1,7 +1,7 @@
 "use client";
 import Project from '@/components/home/projects/Project';
 import { motion } from 'framer-motion';
-import { SiAmazons3, SiExpress, SiMongodb, SiNextdotjs, SiNodedotjs, SiPassport, SiReact, SiTailwindcss, SiThreedotjs } from 'react-icons/si';
+import { SiAmazons3, SiExpress, SiJquery, SiMongodb, SiNextdotjs, SiNodedotjs, SiPassport, SiReact, SiSquarespace, SiTailwindcss, SiThreedotjs } from 'react-icons/si';
 
 export default function Projects(){
     return (<div className={"flex flex-col mt-60d w-full"}>
@@ -46,6 +46,20 @@ export default function Projects(){
         website_url: "https://auxdible.me",
         project_id: "2"
       }} />
+      <Project key={2} project={{
+        date: "February 2024 - July 2024",
+        name: "Great Bridge Baptist Church",
+        description: "(Contributor) The official website for Great Bridge Baptist Church, built with Squarespace, utilizing complex jQuery scripts to accomplish a mega navigation menu.",
+        image_url: "/assets/greatbridgebaptist_project.png",
+        skills: [
+          <><SiSquarespace/> Squarespace</>,
+          <><SiJquery/> jQuery</>,
+          <>Church Center</>,
+          <>Resi</>,
+        ],
+        website_url: "https://greatbridge.life",
+        project_id: "3"
+      }} />
       <Project key={3} project={{
         date: "April 2024",
         name: "Weather App",
@@ -61,7 +75,7 @@ export default function Projects(){
         image_url: "/assets/weather_app_project.png",
         source_url: "https://github.com/Auxdible/weather-app",
         website_url: "https://weather.auxdible.me",
-        project_id: "3"
+        project_id: "4"
       }} />
       <Project key={4} project={{
         date: "Oct 2023",
@@ -78,7 +92,7 @@ export default function Projects(){
         ],
         image_url: "/assets/auxdibible_project.png",
         source_url: "https://github.com/Auxdible/auxdibible",
-        project_id: "4"
+        project_id: "5"
       }} />
       
     </section>
