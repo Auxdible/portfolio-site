@@ -81,7 +81,7 @@ export default function Navbar() {
                 <BiMenuAltLeft/>
             </button>
             <span className={"max-md:hidden justify-between items-center flex flex-1 flex-grow flex-shrink text-2xl font-montserrat"}>
-                <Link className={"h-fit hover:before:scale-100 before:underline-custom relative  transition-all"} {...hoverable(setHovered)} href={'/'}>Coming Soon</Link>
+                <Link className={"h-fit hover:before:scale-100 before:underline-custom relative  transition-all"} {...hoverable(setHovered)}target='_blank' href={process.env.NEXT_PUBLIC_CV_URL ?? ''} >CV/Resume</Link>
                 <Link className={"h-fit hover:before:scale-100 before:underline-custom relative  transition-all"} {...hoverable(setHovered)} href={"/blog"}>Blog</Link>
             </span>
         </div>
@@ -113,7 +113,7 @@ export default function Navbar() {
             <div className="flex flex-col gap-2 w-full pl-5 mt-auto">
                 <Link {...hoverable(setHovered)} className="font-raleway font-bold text-3xl" onClick={changeCollapse} href={"/blog"}>Blog</Link>
                 <Link {...hoverable(setHovered)} className="font-raleway font-bold text-3xl" onClick={changeCollapse} href={"/contact-me"}>Contact Me</Link>
-                <Link {...hoverable(setHovered)} className="font-raleway font-bold text-3xl" onClick={changeCollapse} href={"/"}>Coming Soon</Link>
+                <Link {...hoverable(setHovered)} className="font-raleway font-bold text-3xl" onClick={changeCollapse} target='_blank' href={process.env.NEXT_PUBLIC_CV_URL ?? ''} >CV/Resume</Link>
             </div>
             <div className="w-full mt-auto flex flex-col gap-2 mb-8">
                 <span className="relative">

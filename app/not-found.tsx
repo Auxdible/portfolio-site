@@ -1,9 +1,6 @@
 "use client";
 import { Button } from "@/components/ui/Button"
 import Image from "next/image"
-import Link from "next/link"
-import { BsQuestionCircle } from "react-icons/bs"
-
 export default function NotFound() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-center max-w-lg mx-auto">

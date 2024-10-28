@@ -11,6 +11,16 @@ module.exports = {
 
   theme: {
     extend: {
+      keyframes: {
+        marquee: {
+          '0%': { transform: 'translateX(0%)' },
+          '100%': { transform: 'translateX(-100%)' }
+        },
+        marquee2: {
+          '0%': { transform: 'translateX(100%)' },
+          '100%': { transform: 'translateX(0%)' }
+        }
+      },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
@@ -42,7 +52,9 @@ module.exports = {
         themeDown: "themeDown 0.5s ease-out 1 forwards",
         theme2Up: "theme2Up 0.5s ease-out 1 forwards",
         theme2Down: "theme2Down 0.5s ease-out 1 forwards",
-        loaded: "themeDown 1s ease-in-out 1 forwards"
+        loaded: "themeDown 1s ease-in-out 1 forwards",
+        marquee: 'marquee 40s linear infinite',
+        marquee2: 'marquee2 40s linear infinite'
       },
       colors: {
         "primary": 'var(--color-primary)',
