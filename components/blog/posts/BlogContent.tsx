@@ -15,14 +15,14 @@ export default function BlogContent({ post, preview }: PostProps) {
     <div className={"block mx-auto text-center font-roboto text-2xl text mb-10 mt-40 max-w-4xl"}>
     {post.image && <div className="relative">
             <div className="absolute -inset-1 bg-gradient-to-b from-primary to-secondary"/>
-            <Image 
+            <img 
             src={post.image}
             width={0}
             height={0}
             sizes="35vw"
             style={{ width: '100%', height: 'auto' }} 
             alt={post.title + " image"} 
-            quality={100}
+
             className=" my-5 z-10 relative max-h-96 object-contain bg-black"/>
         </div>}
         
