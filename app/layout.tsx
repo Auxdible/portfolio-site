@@ -7,7 +7,6 @@ import NoiseBackground from '@/components/NoiseBackground';
 import Loading from './loading';
 import { Suspense } from 'react';
 import '../styles/globals.scss';
-import { CategoryColors } from '@/lib/constants/CategoryColors';
 
 export const metadata: Metadata = {
   title: 'Auxdible',
@@ -19,7 +18,7 @@ export const metadata: Metadata = {
     title: "Auxdible",
     siteName: "Auxdible's Portfolio",
     countryName: "United States",
-    description: "The official portfolio site for the Full Stack Developer Auxdible.",
+    description: "The official portfolio site and blog for the Full Stack Developer Auxdible, aka. Steven Primeaux.\n\n💻 Full Stack Developer\n☕ Coffee Lover\n☁️ AWS Certified Developer Associate, Cloud Practicioner",
     url: "https://auxdible.me",
     images: "/icon.png",
   },
