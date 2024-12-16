@@ -1,14 +1,14 @@
 import { cn } from "@/lib/utils";
 
+type MarqueeProps = { containerClass?: string; className?: string; children: string | JSX.Element | JSX.Element[] };
+
 export function Marquee({
     children,
     className,
-}: {
-    children?: React.ReactNode;
-    className?: string;
-}) {
+    containerClass
+}: MarqueeProps) {
     return (
-        <article className='whitespace-no-wrap flex w-full overflow-x-hidden'>
+        <article className={cn('whitespace-no-wrap flex w-full overflow-x-hidden', containerClass)}>
             <div className={'relative w-full'}>
                 <section
                     className={cn(
