@@ -11,7 +11,7 @@ export default function Certificates() {
         <Certification
         name="AWS Certified Developer - Associate"
         author={<><FaAws/> Amazon Web Services (AWS)</>}
-        date="Jan 2024"
+        date="Dec 2024"
         skills={[
             <><SiAwslambda/> AWS Lambda</>,
             <><SiAmazondynamodb/> Amazon DynamoDB</>,
