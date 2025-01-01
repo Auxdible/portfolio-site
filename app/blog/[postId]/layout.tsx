@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: LayoutProps): Promise<Metadat
               title: post.title,
               siteName: "Auxdible's Portfolio",
               countryName: "United States",
-              description: post.description,
+              description: post.description + "\n📁 Post Topics: " + post.categories.join(', '),
               url: process.env.NEXT_PUBLIC_SITE_URL + "/blog/" + postId,
           }
         } : {})

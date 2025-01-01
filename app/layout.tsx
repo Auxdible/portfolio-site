@@ -40,7 +40,6 @@ export default function RootLayout({
     <html lang="en" className={`${raleway.variable} ${lato.variable} ${roboto.variable} ${montserrat.variable} ${inter.variable} scroll-smooth`}>
       <body className={"dark:bg-black bg-gray-50"}>
           <Providers>
-            <NoiseBackground/>
             <CursorContainer/>
             <Navbar/>
             <Suspense fallback={<Loading />}>{children}</Suspense>

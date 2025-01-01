@@ -1,7 +1,6 @@
 "use client";
 
 import { useContext, useEffect, useState } from 'react';
-import Link from "next/link";
 import { BsBook, BsShare, BsShieldCheck } from "react-icons/bs";
 import { BlogPostPayload } from "@/lib/types/BlogPostPayload";
 import { Button } from "@/components/ui/Button";
@@ -43,7 +42,7 @@ export default function BlogPreview({ post }: PostProps) {
         <p className="font-lato text-lg max-lg:text-center">{post.description}</p>
         <ul className='flex flex-wrap max-sm:justify-center gap-4'>
             {post.categories.map((i, index) => <li key={index} className='flex gap-2'>
-                <span className={`flex items-center gap-2 border-2 rounded-2xl px-1 py-0.5 font-montserrat ${CategoryColors[i as keyof typeof CategoryColors] ?? 'border-black dark:border-white'}`}>{i}</span>
+                <span className={`flex items-center gap-2 border-2 rounded-2xl px-1 py-0.5 font-montserrat border-${CategoryColors[i as keyof typeof CategoryColors] ?? 'black dark:border-white'}`}>{i}</span>
                 
             </li>)}
         </ul>

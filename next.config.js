@@ -29,7 +29,13 @@ const nextConfig = {
           },
           {
             protocol: 'https',
-            hostname: `${process.env.S3_BUCKET || "auxdible-blog-post"}.s3.amazonaws.com`,
+            hostname: `${process.env.S3_BUCKET ?? 'blog-posts-auxdible'}.s3.amazonaws.com`,
+            port: '',
+            pathname: '/*/**',
+          },
+          {
+            protocol: 'https',
+            hostname: `${process.env.S3_BUCKET ?? 'blog-posts-auxdible'}.s3.${process.env.S3_REGION ?? 'us-east-1'}.amazonaws.com`,
             port: '',
             pathname: '/*/**',
           },
