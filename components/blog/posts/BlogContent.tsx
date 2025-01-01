@@ -23,13 +23,13 @@ export default function BlogContent({ post, preview }: PostProps) {
             style={{ width: '100%', height: 'auto' }} 
             alt={post.title + " image"} 
 
-            className=" my-5 z-10 relative max-h-96 object-contain bg-black"/>
+            className=" my-5 z-10 relative max-h-96 object-cover bg-black"/>
         </div>}
         
         <h1 className={"text-5xl max-sm:text-4xl font-raleway font-bold tracking-wide text-title py-1"}>{post.title}</h1>  
         <ul className='flex flex-wrap gap-4 justify-center'>
             {post.categories.map((i, index) => <li key={index} className='flex gap-2'>
-                <span className={`flex items-center gap-2 border-2 rounded-2xl px-1 py-0.5 my-2 font-montserrat ${CategoryColors[i as keyof typeof CategoryColors] ?? 'border-black dark:border-white'}`}>{i}</span>
+                <span className={`flex items-center gap-2 border-2 rounded-2xl px-1 py-0.5 my-2 font-montserrat border-${CategoryColors[i as keyof typeof CategoryColors] ?? 'black dark:border-white'}`}>{i}</span>
                 
             </li>)}
         </ul>

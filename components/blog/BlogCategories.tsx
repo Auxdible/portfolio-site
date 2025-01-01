@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useContext, useMemo } from "react";
 import { hoverable } from "../CursorProvider";
+import { Button } from "../ui/Button";
 
 export function BlogCategories({ posts }: { posts: BlogPostPayload[] }) {
     const searchParams = useSearchParams();
@@ -24,17 +25,16 @@ export function BlogCategories({ posts }: { posts: BlogPostPayload[] }) {
         <h2 className="font-raleway font-bold text-3xl">Categories</h2>
  <ul className="flex flex-wrap justify-center gap-4 items-center">
             {uniqueCategories.map((category) => (
-                <li key={category}><Link
-                    key={category}
-                    {...hoverable(setHovered)}
-                    href={selectedCategories.includes(category) ? 
-                        `/blog?categories=${selectedCategories.filter((i) => i !== category).join(',')}` :
-                        `/blog?categories=${[...selectedCategories, category].join(',')}`
-                    }
-                    passHref
+                <Button color1={CategoryColors[category as keyof typeof CategoryColors]} color2={CategoryColors[category as keyof typeof CategoryColors]}  key={category}
+                {...hoverable(setHovered)}
+                active={selectedCategories.includes(category)}
+                href={selectedCategories.includes(category) ? 
+                    `/blog?categories=${selectedCategories.filter((i) => i !== category).join(',')}` :
+                    `/blog?categories=${[...selectedCategories, category].join(',')}`
+                }
                 >
-                    <span className={`flex items-center gap-2 border-2 rounded-2xl px-1 py-0.5 text-xl font-montserrat ${CategoryColors[category as keyof typeof CategoryColors] ?? 'border-black dark:border-white'}`}>{category}</span>
-                </Link></li>
+                    <span className={`flex items-center gap-2 text-xl font-bold font-raleway`}>{category}</span>
+                </Button>
             ))}
         </ul>
     </div>
