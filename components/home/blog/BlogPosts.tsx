@@ -4,7 +4,7 @@ import BlogPostSkeleton from "../../blog/posts/BlogPostSkeleton";
 
 export default function BlogPosts() {
 
-    return (<section className="flex relative flex-col pt-52 max-2xl:items-center w-full gap-20 py-20 max-md:mt-20 bg-black">
+    return (<section className="flex relative flex-col pt-52 max-2xl:items-center w-full gap-20 py-20 max-md:mt-20 bg-white dark:bg-black">
       <div className="absolute w-full h-96 top-0 left-0">
       <div className="absolute w-full h-96 max-md:h-86 max-md:-my-20 top-0 left-0 z-10 bg-zinc-300 dark:bg-zinc-900" style={{
         maskImage: "url(/transition2.svg)",
