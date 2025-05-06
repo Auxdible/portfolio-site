@@ -20,8 +20,9 @@ export default function Category({ Icon, title, items, delay }: CategoryProps) {
     const { setHovered } = useContext(CursorContext);
     return (
         <article className="lg:h-80">
-        <div {...hoverable(setHovered)} onClick={() => setToggled(!toggle)} className={`cursor-pointer relative mx-auto flex flex-col gap-2 text text-lg items-center text-center font-extralight group dark:bg-black bg-white w-full ${toggle ? "h-80 max-sm:h-80" : `h-32 hover:h-80`} transition-all py-2 rounded-xl`}>
-        <div className={"absolute -z-10 -inset-[1px] bg-gradient-to-t from-primary to-secondary rounded-xl"}></div>
+        <div {...hoverable(setHovered)} onClick={() => setToggled(!toggle)} className={`cursor-pointer relative mx-auto group w-full ${toggle ? "h-80 max-sm:h-80" : `h-32 hover:h-80`} transition-all py-2 rounded-xl`}>
+        <div className={"absolute z-0 -inset-[1px] bg-gradient-to-t from-primary to-secondary rounded-xl"}></div>
+        <div className="absolute inset-1 rounded-xl flex z-10 flex-col gap-2 text text-lg items-center text-center font-extralight dark:bg-zinc-900 bg-zinc-300">
         <motion.span 
         className={"relative w-12 md:h-12"}
         initial={{ transform: "translateY(-2rem)", opacity: 0 }} 
@@ -29,7 +30,7 @@ export default function Category({ Icon, title, items, delay }: CategoryProps) {
         whileInView={{ transform: "translateY(0px)", opacity: 1 }}  
         transition={{ duration: 0.5, delay: !isMobile ? delay || 0 : 0 }}
         >
-        <div className={`absolute -z-10 bg-gradient-radial dark:from-black from-white dark:via-black via-white to-transparent rounded-full w-16 h-16 -translate-x-1/2 left-1/2 md:h-12 ${toggle ? "-translate-y-8 scale-110" : "group-hover:-translate-y-8 group-hover:scale-110"} delay-75 transition-all`}></div>
+        <div className={`absolute -z-10 bg-gradient-radial dark:from-zinc-900 from-zinc-300 dark:via-zinc-900 via-zinc-300 to-transparent rounded-full w-16 h-16 -translate-x-1/2 left-1/2 md:h-12 ${toggle ? "-translate-y-8 scale-110" : "group-hover:-translate-y-8 group-hover:scale-110"} delay-75 transition-all`}></div>
         <div className={`flex justify-center items-center text-4xl w-12 h-12 text-black border dark:border-gray-200 border-gray-900 rounded-full p-2 dark:text-white ${toggle ? "-translate-y-8 scale-125" : "group-hover:-translate-y-8 group-hover:scale-110"} delay-75 transition-all`}><Icon /></div>
         </motion.span>
         <h1 className={"text-3xl max-2xl:text-2xl max-md:text-2xl font-raleway font-semibold text-title"}>{title}</h1>
@@ -41,6 +42,8 @@ export default function Category({ Icon, title, items, delay }: CategoryProps) {
             </li>)}
         </ul> : ""}
         </section>
+        </div>
+        
         </div>
         </article>
     )

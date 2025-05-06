@@ -7,7 +7,7 @@ import Category from './Category';
 import { BsCode, BsJournalCode, BsTools } from 'react-icons/bs';
 
 export default function Tools() {
-    return (<section className={"flex flex-col gap-20 mt-40"}>
+    return (<section className={"flex flex-col gap-20 mt-40 " }>
         <motion.h1 className="text-7xl tracking-wide max-md:text-5xl text-title font-raleway font-bold py-1 text-center">My Tools</motion.h1>
         <div className={"grid gap-y-20 gap-x-5 grid-cols-3 max-2xl:grid-cols-2 max-lg:grid-cols-1 xl:px-34 px-4"}>
             <Category Icon={BsCode} 

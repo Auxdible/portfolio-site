@@ -38,7 +38,28 @@ export default function Masthead() {
       document.documentElement.style.setProperty('--color-primary', '#' + color1.padStart(6, '0'));
       document.documentElement.style.setProperty('--color-secondary', '#' + color2.padStart(6, '0'));
     }
-    return (<header id="header" className="flex flex-row max-xl:flex-col max-xl:justify-center xl:justify-end min-h-screen w-full items-center mx-auto overflow-hidden">
+    return (<header id="header" className="dark:bg-black bg-white flex flex-row max-xl:flex-col max-xl:justify-center xl:justify-end min-h-screen w-full items-center mx-auto overflow-hidden">
+    <div className="absolute w-full h-96 max-[420px]:min-[400px]:-bottom-14 bottom-0 left-0">
+      <div className="absolute w-full h-96 max-md:h-64 max-md:-my-20 bottom-0 left-0 z-10 bg-zinc-300 dark:bg-zinc-900" style={{
+        maskImage: "url(/transition1.svg)",
+        maskSize: "100% 100%",
+        maskPosition: "0 50px",
+        maskRepeat: "no-repeat",
+        WebkitMaskImage: "url(/transition1.svg)",
+        WebkitMaskSize: "100% 100%",
+        
+      }}/>
+      <div className="absolute w-full h-96 left-0 max-md:h-64 max-md:-my-20 bottom-0 bg-gradient-to-r z-0 from-primary to-60% from-15% to-secondary" style={{
+        maskImage: "url(/transition1.svg)",
+        maskSize: "100% 100%",
+        maskPosition: "0 40px",
+        maskRepeat: "no-repeat",
+        WebkitMaskImage: "url(/transition1.svg)",
+        WebkitMaskSize: "100% 100%",
+        
+      }}/>
+    </div>
+   
     <div className={"flex flex-col justify-center gap-5 xl:flex-1 xl:flex-grow font-roboto text-2xl text w-full"}>
         <section className={"flex flex-col gap-2 max-xl:text-center mx-auto w-fit"}>
         <span className={"flex flex-row justify-start gap-0 text-9xl max-md:text-8xl max-sm:text-6xl pt-4 font-raleway w-[7ch] select-none max-xl:justify-center mx-auto"}>

@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { SiAmazons3, SiExpress, SiJquery, SiMongodb, SiNextdotjs, SiNodedotjs, SiPassport, SiReact, SiSquarespace, SiTailwindcss, SiThreedotjs } from 'react-icons/si';
 
 export default function Projects(){
-    return (<div className={"flex flex-col mt-60d w-full"}>
+    return (<div className={"flex flex-col pt-60 bg-black w-full"}>
     <motion.h1 initial={{ opacity: 0, transform: "translateY(-8rem)" }}
   whileInView={{ opacity: 1, transform: "translateY(0)" }} transition={{ duration: 1 }} viewport={{ once: true }} className={"text-7xl max-md:text-5xl text-center font-raleway text-title w-full py-2 font-bold"}>My Projects</motion.h1>
     <section className={"overflow-hidden"}>
@@ -46,7 +46,7 @@ export default function Projects(){
         website_url: "https://auxdible.me",
         project_id: "2"
       }} />
-      <Project key={2} project={{
+      <Project key={3} project={{
         date: "February 2024 - July 2024",
         name: "Great Bridge Baptist Church",
         description: "(Contributor) The official website for Great Bridge Baptist Church, built with Squarespace, utilizing complex jQuery scripts to accomplish a mega navigation menu.",
@@ -60,7 +60,7 @@ export default function Projects(){
         website_url: "https://greatbridge.life",
         project_id: "3"
       }} />
-      <Project key={3} project={{
+      <Project key={4} project={{
         date: "April 2024",
         name: "Weather App",
         description: "An application users can utilize view weather information for specific geographic regions. Built using Next.js, Tailwind CSS, and shadcn/ui.",
@@ -77,7 +77,7 @@ export default function Projects(){
         website_url: "https://weather.auxdible.me",
         project_id: "4"
       }} />
-      <Project key={4} project={{
+      <Project key={5} project={{
         date: "Oct 2023",
         name: "Auxdibible",
         description: "An application users can utilize to browse the Bible. Users can sign in and view their highlighted verses and others highlighted verses. Built using Next.js, Tailwind CSS, MongoDB, and next-auth.",
