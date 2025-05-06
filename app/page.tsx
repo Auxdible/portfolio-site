@@ -14,13 +14,15 @@ const BlogPosts = lazy(() => import('@/components/home/blog/BlogPosts'))
 const Certificates = lazy(() => import('@/components/home/certifications/Certifications'))
 const Tools = lazy(() => import('@/components/home/tools/Tools'))
 export default function Home() {
-  return (<main className={`flex flex-col gap-10`}>
+  return (<main className={`flex flex-col bg-zinc-300 dark:bg-zinc-900`}>
     <Masthead/>
     <AboutMe/>
     <Tools/>
-    <Certificates/>
-    <Projects/>
     <BlogPosts/>
+    <Projects/>
+    <Certificates/>
+    
+    
     <Footer/>
     
   </main>);
