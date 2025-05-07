@@ -26,7 +26,7 @@ export default function BlogPosts() {
       }}/>
     </div>
       <BlogPostHeader/>
-      <div className="flex max-2xl:flex-col max-2xl:items-center justify-center gap-14 max-lg:gap-20 max-sm:gap-40 max-lg:px-1">
+      <div className="flex max-2xl:flex-col max-2xl:items-center justify-center gap-14 max-lg:gap-20 max-sm:gap-40 h-full">
       <BlogPostLoader/>
       </div>
       

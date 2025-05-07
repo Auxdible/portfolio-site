@@ -25,8 +25,8 @@ export default function BlogPreview({ post }: PostProps) {
         setLinkCopied(true);
         setTimeout(() => setLinkCopied(false), 3000);
     }
-    return (<article className={`flex w-full max-lg:flex-col`}>
-        <div className="flex-1 flex justify-center items-center">
+    return (<article className={`flex max-lg:w-[90%] w-full max-lg:flex-col`}>
+        <div className="flex-1 flex justify-center items-center py-4">
             <div {...hoverable(setHovered)} onClick={() => {
                 if (setHovered) setHovered(false) 
                 router.push(`/blog/${post.id}`)
